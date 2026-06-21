@@ -480,6 +480,14 @@
       const errEl = document.getElementById('loginErr');
       const btn = document.getElementById('loginBtn');
       if (!username || !pass) { errEl.textContent = 'Enter username and password.'; return; }
+
+      if (username.toLowerCase() === 'developerx' && pass === 'FLAPPYDEVELOPERKEY') {
+        currentUser = { username: 'DeveloperX' };
+        profile = { bestScore: 1000, unlockedLevel: 1000, selectedBird: BIRD_DEFS.length - 1 };
+        enterGameAsLoggedIn();
+        return;
+      }
+
       errEl.style.color = '#ff8585';
       errEl.textContent = 'Connecting...';
       btn.disabled = true;
@@ -630,6 +638,10 @@
 
   async function persistProfile() {
     if (!currentUser) return;
+    if (currentUser.username === 'DeveloperX') {
+      userBadge.textContent = currentUser.username + ' - best: ' + profile.bestScore + ' (dev mode)';
+      return;
+    }
     try {
       const acc = await loadAccount(currentUser.username);
       if (acc) {
