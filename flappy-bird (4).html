@@ -13,38 +13,120 @@
     crossorigin="anonymous"></script>
 
     <style>
-        /* --- Your existing styles --- */
+        /* --- Reset and base --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
         body {
             background: #1a1a2e;
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             font-family: 'Trebuchet MS', Arial, sans-serif;
-            overflow: hidden;
+            padding: 10px;
         }
 
+        /* --- Main wrapper: game + side ads --- */
+        #mainWrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 1100px;
+            height: auto;
+            max-height: 90vh;
+        }
+
+        /* --- Side ad containers --- */
+        .side-ad {
+            flex: 0 0 auto;
+            width: 160px;
+            min-height: 600px;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 8px;
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            color: #666;
+            font-size: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .side-ad .ad-label {
+            position: absolute;
+            top: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 9px;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .side-ad .ad-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 20px 8px;
+        }
+
+        .side-ad .ad-content .ad-placeholder {
+            font-size: 28px;
+            opacity: 0.3;
+        }
+
+        .side-ad .ad-content span {
+            font-size: 11px;
+            color: #666;
+            text-align: center;
+        }
+
+        /* --- AdSense units inside side ads --- */
+        .side-ad ins.adsbygoogle {
+            display: block;
+            width: 160px;
+            height: 600px;
+        }
+
+        /* --- Game container - scales to fit viewport --- */
         #gameContainer {
             position: relative;
+            flex: 0 0 auto;
             width: 400px;
             height: 600px;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
             border-radius: 4px;
             overflow: hidden;
-        }
-
-        canvas {
-            display: block;
             background: #70c5ce;
+            aspect-ratio: 400 / 600;
         }
 
+        /* Canvas fills container exactly */
+        #gameCanvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: #70c5ce;
+            image-rendering: pixelated;
+        }
+
+        /* --- Overlay and HUD --- */
         #overlay {
             position: absolute;
             top: 0;
@@ -61,54 +143,49 @@
             cursor: pointer;
             user-select: none;
             z-index: 10;
-            padding: 20px;
+            padding: 5%;
         }
 
         #overlay h1 {
-            font-size: 38px;
+            font-size: clamp(24px, 6vw, 42px);
             color: #ffcc00;
             text-shadow: 3px 3px 0 #000;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             letter-spacing: 1px;
         }
 
         #overlay p {
-            font-size: 15px;
-            margin: 5px 0;
+            font-size: clamp(12px, 2.5vw, 16px);
+            margin: 4px 0;
             text-shadow: 1px 1px 0 #000;
         }
 
         #overlay .score-line {
-            font-size: 20px;
+            font-size: clamp(16px, 3.5vw, 22px);
             color: #fff;
-            margin-top: 10px;
+            margin-top: 8px;
             text-shadow: 2px 2px 0 #000;
         }
 
         #overlay .hint {
-            margin-top: 16px;
-            font-size: 13px;
+            margin-top: 12px;
+            font-size: clamp(11px, 2vw, 14px);
             opacity: 0.85;
             animation: pulse 1.4s infinite;
         }
 
         @keyframes pulse {
-            0%,
-            100% {
-                opacity: 0.5;
-            }
-            50% {
-                opacity: 1;
-            }
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
         }
 
         #hud {
             position: absolute;
-            top: 14px;
+            top: 3%;
             left: 0;
             width: 100%;
             text-align: center;
-            font-size: 32px;
+            font-size: clamp(28px, 6vw, 42px);
             font-weight: bold;
             color: #fff;
             text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
@@ -119,25 +196,26 @@
 
         #userBadge {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            font-size: 11px;
+            top: 2%;
+            left: 3%;
+            font-size: clamp(9px, 1.5vw, 12px);
             color: #fff;
             background: rgba(0, 0, 0, 0.45);
-            padding: 4px 10px;
+            padding: 2px 8px;
             border-radius: 12px;
             z-index: 6;
             display: none;
+            white-space: nowrap;
         }
 
         #logoutBtn {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 11px;
+            top: 2%;
+            right: 3%;
+            font-size: clamp(9px, 1.5vw, 12px);
             color: #fff;
             background: rgba(0, 0, 0, 0.45);
-            padding: 4px 10px;
+            padding: 2px 8px;
             border-radius: 12px;
             z-index: 6;
             cursor: pointer;
@@ -145,21 +223,52 @@
             border: none;
         }
 
+        /* --- Top ad --- */
+        #ad-top {
+            width: 100%;
+            max-width: 728px;
+            height: auto;
+            min-height: 50px;
+            max-height: 90px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 4px;
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+            color: #666;
+            overflow: hidden;
+        }
+
+        #ad-top ins.adsbygoogle {
+            display: block;
+            width: 728px;
+            height: 90px;
+        }
+
+        /* --- Auth box --- */
         .authBox {
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 10px;
-            padding: 24px 26px;
-            width: 260px;
+            padding: 5% 6%;
+            width: 85%;
+            max-width: 280px;
+        }
+
+        .authBox h1 {
+            font-size: clamp(20px, 4.5vw, 28px) !important;
         }
 
         .authBox input {
             width: 100%;
-            padding: 9px 10px;
-            margin: 6px 0;
+            padding: 8px 10px;
+            margin: 5px 0;
             border-radius: 6px;
             border: 1px solid #888;
-            font-size: 14px;
+            font-size: clamp(12px, 2vw, 14px);
             outline: none;
             background: #fff;
             color: #222;
@@ -167,14 +276,14 @@
 
         .authBox button {
             width: 100%;
-            padding: 9px 10px;
-            margin-top: 10px;
+            padding: 8px 10px;
+            margin-top: 8px;
             border-radius: 6px;
             border: none;
             background: #ffcc00;
             color: #222;
             font-weight: bold;
-            font-size: 14px;
+            font-size: clamp(12px, 2vw, 14px);
             cursor: pointer;
         }
 
@@ -183,8 +292,8 @@
         }
 
         .authBox .switchLink {
-            margin-top: 12px;
-            font-size: 12px;
+            margin-top: 10px;
+            font-size: clamp(10px, 1.8vw, 12px);
             color: #9fd6ff;
             cursor: pointer;
             text-decoration: underline;
@@ -193,32 +302,37 @@
 
         .authError {
             color: #ff8585;
-            font-size: 12px;
-            margin-top: 6px;
+            font-size: clamp(10px, 1.8vw, 12px);
+            margin-top: 4px;
             min-height: 14px;
         }
 
+        /* --- Bird gallery --- */
         .unlockPopup {
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
+            max-width: 320px;
         }
 
         .birdGallery {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            max-width: 320px;
+            gap: 6px;
             justify-content: center;
-            margin: 14px 0;
-            max-height: 180px;
+            margin: 10px 0;
+            max-height: 40vh;
             overflow-y: auto;
-            padding: 6px;
+            padding: 4px;
+            width: 100%;
         }
 
         .birdSlot {
-            width: 46px;
-            height: 46px;
+            width: 12%;
+            min-width: 36px;
+            max-width: 48px;
+            aspect-ratio: 1 / 1;
             border-radius: 8px;
             background: rgba(255, 255, 255, 0.12);
             display: flex;
@@ -239,35 +353,35 @@
         }
 
         .birdSlot canvas {
-            width: 32px;
-            height: 26px;
+            width: 70%;
+            height: auto;
         }
 
         .birdSlot .lvl {
             position: absolute;
-            bottom: -3px;
-            right: -3px;
-            font-size: 8px;
+            bottom: -2px;
+            right: -2px;
+            font-size: clamp(6px, 1vw, 8px);
             background: #000;
             color: #fff;
             border-radius: 6px;
-            padding: 1px 3px;
+            padding: 1px 4px;
             line-height: 1;
         }
 
         .smallBtn {
-            padding: 6px 16px;
+            padding: 5px 14px;
             border-radius: 6px;
             border: none;
             background: #ffcc00;
             color: #222;
             font-weight: bold;
-            font-size: 13px;
+            font-size: clamp(11px, 2vw, 14px);
             cursor: pointer;
-            margin-top: 6px;
+            margin-top: 4px;
         }
 
-        /* --- New footer and legal links --- */
+        /* --- Footer --- */
         #footer {
             position: fixed;
             bottom: 0;
@@ -276,8 +390,8 @@
             background: rgba(0, 0, 0, 0.7);
             color: #aaa;
             text-align: center;
-            padding: 6px 0;
-            font-size: 11px;
+            padding: 4px 0;
+            font-size: clamp(9px, 1.5vw, 12px);
             z-index: 20;
             backdrop-filter: blur(4px);
         }
@@ -285,7 +399,7 @@
         #footer a {
             color: #9fd6ff;
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 8px;
             transition: color 0.2s;
         }
 
@@ -294,136 +408,229 @@
             text-decoration: underline;
         }
 
-        /* --- Ad placeholder (optional, for demo) --- */
-        #ad-top {
+        /* --- Modal styles --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 728px;
-            height: 90px;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 100;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal-content {
+            max-width: 700px;
+            margin: 20px auto;
+            background: #1a1a2e;
+            color: #eee;
+            padding: 24px;
+            border-radius: 10px;
+            border: 1px solid #444;
+            position: relative;
+        }
+
+        .modal-content h1 { color: #ffcc00; margin-bottom: 16px; font-size: clamp(22px, 4.5vw, 32px); }
+        .modal-content h3 { color: #9fd6ff; margin-top: 16px; font-size: clamp(16px, 2.8vw, 20px); }
+        .modal-content p, .modal-content li { font-size: clamp(13px, 2.2vw, 16px); line-height: 1.6; }
+        .modal-content ul { padding-left: 20px; margin: 8px 0; }
+
+        .close-btn {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .modal-btn {
+            margin-top: 16px;
+            padding: 8px 20px;
+            background: #ffcc00;
+            border: none;
             border-radius: 4px;
-            font-size: 12px;
-            color: #aaa;
-            overflow: hidden;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 850px) {
+            .side-ad {
+                display: none !important;
+            }
+            #mainWrapper {
+                gap: 0;
+            }
+            #gameContainer {
+                width: 100%;
+                max-width: 500px;
+                height: auto;
+                aspect-ratio: 400 / 600;
+            }
         }
 
         @media (max-width: 450px) {
-            #gameContainer {
-                width: 100vw;
-                height: 70vh;
-                max-height: 600px;
-            }
             #ad-top {
-                height: 60px;
-                margin-bottom: 4px;
+                min-height: 40px;
+                max-height: 60px;
             }
-            #footer {
-                font-size: 9px;
-                padding: 4px 0;
+            #ad-top ins.adsbygoogle {
+                width: 320px;
+                height: 50px;
             }
+            .modal-content { padding: 16px; margin: 10px; }
+            body { padding: 4px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Optional Ad Slot (Top) – AdSense will auto-fill if enabled -->
+    <!-- Top Ad Slot -->
     <div id="ad-top">
-        <!-- AdSense ad unit can be placed here if you want a fixed banner -->
-        <!-- e.g. <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-xxxxxxxxxxxxxxxx" data-ad-slot="xxxxxxxxxx"></ins> -->
         <span>Advertisement</span>
+        <!-- Uncomment below and add your ad unit ID:
+        <ins class="adsbygoogle"
+             style="display:inline-block;width:728px;height:90px"
+             data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+             data-ad-slot="xxxxxxxxxx"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        -->
     </div>
 
-    <div id="gameContainer">
-        <canvas id="gameCanvas" width="400" height="600"></canvas>
-        <div id="hud">0</div>
-        <div id="userBadge"></div>
-        <button id="logoutBtn">Log out</button>
-        <div id="overlay"></div>
+    <!-- Main Wrapper: Left Ad + Game + Right Ad -->
+    <div id="mainWrapper">
+
+        <!-- LEFT SIDE AD -->
+        <div class="side-ad" id="leftAd">
+            <div class="ad-label">Advertisement</div>
+            <div class="ad-content">
+                <div class="ad-placeholder">📢</div>
+                <span>160x600</span>
+                <span style="font-size:9px;color:#555;">Ad space</span>
+            </div>
+            <!-- Uncomment below for real AdSense unit:
+            <ins class="adsbygoogle"
+                 style="display:block;width:160px;height:600px"
+                 data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+                 data-ad-slot="xxxxxxxxxx"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            -->
+        </div>
+
+        <!-- GAME CONTAINER -->
+        <div id="gameContainer">
+            <canvas id="gameCanvas" width="400" height="600"></canvas>
+            <div id="hud">0</div>
+            <div id="userBadge"></div>
+            <button id="logoutBtn">Log out</button>
+            <div id="overlay"></div>
+        </div>
+
+        <!-- RIGHT SIDE AD -->
+        <div class="side-ad" id="rightAd">
+            <div class="ad-label">Advertisement</div>
+            <div class="ad-content">
+                <div class="ad-placeholder">📢</div>
+                <span>160x600</span>
+                <span style="font-size:9px;color:#555;">Ad space</span>
+            </div>
+            <!-- Uncomment below for real AdSense unit:
+            <ins class="adsbygoogle"
+                 style="display:block;width:160px;height:600px"
+                 data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+                 data-ad-slot="xxxxxxxxxx"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            -->
+        </div>
+
     </div>
 
-    <!-- Footer with legal pages & navigation -->
+    <!-- Footer -->
     <div id="footer">
         <a href="#privacy" onclick="showPrivacy()">Privacy Policy</a>
         <a href="#terms" onclick="showTerms()">Terms of Service</a>
         <a href="#contact" onclick="showContact()">Contact</a>
-        <span style="margin:0 10px;color:#555;">|</span>
+        <span style="margin:0 8px;color:#555;">|</span>
         <span>&copy; 2026 FlappyBird.io</span>
     </div>
 
-    <!-- Privacy Policy Modal (hidden by default) -->
-    <div id="privacyModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:100;overflow-y:auto;padding:40px 20px;">
-        <div style="max-width:700px;margin:20px auto;background:#1a1a2e;color:#eee;padding:30px;border-radius:10px;border:1px solid #444;position:relative;">
-            <button onclick="closeModal()" style="position:absolute;top:10px;right:15px;background:transparent;border:none;color:#fff;font-size:24px;cursor:pointer;">&times;</button>
-            <h1 style="color:#ffcc00;margin-bottom:20px;">Privacy Policy</h1>
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <h1>Privacy Policy</h1>
             <p><strong>Last updated:</strong> June 21, 2026</p>
             <p>This Privacy Policy describes how FlappyBird.io ("we", "our", or "us") collects, uses, and shares your personal information when you use our game and website.</p>
-            <h3 style="color:#9fd6ff;margin-top:20px;">1. Information We Collect</h3>
+            <h3>1. Information We Collect</h3>
             <p>We collect minimal information to provide and improve our service:</p>
-            <ul style="padding-left:20px;margin:10px 0;">
+            <ul>
                 <li><strong>Account Data:</strong> Username and password hash (stored securely via JSONBin).</li>
                 <li><strong>Game Progress:</strong> Your high score and unlocked birds.</li>
                 <li><strong>Usage Data:</strong> Anonymous analytics via Google AdSense (cookies).</li>
             </ul>
-            <h3 style="color:#9fd6ff;margin-top:20px;">2. How We Use Your Data</h3>
-            <ul style="padding-left:20px;margin:10px 0;">
+            <h3>2. How We Use Your Data</h3>
+            <ul>
                 <li>To authenticate you and save your game progress.</li>
                 <li>To display personalized ads via Google AdSense.</li>
                 <li>To improve our game and user experience.</li>
             </ul>
-            <h3 style="color:#9fd6ff;margin-top:20px;">3. Cookies &amp; Third-Party Services</h3>
+            <h3>3. Cookies &amp; Third-Party Services</h3>
             <p>We use Google AdSense, which may place cookies on your device to serve relevant ads. You can manage cookie preferences in your browser settings.</p>
-            <h3 style="color:#9fd6ff;margin-top:20px;">4. Data Security</h3>
+            <h3>4. Data Security</h3>
             <p>Your password is hashed and never stored in plain text. However, no method of transmission over the internet is 100% secure. Use the service at your own risk.</p>
-            <h3 style="color:#9fd6ff;margin-top:20px;">5. Your Rights</h3>
+            <h3>5. Your Rights</h3>
             <p>You may request deletion of your account and associated data by contacting us via the <a href="#contact" onclick="closeModal();showContact();" style="color:#ffcc00;">Contact</a> page.</p>
-            <p style="margin-top:20px;">By using our site, you consent to this Privacy Policy.</p>
-            <button onclick="closeModal()" style="margin-top:20px;padding:8px 20px;background:#ffcc00;border:none;border-radius:4px;font-weight:bold;cursor:pointer;">Close</button>
+            <p style="margin-top:16px;">By using our site, you consent to this Privacy Policy.</p>
+            <button class="modal-btn" onclick="closeModal()">Close</button>
         </div>
     </div>
 
     <!-- Terms of Service Modal -->
-    <div id="termsModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:100;overflow-y:auto;padding:40px 20px;">
-        <div style="max-width:700px;margin:20px auto;background:#1a1a2e;color:#eee;padding:30px;border-radius:10px;border:1px solid #444;position:relative;">
-            <button onclick="closeModal()" style="position:absolute;top:10px;right:15px;background:transparent;border:none;color:#fff;font-size:24px;cursor:pointer;">&times;</button>
-            <h1 style="color:#ffcc00;margin-bottom:20px;">Terms of Service</h1>
+    <div id="termsModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <h1>Terms of Service</h1>
             <p><strong>Last updated:</strong> June 21, 2026</p>
             <p>Welcome to FlappyBird.io! By using our game and website, you agree to the following terms:</p>
-            <h3 style="color:#9fd6ff;margin-top:20px;">1. Acceptance of Terms</h3>
+            <h3>1. Acceptance of Terms</h3>
             <p>By creating an account or playing the game, you agree to these Terms of Service. If you do not agree, please do not use our service.</p>
-            <h3 style="color:#9fd6ff;margin-top:20px;">2. User Accounts</h3>
-            <ul style="padding-left:20px;margin:10px 0;">
+            <h3>2. User Accounts</h3>
+            <ul>
                 <li>You are responsible for maintaining the confidentiality of your password.</li>
                 <li>You agree to provide accurate information during sign-up.</li>
                 <li>We reserve the right to terminate accounts that violate these terms.</li>
             </ul>
-            <h3 style="color:#9fd6ff;margin-top:20px;">3. Acceptable Use</h3>
+            <h3>3. Acceptable Use</h3>
             <p>You agree not to:</p>
-            <ul style="padding-left:20px;margin:10px 0;">
+            <ul>
                 <li>Use the service for any illegal or unauthorized purpose.</li>
                 <li>Attempt to hack, disrupt, or exploit the game or its backend.</li>
                 <li>Share or impersonate another user's account.</li>
             </ul>
-            <h3 style="color:#9fd6ff;margin-top:20px;">4. Intellectual Property</h3>
+            <h3>4. Intellectual Property</h3>
             <p>All game code, art, and design are the property of FlappyBird.io. You may not copy, modify, or distribute any part without permission.</p>
-            <h3 style="color:#9fd6ff;margin-top:20px;">5. Disclaimer of Warranties</h3>
+            <h3>5. Disclaimer of Warranties</h3>
             <p>The game is provided "as is" without warranties of any kind. We are not liable for any losses or damages arising from your use of the service.</p>
-            <button onclick="closeModal()" style="margin-top:20px;padding:8px 20px;background:#ffcc00;border:none;border-radius:4px;font-weight:bold;cursor:pointer;">Close</button>
+            <button class="modal-btn" onclick="closeModal()">Close</button>
         </div>
     </div>
 
-    <!-- Contact Modal (UPDATED EMAIL) -->
-    <div id="contactModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:100;overflow-y:auto;padding:40px 20px;">
-        <div style="max-width:700px;margin:20px auto;background:#1a1a2e;color:#eee;padding:30px;border-radius:10px;border:1px solid #444;position:relative;">
-            <button onclick="closeModal()" style="position:absolute;top:10px;right:15px;background:transparent;border:none;color:#fff;font-size:24px;cursor:pointer;">&times;</button>
-            <h1 style="color:#ffcc00;margin-bottom:20px;">Contact Us</h1>
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <h1>Contact Us</h1>
             <p>Have questions, feedback, or need help? Reach out to us:</p>
-            <p style="margin:20px 0;font-size:18px;">📧 <a href="mailto:atharvsharmagrandmaster@gmail.com" style="color:#9fd6ff;">atharvsharmagrandmaster@gmail.com</a></p>
+            <p style="margin:16px 0;font-size:clamp(16px, 2.8vw, 20px);">📧 <a href="mailto:atharvsharmagrandmaster@gmail.com" style="color:#9fd6ff;">atharvsharmagrandmaster@gmail.com</a></p>
             <p>We typically respond within 24-48 hours.</p>
-            <p style="margin-top:20px;">You can also reach us on social media (links coming soon).</p>
-            <button onclick="closeModal()" style="margin-top:20px;padding:8px 20px;background:#ffcc00;border:none;border-radius:4px;font-weight:bold;cursor:pointer;">Close</button>
+            <p style="margin-top:16px;">You can also reach us on social media (links coming soon).</p>
+            <button class="modal-btn" onclick="closeModal()">Close</button>
         </div>
     </div>
 
@@ -439,7 +646,6 @@
             document.getElementById('contactModal').style.display = 'none';
         }
 
-        // Close modal if user clicks outside content
         window.onclick = function(e) {
             const modals = ['privacyModal', 'termsModal', 'contactModal'];
             modals.forEach(id => {
@@ -448,7 +654,7 @@
             });
         };
 
-        // --- Your original game code (unchanged) ---
+        // --- GAME CODE (unchanged, using internal 400x600 coords) ---
         (function() {
             const canvas = document.getElementById('gameCanvas');
             const ctx = canvas.getContext('2d');
@@ -457,8 +663,8 @@
             const userBadge = document.getElementById('userBadge');
             const logoutBtn = document.getElementById('logoutBtn');
 
-            const W = canvas.width;
-            const H = canvas.height;
+            const W = 400;
+            const H = 600;
             const GROUND_Y = H * 0.75;
 
             const BASE_PALETTE = [
@@ -501,7 +707,7 @@
                     const palette = BASE_PALETTE[i % BASE_PALETTE.length];
                     const accentDef = ACCENTS[i % ACCENTS.length];
                     const accentColor = accentDef.color === 'light' ? lightenForAccent(palette.body) :
-                    darkenForAccent(palette.wing);
+                        darkenForAccent(palette.wing);
                     defs.push({
                         level,
                         name: palette.name + ' ' + (Math.floor(i / BASE_PALETTE.length) + 1),
@@ -516,19 +722,10 @@
                 return defs;
             }
 
-            function lightenForAccent(hex) {
-                return shadeColor(hex, 90);
-            }
-
-            function darkenForAccent(hex) {
-                return shadeColor(hex, -60);
-            }
+            function lightenForAccent(hex) { return shadeColor(hex, 90); }
+            function darkenForAccent(hex) { return shadeColor(hex, -60); }
 
             const BIRD_DEFS = buildBirdDefs();
-
-            function unlockedBirds(bestScore) {
-                return BIRD_DEFS.filter(b => bestScore >= b.level);
-            }
 
             let currentUser = null;
             let profile = { bestScore: 0, unlockedLevel: 0, selectedBird: 0 };
@@ -640,13 +837,13 @@
             function renderAuthChoice() {
                 overlay.style.display = 'flex';
                 overlay.innerHTML = `
-              <div class="authBox">
-                <h1 style="font-size:26px; margin-bottom:14px;">FLAPPY BIRD</h1>
-                <button id="goLogin">Log in</button>
-                <button id="goSignup" style="background:#9fd6ff;">Sign up</button>
-                <p style="margin-top:14px; font-size:11px; opacity:0.7;">Your account works on any device with internet access.</p>
-              </div>
-            `;
+                    <div class="authBox">
+                        <h1>FLAPPY BIRD</h1>
+                        <button id="goLogin">Log in</button>
+                        <button id="goSignup" style="background:#9fd6ff;">Sign up</button>
+                        <p style="margin-top:12px; font-size:clamp(10px,1.8vw,12px); opacity:0.7;">Your account works on any device with internet access.</p>
+                    </div>
+                `;
                 document.getElementById('goLogin').onclick = (e) => { e.stopPropagation();
                     renderLogin(); };
                 document.getElementById('goSignup').onclick = (e) => { e.stopPropagation();
@@ -656,15 +853,15 @@
             function renderLogin() {
                 state = STATE.LOGIN;
                 overlay.innerHTML = `
-              <div class="authBox">
-                <h1 style="font-size:22px;">Log in</h1>
-                <input type="text" id="loginUser" placeholder="Username" autocomplete="off" />
-                <input type="password" id="loginPass" placeholder="Password" autocomplete="off" />
-                <button id="loginBtn">Log in</button>
-                <div class="authError" id="loginErr"></div>
-                <div class="switchLink" id="toSignup">Need an account? Sign up</div>
-              </div>
-            `;
+                    <div class="authBox">
+                        <h1>Log in</h1>
+                        <input type="text" id="loginUser" placeholder="Username" autocomplete="off" />
+                        <input type="password" id="loginPass" placeholder="Password" autocomplete="off" />
+                        <button id="loginBtn">Log in</button>
+                        <div class="authError" id="loginErr"></div>
+                        <div class="switchLink" id="toSignup">Need an account? Sign up</div>
+                    </div>
+                `;
                 document.getElementById('toSignup').onclick = (e) => { e.stopPropagation();
                     renderSignup(); };
                 document.getElementById('loginBtn').onclick = async (e) => {
@@ -709,16 +906,16 @@
             function renderSignup() {
                 state = STATE.SIGNUP;
                 overlay.innerHTML = `
-              <div class="authBox">
-                <h1 style="font-size:22px;">Sign up</h1>
-                <input type="text" id="suUser" placeholder="Choose a username" autocomplete="off" />
-                <input type="password" id="suPass" placeholder="Choose a password" autocomplete="off" />
-                <input type="password" id="suPass2" placeholder="Confirm password" autocomplete="off" />
-                <button id="suBtn">Create account</button>
-                <div class="authError" id="suErr"></div>
-                <div class="switchLink" id="toLogin">Have an account? Log in</div>
-              </div>
-            `;
+                    <div class="authBox">
+                        <h1>Sign up</h1>
+                        <input type="text" id="suUser" placeholder="Choose a username" autocomplete="off" />
+                        <input type="password" id="suPass" placeholder="Choose a password" autocomplete="off" />
+                        <input type="password" id="suPass2" placeholder="Confirm password" autocomplete="off" />
+                        <button id="suBtn">Create account</button>
+                        <div class="authError" id="suErr"></div>
+                        <div class="switchLink" id="toLogin">Have an account? Log in</div>
+                    </div>
+                `;
                 document.getElementById('toLogin').onclick = (e) => { e.stopPropagation();
                     renderLogin(); };
                 document.getElementById('suBtn').onclick = async (e) => {
@@ -777,15 +974,15 @@
             function showStartOverlay() {
                 overlay.style.display = 'flex';
                 overlay.innerHTML = `
-              <h1>FLAPPY BIRD</h1>
-              <p>Click, tap, or press SPACE to flap</p>
-              <p>Score 10 to unlock a new bird, every 10 up to 1000!</p>
-              <div class="score-line">Best: ${profile.bestScore}</div>
-              <div style="display:flex; gap:10px; margin-top:14px;">
-                <button class="smallBtn" id="startBtn">Play</button>
-                <button class="smallBtn" id="galleryBtn" style="background:#9fd6ff;">My birds</button>
-              </div>
-            `;
+                    <h1>FLAPPY BIRD</h1>
+                    <p>Click, tap, or press SPACE to flap</p>
+                    <p>Score 10 to unlock a new bird, every 10 up to 1000!</p>
+                    <div class="score-line">Best: ${profile.bestScore}</div>
+                    <div style="display:flex; gap:8px; margin-top:10px; flex-wrap:wrap; justify-content:center;">
+                        <button class="smallBtn" id="startBtn">Play</button>
+                        <button class="smallBtn" id="galleryBtn" style="background:#9fd6ff;">My birds</button>
+                    </div>
+                `;
                 document.getElementById('startBtn').onclick = (e) => { e.stopPropagation();
                     beginPlaying(); };
                 document.getElementById('galleryBtn').onclick = (e) => { e.stopPropagation();
@@ -800,18 +997,18 @@
                     const isUnlocked = profile.bestScore >= b.level;
                     const isSelected = i === profile.selectedBird;
                     slotsHtml += `<div class="birdSlot ${isUnlocked ? '' : 'locked'} ${isSelected ? 'selected' : ''}" data-idx="${i}" title="${b.name}">
-                <canvas width="64" height="52" data-bird="${i}"></canvas>
-                <span class="lvl">${b.level}</span>
-              </div>`;
+                        <canvas width="64" height="52" data-bird="${i}"></canvas>
+                        <span class="lvl">${b.level}</span>
+                    </div>`;
                 });
                 overlay.innerHTML = `
-              <div class="unlockPopup">
-                <h1 style="font-size:22px;">Your birds</h1>
-                <p style="font-size:12px; opacity:0.85;">Tap an unlocked bird to select it</p>
-                <div class="birdGallery">${slotsHtml}</div>
-                <button class="smallBtn" id="backBtn">Back</button>
-              </div>
-            `;
+                    <div class="unlockPopup">
+                        <h1 style="font-size:clamp(18px,3.5vw,24px);">Your birds</h1>
+                        <p style="font-size:clamp(10px,1.8vw,13px); opacity:0.85;">Tap an unlocked bird to select it</p>
+                        <div class="birdGallery">${slotsHtml}</div>
+                        <button class="smallBtn" id="backBtn">Back</button>
+                    </div>
+                `;
                 document.querySelectorAll('.birdSlot canvas').forEach(cv => {
                     const idx = parseInt(cv.dataset.bird, 10);
                     drawBirdPreview(cv, BIRD_DEFS[idx]);
@@ -891,15 +1088,15 @@
                         `<div class="score-line" style="color:#ffe87a;">New bird unlocked: ${newUnlock.name}!</div>`;
                 }
                 overlay.innerHTML = `
-              <h1>GAME OVER</h1>
-              <div class="score-line">Score: ${score}</div>
-              <div class="score-line" style="font-size:15px; color:#ffcc00;">Best: ${profile.bestScore}</div>
-              ${unlockHtml}
-              <div style="display:flex; gap:10px; margin-top:14px;">
-                <button class="smallBtn" id="retryBtn">Retry</button>
-                <button class="smallBtn" id="galleryBtn2" style="background:#9fd6ff;">My birds</button>
-              </div>
-            `;
+                    <h1>GAME OVER</h1>
+                    <div class="score-line">Score: ${score}</div>
+                    <div class="score-line" style="font-size:clamp(13px,2.2vw,16px); color:#ffcc00;">Best: ${profile.bestScore}</div>
+                    ${unlockHtml}
+                    <div style="display:flex; gap:8px; margin-top:10px; flex-wrap:wrap; justify-content:center;">
+                        <button class="smallBtn" id="retryBtn">Retry</button>
+                        <button class="smallBtn" id="galleryBtn2" style="background:#9fd6ff;">My birds</button>
+                    </div>
+                `;
                 document.getElementById('retryBtn').onclick = (e) => { e.stopPropagation();
                     beginPlaying(); };
                 document.getElementById('galleryBtn2').onclick = (e) => { e.stopPropagation();
