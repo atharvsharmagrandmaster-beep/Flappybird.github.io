@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FlappyBird.io - Play Free Online Flappy Bird Game</title>
-    <meta name="description" content="Play Flappy Bird online for free! Compete for high scores, unlock new birds, and read gaming tips, strategies, and tutorials." />
-    <meta name="keywords" content="flappy bird, online game, arcade, free game, html5 game, gaming tips, web development" />
-    <link rel="canonical" href="https://flappybird.io/" />
+    <title>Flappy Bird Guide - Tips, Strategies & Free Online Game</title>
+    <meta name="description" content="Master Flappy Bird with expert tips, strategies, and tutorials. Play the classic game online for free, track high scores, and unlock new birds." />
+    <meta name="keywords" content="flappy bird, game guide, tips, strategies, high score, online game, html5 game" />
+    <link rel="canonical" href="https://atharvsharmagrandmaster-beep.github.io/Flappybird.github.io/" />
 
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx"
@@ -40,6 +40,68 @@
         a:hover {
             color: #ffcc00;
             text-decoration: underline;
+        }
+
+        /* --- COOKIE CONSENT BANNER --- */
+        #cookieConsent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 30, 0.97);
+            backdrop-filter: blur(10px);
+            border-top: 2px solid #2a2a4a;
+            padding: 16px 5%;
+            z-index: 999;
+            display: none;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        #cookieConsent p {
+            font-size: clamp(13px, 1.2vw, 16px);
+            color: #ccc;
+            flex: 1;
+            min-width: 200px;
+        }
+        #cookieConsent .cookie-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        #cookieConsent button {
+            padding: 8px 20px;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        #cookieConsent .btn-accept {
+            background: #ffcc00;
+            color: #222;
+        }
+        #cookieConsent .btn-accept:hover {
+            background: #ffd83d;
+        }
+        #cookieConsent .btn-decline {
+            background: transparent;
+            color: #aaa;
+            border: 1px solid #555;
+        }
+        #cookieConsent .btn-decline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+        }
+        #cookieConsent .btn-settings {
+            background: transparent;
+            color: #9fd6ff;
+            border: 1px solid #2a4a6a;
+        }
+        #cookieConsent .btn-settings:hover {
+            background: rgba(159, 214, 255, 0.1);
         }
 
         /* --- HEADER / NAVIGATION --- */
@@ -150,6 +212,12 @@
             margin: 18px 0 10px;
         }
 
+        .page h4 {
+            font-size: clamp(16px, 1.5vw, 19px);
+            color: #ffcc00;
+            margin: 14px 0 8px;
+        }
+
         .page p {
             font-size: clamp(15px, 1.2vw, 18px);
             line-height: 1.8;
@@ -169,80 +237,82 @@
             color: #d0d0e0;
         }
 
-        .page img {
+        /* --- ARTICLE FULL PAGE --- */
+        .article-full {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+        .article-full .article-meta {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #2a2a4a;
+            padding-bottom: 12px;
+        }
+        .article-full .article-meta span {
+            margin-right: 16px;
+        }
+        .article-full .article-body img {
             max-width: 100%;
             border-radius: 8px;
-            margin: 12px 0;
+            margin: 16px 0;
+        }
+        .article-full .article-body blockquote {
+            border-left: 4px solid #ffcc00;
+            padding: 12px 20px;
+            margin: 16px 0;
+            background: rgba(255, 204, 0, 0.06);
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: #ccc;
+        }
+        .article-full .article-body .tip-box {
+            background: rgba(255, 204, 0, 0.08);
+            border-left: 4px solid #ffcc00;
+            padding: 14px 18px;
+            margin: 16px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .article-full .article-body .tip-box strong {
+            color: #ffcc00;
+        }
+        .article-full .article-body .highlight {
+            color: #ffcc00;
+            font-weight: 600;
+        }
+        .article-full .back-to-blog {
+            display: inline-block;
+            margin-top: 24px;
+            padding: 8px 20px;
+            background: rgba(255, 204, 0, 0.1);
+            border: 1px solid #2a2a4a;
+            border-radius: 6px;
+            color: #ffcc00;
+            font-weight: 600;
+        }
+        .article-full .back-to-blog:hover {
+            background: rgba(255, 204, 0, 0.2);
+            text-decoration: none;
         }
 
-        /* --- GAME SECTION --- */
+        /* --- GAME SECTION - CLEAN, NO ADS --- */
         #gameSection {
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-
-        #gameWrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            width: 100%;
-            max-width: 1100px;
-            margin: 10px 0;
-            flex-wrap: wrap;
-        }
-
-        .side-ad {
-            flex: 0 0 auto;
-            width: 160px;
-            min-height: 600px;
-            max-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 8px;
-            border: 1px dashed rgba(255, 255, 255, 0.12);
-            color: #666;
-            font-size: 12px;
-            overflow: hidden;
-            position: relative;
-        }
-        .side-ad .ad-label {
-            position: absolute;
-            top: 4px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 9px;
-            color: #555;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .side-ad .ad-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 20px 8px;
-        }
-        .side-ad .ad-content .ad-placeholder {
-            font-size: 28px;
-            opacity: 0.3;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         #gameContainer {
             position: relative;
-            flex: 0 0 auto;
-            width: 400px;
-            height: 600px;
+            width: 100%;
+            max-width: 480px;
+            aspect-ratio: 400 / 600;
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
             border-radius: 8px;
             overflow: hidden;
             background: #70c5ce;
-            aspect-ratio: 400 / 600;
-            max-width: 100%;
         }
 
         #gameCanvas {
@@ -253,7 +323,7 @@
             image-rendering: pixelated;
         }
 
-        /* --- OVERLAY (same as before, slightly adjusted) --- */
+        /* --- OVERLAY --- */
         #overlay {
             position: absolute;
             top: 0;
@@ -447,6 +517,9 @@
             cursor: pointer;
             margin-top: 4px;
         }
+        .smallBtn:hover {
+            background: #ffd83d;
+        }
 
         /* --- BLOG CARDS --- */
         .blog-grid {
@@ -462,6 +535,7 @@
             border-radius: 10px;
             padding: 18px;
             transition: all 0.3s;
+            cursor: pointer;
         }
         .blog-card:hover {
             transform: translateY(-4px);
@@ -477,6 +551,9 @@
             font-size: 12px;
             color: #888;
             margin-bottom: 10px;
+        }
+        .blog-card .meta span {
+            margin-right: 12px;
         }
         .blog-card p {
             font-size: 14px;
@@ -494,14 +571,12 @@
             color: #ffcc00;
         }
 
-        /* --- TOP AD --- */
-        #ad-top {
+        /* --- AD PLACEMENTS --- */
+        .ad-in-article {
             width: 100%;
             max-width: 728px;
-            height: auto;
-            min-height: 50px;
-            max-height: 90px;
-            margin: 0 auto 10px;
+            min-height: 90px;
+            margin: 24px auto;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -511,6 +586,51 @@
             font-size: 12px;
             color: #555;
             overflow: hidden;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .ad-in-article ins.adsbygoogle {
+            display: block;
+            width: 728px;
+            height: 90px;
+        }
+
+        .ad-sidebar {
+            width: 100%;
+            max-width: 300px;
+            min-height: 250px;
+            margin: 16px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 4px;
+            border: 1px dashed rgba(255, 255, 255, 0.08);
+            font-size: 12px;
+            color: #555;
+            overflow: hidden;
+            padding: 10px;
+        }
+
+        .ad-sidebar ins.adsbygoogle {
+            display: block;
+            width: 300px;
+            height: 250px;
+        }
+
+        .blog-layout {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+        .blog-layout .blog-main {
+            flex: 2;
+            min-width: 280px;
+        }
+        .blog-layout .blog-sidebar {
+            flex: 1;
+            min-width: 200px;
         }
 
         /* --- FOOTER --- */
@@ -540,17 +660,35 @@
 
         /* --- RESPONSIVE --- */
         @media (max-width: 850px) {
-            .side-ad {
-                display: none !important;
+            .blog-layout {
+                flex-direction: column;
             }
-            #gameWrapper {
-                gap: 0;
+            .ad-sidebar {
+                max-width: 100%;
             }
-            #gameContainer {
-                width: 100%;
-                max-width: 480px;
-                height: auto;
-                aspect-ratio: 400/600;
+            .ad-sidebar ins.adsbygoogle {
+                width: 320px;
+                height: 100px;
+            }
+            .ad-in-article ins.adsbygoogle {
+                width: 320px;
+                height: 50px;
+            }
+        }
+
+        @media (max-width: 450px) {
+            header {
+                padding: 8px 4%;
+            }
+            .logo {
+                font-size: 18px;
+            }
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            .page {
+                padding: 0 4% 40px;
+                margin: 10px auto;
             }
             .nav-links {
                 display: none;
@@ -565,101 +703,89 @@
             .hamburger {
                 display: flex;
             }
-        }
-
-        @media (max-width: 450px) {
-            #ad-top {
-                min-height: 40px;
-                max-height: 60px;
+            .ad-in-article ins.adsbygoogle {
+                width: 300px;
+                height: 50px;
             }
-            header {
-                padding: 8px 4%;
+            #cookieConsent {
+                padding: 12px 4%;
+                flex-direction: column;
+                align-items: stretch;
             }
-            .logo {
-                font-size: 18px;
-            }
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-            .page {
-                padding: 0 4% 40px;
-                margin: 10px auto;
+            #cookieConsent .cookie-buttons {
+                justify-content: center;
             }
         }
 
-        /* --- MODAL (for legal pages overlay) --- */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 100;
-            overflow-y: auto;
-            padding: 20px;
-        }
-        .modal-content {
-            max-width: 760px;
-            margin: 20px auto;
-            background: #1a1a2e;
-            color: #eee;
-            padding: 28px;
-            border-radius: 12px;
-            border: 1px solid #444;
-            position: relative;
-        }
-        .modal-content h1 {
+        /* --- UTILITY --- */
+        .highlight {
             color: #ffcc00;
-            margin-bottom: 16px;
-            font-size: clamp(24px, 4vw, 34px);
+            font-weight: 600;
         }
-        .modal-content h2 {
-            color: #70c5ce;
-            font-size: clamp(18px, 2.5vw, 24px);
-            margin: 20px 0 10px;
+        .tip-box {
+            background: rgba(255, 204, 0, 0.08);
+            border-left: 4px solid #ffcc00;
+            padding: 14px 18px;
+            margin: 16px 0;
+            border-radius: 0 8px 8px 0;
         }
-        .modal-content p,
-        .modal-content li {
-            font-size: clamp(14px, 1.2vw, 17px);
-            line-height: 1.7;
+        .tip-box strong {
+            color: #ffcc00;
         }
-        .modal-content ul {
-            padding-left: 20px;
-            margin: 8px 0;
+
+        .strategy-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: clamp(13px, 1vw, 16px);
         }
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 16px;
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 32px;
+        .strategy-table th,
+        .strategy-table td {
+            border: 1px solid #2a2a4a;
+            padding: 10px 12px;
+            text-align: left;
+        }
+        .strategy-table th {
+            background: #2a2a4a;
+            color: #ffcc00;
+        }
+        .strategy-table tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .back-to-top {
+            display: inline-block;
+            margin-top: 20px;
+            color: #9fd6ff;
+            font-size: 14px;
+        }
+        .back-to-top:hover {
+            color: #ffcc00;
+        }
+
+        /* --- ARTICLE GRID FOR BLOG LISTING --- */
+        .article-excerpt {
+            display: block;
             cursor: pointer;
-        }
-        .modal-btn {
-            margin-top: 16px;
-            padding: 8px 24px;
-            background: #ffcc00;
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 15px;
-        }
-        .modal-btn:hover {
-            background: #ffd83d;
         }
     </style>
 </head>
 <body>
 
+    <!-- ========== COOKIE CONSENT BANNER ========== -->
+    <div id="cookieConsent">
+        <p>🍪 We use cookies to personalize content and ads, and to analyze our traffic. By continuing, you agree to our use of cookies. <a href="#" data-page="privacy" style="color:#ffcc00;">Learn more</a></p>
+        <div class="cookie-buttons">
+            <button class="btn-settings" onclick="showCookieSettings()">⚙️ Settings</button>
+            <button class="btn-decline" onclick="declineCookies()">Decline</button>
+            <button class="btn-accept" onclick="acceptCookies()">Accept All</button>
+        </div>
+    </div>
+
     <!-- ========== HEADER ========== -->
     <header>
         <nav>
-            <div class="logo">Flappy<span>Bird</span>.io</div>
+            <div class="logo">Flappy<span>Bird</span> Guide</div>
 
             <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
                 <span></span><span></span><span></span>
@@ -667,28 +793,23 @@
 
             <ul class="nav-links" id="navLinks">
                 <li><a href="#" class="active" data-page="home">Home</a></li>
-                <li><a href="#" data-page="play">Play Flappy Bird</a></li>
+                <li><a href="#" data-page="play">Play Game</a></li>
                 <li><a href="#" data-page="howto">How to Play</a></li>
                 <li><a href="#" data-page="blog">Blog</a></li>
                 <li><a href="#" data-page="about">About</a></li>
                 <li><a href="#" data-page="contact">Contact</a></li>
-                <li><a href="#" data-page="privacy">Privacy Policy</a></li>
+                <li><a href="#" data-page="privacy">Privacy</a></li>
+                <li><a href="#" data-page="terms">Terms</a></li>
             </ul>
         </nav>
     </header>
-
-    <!-- ========== TOP AD ========== -->
-    <div id="ad-top">
-        <span>Advertisement</span>
-        <!-- <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-xxxxxxxxxxxxxxxx" data-ad-slot="xxxxxxxxxx"></ins> -->
-    </div>
 
     <!-- ========== PAGES ========== -->
 
     <!-- HOME -->
     <section class="page active" id="page-home">
-        <h1>Welcome to FlappyBird.io</h1>
-        <p>The classic arcade game is back — better than ever! Flap your way through pipes, unlock new birds, and compete for the highest score. Whether you're a casual gamer or a hardcore competitor, there's something for everyone.</p>
+        <h1>🎮 Master Flappy Bird: Complete Guide & Free Game</h1>
+        <p>Welcome to the ultimate <strong>Flappy Bird resource</strong>! Whether you're looking to beat your high score, unlock all birds, or just enjoy the classic arcade experience, you've come to the right place.</p>
 
         <div style="display:flex; gap:12px; flex-wrap:wrap; margin:16px 0;">
             <a href="#" data-page="play" class="smallBtn" style="padding:10px 24px; font-size:16px;">▶ Play Now</a>
@@ -696,45 +817,42 @@
             <a href="#" data-page="blog" class="smallBtn" style="padding:10px 24px; font-size:16px; background:#70c5ce;">📝 Blog</a>
         </div>
 
-        <h2>🔥 Latest from the Blog</h2>
-        <div class="blog-grid">
-            <div class="blog-card">
-                <h3>10 Flappy Bird Tips to Skyrocket Your Score</h3>
-                <div class="meta">June 20, 2026 • 5 min read</div>
-                <p>Master the game with these pro strategies — from timing your flaps to staying calm under pressure.</p>
-                <a href="#" data-page="blog" class="read-more">Read More →</a>
-            </div>
-            <div class="blog-card">
-                <h3>How to Build a Flappy Bird Clone in HTML5</h3>
-                <div class="meta">June 18, 2026 • 8 min read</div>
-                <p>Learn step-by-step how to create your own Flappy Bird game using Canvas, JavaScript, and CSS.</p>
-                <a href="#" data-page="blog" class="read-more">Read More →</a>
-            </div>
-            <div class="blog-card">
-                <h3>Why Flappy Bird Still Captivates Players in 2026</h3>
-                <div class="meta">June 15, 2026 • 4 min read</div>
-                <p>Explore the psychology and game design that made Flappy Bird an enduring viral sensation.</p>
-                <a href="#" data-page="blog" class="read-more">Read More →</a>
-            </div>
+        <div class="ad-in-article">
+            <span>Advertisement</span>
         </div>
+
+        <h2>🔥 Why Flappy Bird?</h2>
+        <p>Flappy Bird is more than just a game — it's a cultural phenomenon. Created by Dong Nguyen in 2013, it became one of the most downloaded mobile games of all time. Its simple yet addictive gameplay has inspired countless clones, tributes, and even academic studies on game design and psychology.</p>
+
+        <div class="tip-box">
+            <strong>💡 Did You Know?</strong> The original Flappy Bird was removed from app stores in 2014, but its legacy lives on through fan-made versions like this one!
+        </div>
+
+        <h2>📈 What You'll Find Here</h2>
+        <ul>
+            <li><strong>Free Game:</strong> Play the classic Flappy Bird experience in your browser.</li>
+            <li><strong>Expert Strategies:</strong> Learn proven techniques to improve your score.</li>
+            <li><strong>Unlockable Birds:</strong> Score points to unlock 100+ unique bird designs.</li>
+            <li><strong>In-Depth Guides:</strong> Read tutorials on game mechanics, physics, and development.</li>
+        </ul>
+
+        <h2>🎯 Quick Tips for Beginners</h2>
+        <ul>
+            <li>Focus on the <span class="highlight">gap between pipes</span>, not the bird itself.</li>
+            <li>Tap <span class="highlight">rhythmically</span> rather than frantically.</li>
+            <li>Keep the bird at <span class="highlight">mid-height</span> for better reaction time.</li>
+            <li><span class="highlight">Practice daily</span> — muscle memory is key!</li>
+        </ul>
     </section>
 
     <!-- PLAY -->
     <section class="page" id="page-play">
         <h1>Play Flappy Bird</h1>
-        <p>Click, tap, or press <kbd>Space</kbd> to flap. Score 10 to unlock new birds!</p>
+        <p style="text-align:center; max-width:500px; margin:0 auto 16px;">
+            Click, tap, or press <kbd>Space</kbd> to flap. Score <strong>10 points</strong> to unlock your first new bird!
+        </p>
 
-        <div id="gameWrapper">
-            <!-- LEFT AD -->
-            <div class="side-ad" id="leftAd">
-                <div class="ad-label">Advertisement</div>
-                <div class="ad-content">
-                    <div class="ad-placeholder">📢</div>
-                    <span>160×600</span>
-                </div>
-            </div>
-
-            <!-- GAME -->
+        <div id="gameSection">
             <div id="gameContainer">
                 <canvas id="gameCanvas" width="400" height="600"></canvas>
                 <div id="hud">0</div>
@@ -742,26 +860,22 @@
                 <button id="logoutBtn">Log out</button>
                 <div id="overlay"></div>
             </div>
-
-            <!-- RIGHT AD -->
-            <div class="side-ad" id="rightAd">
-                <div class="ad-label">Advertisement</div>
-                <div class="ad-content">
-                    <div class="ad-placeholder">📢</div>
-                    <span>160×600</span>
-                </div>
-            </div>
         </div>
 
-        <p style="margin-top:12px; text-align:center; color:#888; font-size:14px;">
-            💡 <strong>Pro Tip:</strong> Focus on the gap, not the bird. Tap consistently, not frantically.
-        </p>
+        <div style="max-width:500px; margin:16px auto; text-align:center; color:#888; font-size:14px; border-top:1px solid #2a2a4a; padding-top:16px;">
+            <p>💡 <strong>Pro Tip:</strong> Focus on the gap, not the bird. Tap consistently, not frantically.</p>
+            <p style="margin-top:6px;">🏆 <strong>Challenge:</strong> Can you beat the 1000-point Boss Bird unlock?</p>
+        </div>
     </section>
 
     <!-- HOW TO PLAY -->
     <section class="page" id="page-howto">
         <h1>How to Play Flappy Bird</h1>
-        <p>Flappy Bird is a simple but challenging arcade game. Here's everything you need to know:</p>
+        <p>Flappy Bird is a simple but challenging arcade game. Here's everything you need to know to get started.</p>
+
+        <div class="ad-in-article">
+            <span>Advertisement</span>
+        </div>
 
         <h2>🎯 Objective</h2>
         <p>Navigate the bird through a series of green pipes without hitting them. Each pipe you pass gives you <strong>1 point</strong>. The game ends when you hit a pipe or the ground.</p>
@@ -781,195 +895,75 @@
             <li>Visit the <strong>"My Birds"</strong> gallery to select your favorite.</li>
         </ul>
 
-        <h2>💡 Pro Strategies</h2>
-        <ul>
-            <li><strong>Stay low:</strong> Flying too high makes it harder to react to pipes.</li>
-            <li><strong>Tap rhythmically:</strong> Find a steady rhythm that matches the pipe gaps.</li>
-            <li><strong>Focus on the gap:</strong> Look at the space between pipes, not the bird itself.</li>
-            <li><strong>Practice:</strong> The more you play, the better your muscle memory gets.</li>
-        </ul>
+        <h2>💡 Expert Strategies</h2>
+        <table class="strategy-table">
+            <thead>
+                <tr><th>Strategy</th><th>Why It Works</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Stay Low</strong></td><td>Flying too high makes it harder to react to pipes. Mid-to-low flight gives you more reaction time.</td></tr>
+                <tr><td><strong>Rhythmic Tapping</strong></td><td>Find a steady rhythm that matches the pipe gaps. Consistency beats frantic tapping.</td></tr>
+                <tr><td><strong>Focus on the Gap</strong></td><td>Look at the space between pipes, not the bird itself. Your peripheral vision will handle the bird.</td></tr>
+                <tr><td><strong>Practice Daily</strong></td><td>Muscle memory develops over time. Short daily sessions are more effective than long sessions.</td></tr>
+            </tbody>
+        </table>
+
+        <div class="tip-box">
+            <strong>🔥 Advanced Tip:</strong> Try to <span class="highlight">anticipate the next pipe</span> before it appears on screen. This gives you a split-second advantage in positioning.
+        </div>
     </section>
 
-    <!-- BLOG -->
+    <!-- BLOG - LISTING -->
     <section class="page" id="page-blog">
-        <h1>Blog</h1>
-        <p>Gaming tips, development tutorials, and behind-the-scenes stories.</p>
+        <h1>Flappy Bird Blog</h1>
+        <p>Expert gaming tips, development tutorials, and behind-the-scenes stories. Click any article to read the full post.</p>
 
-        <div class="blog-grid">
-            <!-- Article 1 -->
-            <div class="blog-card">
-                <h3>10 Flappy Bird Tips to Skyrocket Your Score</h3>
-                <div class="meta">June 20, 2026 • 5 min read</div>
-                <p>From timing your flaps to reading pipe patterns — these 10 pro tips will help you beat your high score every time.</p>
-                <a href="#" class="read-more">Read More →</a>
+        <div class="blog-layout">
+            <div class="blog-main">
+                <div class="blog-grid" id="blogGrid">
+                    <!-- Articles will be rendered by JavaScript -->
+                </div>
             </div>
+            <div class="blog-sidebar">
+                <div class="ad-sidebar">
+                    <span>Advertisement</span>
+                </div>
+                <div style="background:rgba(255,204,0,0.05); border:1px solid #2a2a4a; border-radius:8px; padding:16px; margin-top:16px;">
+                    <h3 style="color:#ffcc00; font-size:18px;">📈 Top Tips</h3>
+                    <ul style="font-size:14px; color:#bbb;">
+                        <li>Tap rhythmically, not frantically</li>
+                        <li>Focus on the gap between pipes</li>
+                        <li>Keep the bird at mid-height</li>
+                        <li>Practice daily for muscle memory</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <!-- Article 2 -->
-            <div class="blog-card">
-                <h3>How to Build a Flappy Bird Clone in HTML5</h3>
-                <div class="meta">June 18, 2026 • 8 min read</div>
-                <p>A complete step-by-step tutorial on building Flappy Bird with Canvas, JavaScript, and CSS. Perfect for beginners!</p>
-                <a href="#" class="read-more">Read More →</a>
-            </div>
-
-            <!-- Article 3 -->
-            <div class="blog-card">
-                <h3>Why Flappy Bird Still Captivates Players in 2026</h3>
-                <div class="meta">June 15, 2026 • 4 min read</div>
-                <p>Discover the psychology, game design, and cultural impact behind one of the most addictive mobile games ever.</p>
-                <a href="#" class="read-more">Read More →</a>
-            </div>
-
-            <!-- Article 4 -->
-            <div class="blog-card">
-                <h3>Game Design 101: What Makes a Game Addictive?</h3>
-                <div class="meta">June 12, 2026 • 6 min read</div>
-                <p>Explore the core principles of addictive game design — from feedback loops to challenge curves.</p>
-                <a href="#" class="read-more">Read More →</a>
-            </div>
-
-            <!-- Article 5 -->
-            <div class="blog-card">
-                <h3>JavaScript Canvas: A Beginner's Guide</h3>
-                <div class="meta">June 10, 2026 • 7 min read</div>
-                <p>Learn the fundamentals of the HTML5 Canvas API — the foundation of browser-based games like Flappy Bird.</p>
-                <a href="#" class="read-more">Read More →</a>
-            </div>
-
-            <!-- Article 6 -->
-            <div class="blog-card">
-                <h3>CSS Animations for Game UI</h3>
-                <div class="meta">June 8, 2026 • 5 min read</div>
-                <p>Enhance your game's interface with smooth CSS animations — from hover effects to score popups.</p>
-                <a href="#" class="read-more">Read More →</a>
-            </div>
-
-            <!-- Article 7 -->
-            <div class="blog-card">
-                <h3>Optimizing HTML5 Games for Mobile</h3>
-                <div class="meta">June 5, 2026 • 6 min read</div>
-                <p>Learn how to make your browser games run smoothly on phones and tablets with responsive design and performance tips.</p>
-                <a href="#" class="read-more">Read More →</a>
-            </div>
-
-            <!-- Article 8 -->
-            <div class="blog-card">
-                <h3>The History of Flappy Bird: Rise and Fall</h3>
-                <div class="meta">June 2, 2026 • 4 min read</div>
-                <p>The story of how a simple indie game became a global phenomenon — and why its creator pulled it from app stores.</p>
-                <a href="#" class="read-more">Read More →</a>
-            </div>
-
-            <!-- Article 9 -->
-            <div class="blog-card">
-                <h3>From Zero to Hero: My Flappy Bird Journey</h3>
-                <div class="meta">May 30, 2026 • 3 min read</div>
-                <p>One player's story of going from a score of 0 to 200+ — with the lessons learned along the way.</p>
-                <a href="#" class="read-more">Read More →</a>
-            </div>
-
-            <!-- Article 10 -->
-            <div class="blog-card">
-                <h3>Building a High Score System with JSONBin</h3>
-                <div class="meta">May 28, 2026 • 7 min read</div>
-                <p>Learn how to build a cloud-based leaderboard for your HTML5 games using the JSONBin API.</p>
-                <a href="#" class="read-more">Read More →</a>
-            </div>
-
-            <!-- Article 11 -->
-            <div class="blog-card">
-                <h3>Responsive Design for Game Websites</h3>
-                <div class="meta">May 25, 2026 • 5 min read</div>
-                <p>Ensure your game looks great on every device with flexible layouts, media queries, and fluid grids.</p>
-                <a href="#" class="read-more">Read More →</a>
-            </div>
-
-            <!-- Article 12 -->
-            <div class="blog-card">
-                <h3>Monetizing Your HTML5 Game with AdSense</h3>
-                <div class="meta">May 22, 2026 • 6 min read</div>
-                <p>A practical guide to integrating Google AdSense into your game website while maintaining a good user experience.</p>
-                <a href="#" class="read-more">Read More →</a>
-            </div>
-
-            <!-- Article 13 -->
-            <div class="blog-card">
-                <h3>Game Physics: Simulating Gravity in JavaScript</h3>
-                <div class="meta">May 20, 2026 • 5 min read</div>
-                <p>Understand the math behind gravity, velocity, and collision detection in 2D games.</p>
-                <a href="#" class="read-more">Read More →</a>
-            </div>
-
-            <!-- Article 14 -->
-            <div class="blog-card">
-                <h3>10 Common Mistakes in Game Development</h3>
-                <div class="meta">May 18, 2026 • 6 min read</div>
-                <p>Learn from the most frequent pitfalls faced by indie game developers — and how to avoid them.</p>
-                <a href="#" class="read-more">Read More →</a>
-            </div>
-
-            <!-- Article 15 -->
-            <div class="blog-card">
-                <h3>Flappy Bird Community: Best Fan Games</h3>
-                <div class="meta">May 15, 2026 • 4 min read</div>
-                <p>Explore the most creative and fun Flappy Bird fan games made by players around the world.</p>
-                <a href="#" class="read-more">Read More →</a>
-            </div>
-
-            <!-- Article 16 -->
-            <div class="blog-card">
-                <h3>How to Use GitHub Pages for Game Hosting</h3>
-                <div class="meta">May 12, 2026 • 5 min read</div>
-                <p>Deploy your HTML5 game for free with GitHub Pages — perfect for indie developers and hobbyists.</p>
-                <a href="#" class="read-more">Read More →</a>
-            </div>
-
-            <!-- Article 17 -->
-            <div class="blog-card">
-                <h3>Game Audio: Adding Sound Effects to HTML5 Games</h3>
-                <div class="meta">May 10, 2026 • 4 min read</div>
-                <p>Use the Web Audio API to add sound effects and background music to your browser games.</p>
-                <a href="#" class="read-more">Read More →</a>
-            </div>
-
-            <!-- Article 18 -->
-            <div class="blog-card">
-                <h3>Designing a Custom Domain for Your Game</h3>
-                <div class="meta">May 8, 2026 • 3 min read</div>
-                <p>Why a custom domain matters — and how to set one up for your game website.</p>
-                <a href="#" class="read-more">Read More →</a>
-            </div>
-
-            <!-- Article 19 -->
-            <div class="blog-card">
-                <h3>From Mobile to Browser: Porting Flappy Bird</h3>
-                <div class="meta">May 5, 2026 • 6 min read</div>
-                <p>How to adapt a mobile game for the browser — tackling touch events, screen sizes, and performance.</p>
-                <a href="#" class="read-more">Read More →</a>
-            </div>
-
-            <!-- Article 20 -->
-            <div class="blog-card">
-                <h3>Why Simplicity Wins in Game Design</h3>
-                <div class="meta">May 2, 2026 • 4 min read</div>
-                <p>A deep dive into why simple, polished games like Flappy Bird often outperform complex, bloated ones.</p>
-                <a href="#" class="read-more">Read More →</a>
-            </div>
+    <!-- BLOG - ARTICLE VIEW (hidden by default) -->
+    <section class="page" id="page-article">
+        <div class="article-full" id="articleContent">
+            <!-- Rendered by JavaScript -->
         </div>
     </section>
 
     <!-- ABOUT -->
     <section class="page" id="page-about">
-        <h1>About FlappyBird.io</h1>
-        <p>FlappyBird.io is a fan-made tribute to the classic Flappy Bird game that took the world by storm in 2013. We rebuilt it from scratch using modern web technologies — HTML5 Canvas, CSS3, and vanilla JavaScript — to bring the addictive experience back to browsers everywhere.</p>
+        <h1>About FlappyBird Guide</h1>
+        <p>FlappyBird Guide is a fan-made resource dedicated to the classic Flappy Bird game. We rebuilt it from scratch using modern web technologies — HTML5 Canvas, CSS3, and vanilla JavaScript — to bring the addictive experience back to browsers everywhere.</p>
 
         <h2>🌟 Our Mission</h2>
-        <p>We believe that great games should be accessible to everyone, anywhere, on any device. That's why FlappyBird.io is:</p>
+        <p>We believe that great games should be accessible to everyone, anywhere, on any device. That's why FlappyBird Guide is:</p>
         <ul>
             <li><strong>100% Free:</strong> No paywalls, no in-app purchases.</li>
             <li><strong>Cross-Platform:</strong> Play on desktop, tablet, or phone.</li>
             <li><strong>Privacy-First:</strong> We collect minimal data — only what's needed to save your progress.</li>
         </ul>
+
+        <div class="ad-in-article">
+            <span>Advertisement</span>
+        </div>
 
         <h2>👨‍💻 About the Developer</h2>
         <p>This project was created by <strong>Atharv Sharma</strong>, a passionate game developer and web enthusiast. With a love for retro arcade games and clean code, Atharv built this site to share the joy of Flappy Bird with a new generation of players.</p>
@@ -991,10 +985,14 @@
         <h2>💬 Social Media</h2>
         <p>Follow us for updates, tips, and community highlights:</p>
         <ul>
-            <li>🐦 Twitter / X: <a href="#">@FlappyBirdIO</a></li>
-            <li>📸 Instagram: <a href="#">@FlappyBirdIO</a></li>
+            <li>🐦 Twitter / X: <a href="#">@FlappyBirdGuide</a></li>
+            <li>📸 Instagram: <a href="#">@FlappyBirdGuide</a></li>
             <li>▶️ YouTube: <a href="#">FlappyBird Gameplay</a></li>
         </ul>
+
+        <div class="ad-in-article">
+            <span>Advertisement</span>
+        </div>
 
         <h2>📩 Business Inquiries</h2>
         <p>For sponsorship, advertising, or collaboration opportunities, email us directly at the address above with "Business Inquiry" in the subject line.</p>
@@ -1005,7 +1003,7 @@
         <h1>Privacy Policy</h1>
         <p><strong>Last updated:</strong> June 21, 2026</p>
 
-        <p>FlappyBird.io ("we", "our", or "us") respects your privacy. This policy explains how we collect, use, and protect your personal information.</p>
+        <p>FlappyBird Guide ("we", "our", or "us") respects your privacy. This policy explains how we collect, use, and protect your personal information.</p>
 
         <h2>1. Information We Collect</h2>
         <ul>
@@ -1032,6 +1030,62 @@
 
         <h2>6. Changes to This Policy</h2>
         <p>We may update this policy occasionally. Check back for the latest version.</p>
+
+        <h2>7. Cookie Policy</h2>
+        <p>We use the following types of cookies:</p>
+        <ul>
+            <li><strong>Essential:</strong> Required for the game and account functionality.</li>
+            <li><strong>Analytics:</strong> Help us understand how users interact with our site.</li>
+            <li><strong>Advertising:</strong> Used by Google AdSense to serve relevant ads.</li>
+        </ul>
+        <p>You can control cookie preferences through your browser settings or our cookie consent banner.</p>
+    </section>
+
+    <!-- TERMS OF SERVICE -->
+    <section class="page" id="page-terms">
+        <h1>Terms of Service</h1>
+        <p><strong>Last updated:</strong> June 21, 2026</p>
+
+        <p>Welcome to FlappyBird Guide! By using our game and website, you agree to the following terms.</p>
+
+        <h2>1. Acceptance of Terms</h2>
+        <p>By creating an account or playing the game, you agree to these Terms of Service. If you do not agree, please do not use our service.</p>
+
+        <h2>2. User Accounts</h2>
+        <ul>
+            <li>You are responsible for maintaining the confidentiality of your password.</li>
+            <li>You agree to provide accurate information during sign-up.</li>
+            <li>We reserve the right to terminate accounts that violate these terms.</li>
+            <li>You must be at least 13 years old to create an account.</li>
+        </ul>
+
+        <h2>3. Acceptable Use</h2>
+        <p>You agree not to:</p>
+        <ul>
+            <li>Use the service for any illegal or unauthorized purpose.</li>
+            <li>Attempt to hack, disrupt, or exploit the game or its backend.</li>
+            <li>Share or impersonate another user's account.</li>
+            <li>Use bots, cheats, or automated systems to manipulate game scores.</li>
+            <li>Post or transmit any harmful, offensive, or inappropriate content.</li>
+        </ul>
+
+        <h2>4. Intellectual Property</h2>
+        <p>All game code, art, and design are the property of FlappyBird Guide. You may not copy, modify, or distribute any part without permission. The original Flappy Bird concept and characters are the property of Dong Nguyen and .Gears.</p>
+
+        <h2>5. Disclaimer of Warranties</h2>
+        <p>The game is provided "as is" without warranties of any kind. We are not liable for any losses or damages arising from your use of the service.</p>
+
+        <h2>6. Limitation of Liability</h2>
+        <p>To the maximum extent permitted by law, FlappyBird Guide shall not be liable for any indirect, incidental, or consequential damages arising from your use of the service.</p>
+
+        <h2>7. Third-Party Services</h2>
+        <p>Our service integrates with Google AdSense and JSONBin. These services have their own terms and privacy policies, which you should review.</p>
+
+        <h2>8. Changes to Terms</h2>
+        <p>We may update these terms periodically. Continued use of the service constitutes acceptance of the updated terms.</p>
+
+        <h2>9. Contact</h2>
+        <p>For questions about these terms, please <a href="#" data-page="contact">contact us</a>.</p>
     </section>
 
     <!-- ========== FOOTER ========== -->
@@ -1044,57 +1098,1024 @@
             <a href="#" data-page="about">About</a>
             <a href="#" data-page="contact">Contact</a>
             <a href="#" data-page="privacy">Privacy Policy</a>
+            <a href="#" data-page="terms">Terms of Service</a>
         </div>
-        <p>&copy; 2026 FlappyBird.io — Made with ❤️ by Atharv Sharma</p>
+        <p>&copy; 2026 FlappyBird Guide — Made with ❤️ by Atharv Sharma</p>
     </footer>
 
     <!-- ========== SCRIPTS ========== -->
 
-    <!-- Navigation -->
     <script>
-        // --- PAGE NAVIGATION ---
+        // =============================================
+        // 1. COOKIE CONSENT
+        // =============================================
+        function getCookie(name) {
+            const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            return match ? match[2] : null;
+        }
+
+        function setCookie(name, value, days) {
+            const expires = new Date(Date.now() + days * 86400000).toUTCString();
+            document.cookie = name + '=' + value + '; expires=' + expires + '; path=/';
+        }
+
+        function acceptCookies() {
+            setCookie('cookie_consent', 'accepted', 365);
+            setCookie('analytics_consent', 'granted', 365);
+            setCookie('ad_consent', 'granted', 365);
+            document.getElementById('cookieConsent').style.display = 'none';
+        }
+
+        function declineCookies() {
+            setCookie('cookie_consent', 'declined', 365);
+            setCookie('analytics_consent', 'denied', 365);
+            setCookie('ad_consent', 'denied', 365);
+            document.getElementById('cookieConsent').style.display = 'none';
+        }
+
+        function showCookieSettings() {
+            // Simple settings: show a prompt to accept or decline
+            if (confirm('Manage cookie preferences:\n\nClick OK to accept all cookies.\nCancel to decline all non-essential cookies.')) {
+                acceptCookies();
+            } else {
+                declineCookies();
+            }
+        }
+
+        // Check if consent already given
+        (function checkCookieConsent() {
+            const consent = getCookie('cookie_consent');
+            if (!consent) {
+                document.getElementById('cookieConsent').style.display = 'flex';
+            }
+        })();
+
+        // =============================================
+        // 2. NAVIGATION
+        // =============================================
         const navLinks = document.querySelectorAll('.nav-links a, .footer-links a, [data-page]');
         const pages = {
             home: document.getElementById('page-home'),
             play: document.getElementById('page-play'),
             howto: document.getElementById('page-howto'),
             blog: document.getElementById('page-blog'),
+            article: document.getElementById('page-article'),
             about: document.getElementById('page-about'),
             contact: document.getElementById('page-contact'),
-            privacy: document.getElementById('page-privacy')
+            privacy: document.getElementById('page-privacy'),
+            terms: document.getElementById('page-terms')
         };
 
         function showPage(pageId) {
-            // Hide all
             Object.values(pages).forEach(p => p.classList.remove('active'));
-            // Show target
             if (pages[pageId]) pages[pageId].classList.add('active');
-            // Update nav active state
             document.querySelectorAll('.nav-links a').forEach(a => {
                 a.classList.toggle('active', a.dataset.page === pageId);
             });
-            // Close mobile menu
             document.getElementById('navLinks').classList.remove('open');
-            // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Handle all navigation clicks
         document.addEventListener('click', function(e) {
             const link = e.target.closest('[data-page]');
             if (link) {
                 e.preventDefault();
                 const page = link.dataset.page;
                 if (pages[page]) showPage(page);
+                // If clicking an article from blog, load it
+                const articleId = link.dataset.article;
+                if (articleId && page === 'article') {
+                    loadArticle(parseInt(articleId));
+                }
             }
         });
 
-        // Hamburger
         document.getElementById('hamburger').addEventListener('click', function() {
             document.getElementById('navLinks').classList.toggle('open');
         });
 
-        // --- GAME CODE (same as before, with minor adjustments) ---
+        // =============================================
+        // 3. BLOG ARTICLES DATA (20 full articles)
+        // =============================================
+        const articles = [{
+            id: 1,
+            title: "10 Flappy Bird Tips to Skyrocket Your Score",
+            date: "June 20, 2026",
+            readTime: "5 min read",
+            excerpt: "From timing your flaps to reading pipe patterns — these 10 pro tips will help you beat your high score every time.",
+            category: "Tips",
+            body: `
+                <h2>1. Master the Rhythm</h2>
+                <p>Flappy Bird is all about rhythm. Instead of tapping frantically, find a steady beat that matches the pipe gaps. Count silently — <span class="highlight">"tap, tap, pause"</span> — and you'll find yourself flowing through obstacles more smoothly.</p>
+
+                <h2>2. Keep Your Eyes on the Gap</h2>
+                <p>This is the single most important tip. <span class="highlight">Look at the space between the pipes</span>, not at your bird. Your peripheral vision will keep the bird in view while your focus guides you through the opening.</p>
+
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Try to look about <span class="highlight">one pipe ahead</span> of where you are. This gives you more reaction time and helps you anticipate the next move.
+                </div>
+
+                <h2>3. Stay at Mid-Height</h2>
+                <p>Avoid flying too high or too low. <span class="highlight">Mid-height flight</span> gives you the most flexibility to react to both high and low gaps. If you stay low, you'll struggle with low gaps; if you stay high, high gaps become impossible.</p>
+
+                <h2>4. Tap Consistently, Not Hard</h2>
+                <p>The force of your tap doesn't matter — <span class="highlight">the timing does</span>. A gentle tap is just as effective as a hard tap. Focus on consistency and precision over power.</p>
+
+                <h2>5. Practice Daily in Short Bursts</h2>
+                <p>Muscle memory develops through repetition. <span class="highlight">10-15 minutes of practice each day</span> is more effective than a 2-hour session once a week. Your brain needs time to process and internalize the patterns.</p>
+
+                <h2>6. Learn the Pipe Patterns</h2>
+                <p>While pipes are randomly generated, there are only a few gap positions. <span class="highlight">Learn to recognize common patterns</span> — high gap, low gap, mid gap — and react accordingly.</p>
+
+                <h2>7. Stay Calm Under Pressure</h2>
+                <p>It's easy to panic when you're on a high score run. <span class="highlight">Take deep breaths</span> and maintain your rhythm. Remember: the game is the same at 1 point as it is at 100 points.</p>
+
+                <h2>8. Watch Expert Players</h2>
+                <p>Study videos of top Flappy Bird players. Pay attention to <span class="highlight">their tapping rhythm and how they handle different gap positions</span>. You'll pick up subtle techniques you can apply to your own gameplay.</p>
+
+                <h2>9. Use the Spacebar for Precision</h2>
+                <p>If you're on a desktop, try using the <span class="highlight">Spacebar instead of clicking</span>. It can feel more responsive and allow for quicker, more precise taps.</p>
+
+                <h2>10. Have Fun!</h2>
+                <p>The most important tip: <span class="highlight">enjoy the game</span>. Flappy Bird is frustrating but rewarding. Celebrate every improvement, no matter how small.</p>
+            `
+        }, {
+            id: 2,
+            title: "How to Build a Flappy Bird Clone in HTML5",
+            date: "June 18, 2026",
+            readTime: "8 min read",
+            excerpt: "A complete step-by-step tutorial on building Flappy Bird with Canvas, JavaScript, and CSS. Perfect for beginners!",
+            category: "Development",
+            body: `
+                <h2>Step 1: Set Up the HTML Structure</h2>
+                <p>Start with a basic HTML file. You'll need a <span class="highlight">canvas element</span> for rendering the game, and a container for the game interface.</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">&lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;Flappy Bird Clone&lt;/title&gt;
+            &lt;style&gt;body { margin:0; display:flex; justify-content:center; align-items:center; height:100vh; background:#1a1a2e; }&lt;/style&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;canvas id="game" width="400" height="600"&gt;&lt;/canvas&gt;
+            &lt;script src="game.js"&gt;&lt;/script&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;</pre>
+
+                <h2>Step 2: Draw the Background and Ground</h2>
+                <p>Create the sky gradient and the ground using Canvas API. This sets up the visual foundation of your game.</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">const canvas = document.getElementById('game');
+        const ctx = canvas.getContext('2d');
+        const W = 400, H = 600;
+
+        function drawBackground() {
+            const gradient = ctx.createLinearGradient(0, 0, 0, 450);
+            gradient.addColorStop(0, '#70c5ce');
+            gradient.addColorStop(1, '#a8e0e6');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, W, 450);
+        }</pre>
+
+                <h2>Step 3: Add the Bird</h2>
+                <p>Draw a simple bird shape using ellipses and arcs. Add wings that flap using a sine wave animation.</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">function drawBird(x, y, frame) {
+            ctx.save();
+            ctx.translate(x, y);
+            // Body
+            ctx.fillStyle = '#ffd23f';
+            ctx.beginPath();
+            ctx.ellipse(0, 0, 17, 13, 0, 0, Math.PI * 2);
+            ctx.fill();
+            // Wing
+            const wingFlap = Math.sin(frame * 0.4) * 3;
+            ctx.fillStyle = '#ffb700';
+            ctx.beginPath();
+            ctx.ellipse(-4, 2 + wingFlap, 9, 6, -0.3, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+        }</pre>
+
+                <div class="tip-box">
+                    <strong>💡 Key Concept:</strong> The <span class="highlight">game loop</span> — using <code>requestAnimationFrame</code> — is what makes the game run smoothly at 60fps.
+                </div>
+
+                <h2>Step 4: Implement Gravity and Flapping</h2>
+                <p>Add gravity to make the bird fall, and flapping to make it rise. This creates the core physics of the game.</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">let birdY = 300, birdVy = 0;
+        const GRAVITY = 0.5, FLAP = -8;
+
+        function flap() { birdVy = FLAP; }
+
+        function update() {
+            birdVy += GRAVITY;
+            birdY += birdVy;
+        }</pre>
+
+                <h2>Step 5: Generate Pipes</h2>
+                <p>Create pipes with random gap positions. Move them across the screen and detect collisions with the bird.</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">let pipes = [];
+        const PIPE_WIDTH = 60, PIPE_GAP = 150, PIPE_SPEED = 2.6;
+
+        function addPipe() {
+            const topHeight = 60 + Math.random() * (300 - 60);
+            pipes.push({ x: W, topHeight, bottomY: topHeight + PIPE_GAP });
+        }</pre>
+
+                <h2>Step 6: Collision Detection</h2>
+                <p>Use AABB (Axis-Aligned Bounding Box) collision detection to check if the bird hits any pipes or the ground.</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">function checkCollision(bird, pipe) {
+            return bird.x < pipe.x + PIPE_WIDTH &&
+                bird.x + bird.w > pipe.x &&
+                (bird.y < pipe.topHeight || bird.y + bird.h > pipe.bottomY);
+        }</pre>
+
+                <h2>Step 7: Add Scoring and Game Over</h2>
+                <p>Track when the bird passes a pipe, increment the score, and handle game over conditions.</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">let score = 0;
+
+        function update() {
+            for (const pipe of pipes) {
+                if (!pipe.passed && pipe.x + PIPE_WIDTH < bird.x) {
+                    pipe.passed = true;
+                    score++;
+                }
+            }
+        }</pre>
+
+                <div class="tip-box">
+                    <strong>🔥 Going Further:</strong> Add <span class="highlight">unlockable birds</span>, a high score system, and mobile touch support to make your clone truly complete!
+                </div>
+            `
+        }, {
+            id: 3,
+            title: "Why Flappy Bird Still Captivates Players in 2026",
+            date: "June 15, 2026",
+            readTime: "4 min read",
+            excerpt: "Discover the psychology, game design, and cultural impact behind one of the most addictive mobile games ever.",
+            category: "Analysis",
+            body: `
+                <h2>The Simplicity Paradox</h2>
+                <p>Flappy Bird is deceptively simple: one button, one bird, one endless challenge. Yet <span class="highlight">it's this simplicity that makes it so addictive</span>. The game strips away all complexity, leaving only pure, immediate feedback.</p>
+
+                <h2>Why We Can't Stop Playing</h2>
+                <p>The game leverages several psychological principles:</p>
+                <ul>
+                    <li><strong>Near-Miss Effect:</strong> When you barely miss a pipe, your brain releases dopamine, encouraging you to try again.</li>
+                    <li><strong>Challenge Curve:</strong> The difficulty is perfectly balanced — easy to learn, impossible to master.</li>
+                    <li><strong>Immediate Feedback:</strong> Every action has an instant consequence, keeping you engaged.</li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>🎯 Key Insight:</strong> Flappy Bird taps into the same psychological rewards as gambling — <span class="highlight">intermittent reinforcement</span> keeps players coming back.
+                </div>
+
+                <h2>The Cultural Phenomenon</h2>
+                <p>When Flappy Bird was removed from app stores in 2014, it became a <span class="highlight">cultural legend</span>. The game's creator, Dong Nguyen, became an overnight sensation and then promptly disappeared from the spotlight. This mystery only added to the game's allure.</p>
+
+                <h2>Why It Endures</h2>
+                <p>In 2026, Flappy Bird remains relevant because:</p>
+                <ul>
+                    <li><span class="highlight">Nostalgia:</span> Players who grew up with the original game now share it with their children.</li>
+                    <li><span class="highlight">Accessibility:</span> It's free, easy to play, and available everywhere.</li>
+                    <li><span class="highlight">Community:</span> Fan-made versions, challenges, and competitions keep the spirit alive.</li>
+                </ul>
+            `
+        }, {
+            id: 4,
+            title: "Game Design 101: What Makes a Game Addictive?",
+            date: "June 12, 2026",
+            readTime: "6 min read",
+            excerpt: "Explore the core principles of addictive game design — from feedback loops to challenge curves.",
+            category: "Game Design",
+            body: `
+                <h2>The Core Loop</h2>
+                <p>Every addictive game has a <span class="highlight">core loop</span> — the repeated sequence of actions that keeps players engaged. In Flappy Bird, the core loop is: tap → move bird → avoid pipe → score → repeat.</p>
+
+                <h2>Feedback Loops</h2>
+                <p>Effective feedback loops are essential. They can be:</p>
+                <ul>
+                    <li><strong>Positive:</strong> Score increases, new birds unlock, visual/audio rewards.</li>
+                    <li><strong>Negative:</strong> Game over, reset, loss of progress (which paradoxically makes you want to try again).</li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>💡 Design Principle:</strong> The best games balance <span class="highlight">challenge and skill</span>. When the challenge matches your skill level, you enter a state of "flow."
+                </div>
+
+                <h2>Progression Systems</h2>
+                <p>Unlockable content — like the birds in our game — gives players <span class="highlight">short-term goals</span> that keep them playing. Each small achievement releases dopamine, reinforcing the behavior.</p>
+
+                <h2>The Role of Frustration</h2>
+                <p>Surprisingly, a moderate amount of frustration can make a game more appealing. <span class="highlight">Overcoming obstacles</span> creates a sense of accomplishment that is deeply satisfying.</p>
+            `
+        }, {
+            id: 5,
+            title: "JavaScript Canvas: A Beginner's Guide",
+            date: "June 10, 2026",
+            readTime: "7 min read",
+            excerpt: "Learn the fundamentals of the HTML5 Canvas API — the foundation of browser-based games like Flappy Bird.",
+            category: "Development",
+            body: `
+                <h2>What is the Canvas API?</h2>
+                <p>The HTML5 Canvas is a <span class="highlight">drawing surface</span> that allows you to create graphics, animations, and games entirely in JavaScript. It's supported by all modern browsers.</p>
+
+                <h2>Getting Started</h2>
+                <p>To use Canvas, you need an HTML element and a JavaScript context:</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+        // Now you can draw!
+        ctx.fillStyle = '#ffcc00';
+        ctx.fillRect(10, 10, 100, 50);</pre>
+
+                <h2>Drawing Shapes</h2>
+                <p>The Canvas API supports rectangles, circles, lines, and complex paths:</p>
+                <ul>
+                    <li><span class="highlight">fillRect()</span> — draws a filled rectangle</li>
+                    <li><span class="highlight">strokeRect()</span> — draws a rectangle outline</li>
+                    <li><span class="highlight">arc()</span> — draws circles and arcs</li>
+                    <li><span class="highlight">beginPath()</span> and <span class="highlight">closePath()</span> — for custom shapes</li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>🎯 Key Concept:</strong> Canvas uses a <span class="highlight">state machine</span> — settings like fillStyle, strokeStyle, and lineWidth affect all subsequent drawing until changed.
+                </div>
+
+                <h2>Animating with requestAnimationFrame</h2>
+                <p>The <span class="highlight">requestAnimationFrame</span> method creates smooth, efficient animations that sync with the screen refresh rate.</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+        gameLoop();</pre>
+
+                <h2>Handling User Input</h2>
+                <p>Capture mouse clicks, keyboard presses, and touch events to make your game interactive:</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">canvas.addEventListener('click', function(e) {
+            // Handle click
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === ' ') {
+                // Handle spacebar
+            }
+        });</pre>
+            `
+        }, {
+            id: 6,
+            title: "CSS Animations for Game UI",
+            date: "June 8, 2026",
+            readTime: "5 min read",
+            excerpt: "Enhance your game's interface with smooth CSS animations — from hover effects to score popups.",
+            category: "Development",
+            body: `
+                <h2>Why CSS Animations?</h2>
+                <p>CSS animations are <span class="highlight">lightweight and performant</span>, making them perfect for UI elements like buttons, menus, and score displays. They offload animation work from JavaScript to the browser's rendering engine.</p>
+
+                <h2>Keyframe Animations</h2>
+                <p>Use <span class="highlight">@keyframes</span> to define complex animations:</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">@keyframes pulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.7; }
+        }
+
+        .score-popup {
+            animation: pulse 0.5s ease-in-out;
+        }</pre>
+
+                <h2>Transition Effects</h2>
+                <p>Transitions are perfect for <span class="highlight">hover states and interactive elements</span>:</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">.button {
+            transition: all 0.3s ease;
+        }
+        .button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(255, 204, 0, 0.3);
+        }</pre>
+
+                <div class="tip-box">
+                    <strong>💡 Best Practice:</strong> Use <span class="highlight">transform</span> and <span class="highlight">opacity</span> for animations — they're GPU-accelerated and won't cause layout recalculations.
+                </div>
+
+                <h2>Animating Game Elements</h2>
+                <p>CSS animations can enhance many game UI components:</p>
+                <ul>
+                    <li><strong>Score display:</strong> Pop-up animations when scoring</li>
+                    <li><strong>Buttons:</strong> Hover and click feedback</li>
+                    <li><strong>Bird gallery:</strong> Smooth transitions between selections</li>
+                    <li><strong>Notifications:</strong> Slide-in messages for unlocks</li>
+                </ul>
+            `
+        }, {
+            id: 7,
+            title: "Optimizing HTML5 Games for Mobile",
+            date: "June 5, 2026",
+            readTime: "6 min read",
+            excerpt: "Learn how to make your browser games run smoothly on phones and tablets with responsive design and performance tips.",
+            category: "Development",
+            body: `
+                <h2>Why Mobile Optimization Matters</h2>
+                <p>Over <span class="highlight">50% of web traffic</span> comes from mobile devices. If your game doesn't work well on phones and tablets, you're alienating a huge portion of your audience.</p>
+
+                <h2>Responsive Design</h2>
+                <p>Use <span class="highlight">viewport units, flexbox, and media queries</span> to adapt your game's layout to any screen size:</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">#gameContainer {
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 400 / 600;
+        }
+
+        @media (max-width: 450px) {
+            #gameContainer { max-width: 100%; }
+            .button { font-size: 14px; padding: 6px 12px; }
+        }</pre>
+
+                <h2>Touch Events</h2>
+                <p>Support touch interactions alongside mouse and keyboard:</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">canvas.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            // Handle tap
+        }, { passive: false });</pre>
+
+                <div class="tip-box">
+                    <strong>🎯 Performance Tip:</strong> Use <span class="highlight">image-rendering: pixelated</span> on your canvas to prevent blurring and improve performance on mobile devices.
+                </div>
+
+                <h2>Performance Optimization</h2>
+                <ul>
+                    <li><strong>Avoid repaints:</strong> Minimize DOM manipulation during gameplay.</li>
+                    <li><strong>Use requestAnimationFrame:</strong> It's designed for smooth animations.</li>
+                    <li><strong>Limit particle effects:</strong> While pretty, they can be resource-intensive on mobile.</li>
+                    <li><strong>Test on real devices:</strong> Use browser dev tools' device emulation and test on actual phones.</li>
+                </ul>
+            `
+        }, {
+            id: 8,
+            title: "The History of Flappy Bird: Rise and Fall",
+            date: "June 2, 2026",
+            readTime: "4 min read",
+            excerpt: "The story of how a simple indie game became a global phenomenon — and why its creator pulled it from app stores.",
+            category: "History",
+            body: `
+                <h2>The Birth of a Legend</h2>
+                <p>In 2013, Vietnamese developer <span class="highlight">Dong Nguyen</span> released Flappy Bird on the App Store. It was a simple, unpolished game that barely anyone noticed — at first.</p>
+
+                <h2>The Viral Explosion</h2>
+                <p>By early 2014, Flappy Bird had become <span class="highlight">the most downloaded free game</span> on both iOS and Android. It was everywhere: on social media, in the news, and on millions of phones worldwide.</p>
+
+                <h2>The Controversy</h2>
+                <p>But fame came with a price. Nguyen faced:</p>
+                <ul>
+                    <li><strong>Death threats:</strong> From frustrated players</li>
+                    <li><strong>Media scrutiny:</strong> Constant interviews and attention</li>
+                    <li><strong>Guilt:</strong> Feeling responsible for people's addiction to his game</li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>📱 The Removal:</strong> On February 10, 2014, <span class="highlight">Dong Nguyen removed Flappy Bird</span> from all app stores. He said: <em>"I can call Flappy Bird a success of mine. But it also ruins my simple life. So now I hate it."</em>
+                </div>
+
+                <h2>The Legacy</h2>
+                <p>Despite its removal, Flappy Bird's legacy continues. It <span class="highlight">inspired thousands of clones</span>, launched the hyper-casual game genre, and proved that a simple game could become a global phenomenon.</p>
+            `
+        }, {
+            id: 9,
+            title: "From Zero to Hero: My Flappy Bird Journey",
+            date: "May 30, 2026",
+            readTime: "3 min read",
+            excerpt: "One player's story of going from a score of 0 to 200+ — with the lessons learned along the way.",
+            category: "Personal",
+            body: `
+                <h2>Day 1: Complete Failure</h2>
+                <p>When I first picked up Flappy Bird, I couldn't score more than <span class="highlight">3 points</span>. Every attempt ended with a frustrating crash into the first or second pipe. I almost gave up.</p>
+
+                <h2>Week 1: Finding the Rhythm</h2>
+                <p>Then I discovered <span class="highlight">the rhythm</span>. Instead of tapping frantically, I started counting: "One... two... tap." Suddenly, I could reach 10 points. Then 20. The game started to make sense.</p>
+
+                <div class="tip-box">
+                    <strong>🎯 Breakthrough:</strong> The key was <span class="highlight">focusing on the gap</span> and ignoring the bird. Once I stopped watching my bird, my scores doubled.
+                </div>
+
+                <h2>Month 1: Consistent Progress</h2>
+                <p>By the end of the month, I was consistently scoring <span class="highlight">50+ points</span>. I had unlocked several birds and was addicted to the feeling of progress.</p>
+
+                <h2>Today: 200+ Points</h2>
+                <p>Now I can reach 200 points on a good run. The game is still challenging, but <span class="highlight">I've learned to enjoy the process</span>, not just the result. Every attempt is a chance to improve.</p>
+
+                <h2>Lessons Learned</h2>
+                <ul>
+                    <li><span class="highlight">Consistency beats intensity:</span> Short daily practice is more effective than long sessions.</li>
+                    <li><span class="highlight">Patience is key:</span> Getting frustrated only makes you worse.</li>
+                    <li><span class="highlight">Celebrate small wins:</span> Every personal best is a victory.</li>
+                </ul>
+            `
+        }, {
+            id: 10,
+            title: "Building a High Score System with JSONBin",
+            date: "May 28, 2026",
+            readTime: "7 min read",
+            excerpt: "Learn how to build a cloud-based leaderboard for your HTML5 games using the JSONBin API.",
+            category: "Development",
+            body: `
+                <h2>What is JSONBin?</h2>
+                <p>JSONBin is a <span class="highlight">simple JSON storage service</span> that lets you store and retrieve data via a REST API. It's perfect for game leaderboards, player profiles, and game state.</p>
+
+                <h2>Setting Up a JSONBin Account</h2>
+                <p>Create a free account at <a href="https://jsonbin.io" target="_blank">jsonbin.io</a>. You'll need your <span class="highlight">Master Key</span> to authenticate requests.</p>
+
+                <h2>Storing Player Data</h2>
+                <p>Here's how to store a player's high score:</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">async function saveScore(username, score) {
+            const binId = 'your-bin-id';
+            const masterKey = 'your-master-key';
+            const url = https://api.jsonbin.io/v3/b/${binId};
+
+            const response = await fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Master-Key': masterKey
+                },
+                body: JSON.stringify({ scores: { [username]: score } })
+            });
+            return response.ok;
+        }</pre>
+
+                <div class="tip-box">
+                    <strong>💡 Security Note:</strong> Never expose your Master Key in client-side code. Use it only in server-side or cloud functions. For this demo, we're using it in the client for simplicity.
+                </div>
+
+                <h2>Retrieving the Leaderboard</h2>
+                <p>Fetch and display the top scores:</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">async function getScores() {
+            const response = await fetch(url + '/latest', {
+                headers: { 'X-Master-Key': masterKey }
+            });
+            const data = await response.json();
+            return data.record.scores;
+        }</pre>
+
+                <h2>Limitations and Alternatives</h2>
+                <p>JSONBin has rate limits on free accounts. For production games, consider:</p>
+                <ul>
+                    <li>Firebase Realtime Database</li>
+                    <li>Supabase</li>
+                    <li>A custom backend with Node.js</li>
+                </ul>
+            `
+        }, {
+            id: 11,
+            title: "Responsive Design for Game Websites",
+            date: "May 25, 2026",
+            readTime: "5 min read",
+            excerpt: "Ensure your game looks great on every device with flexible layouts, media queries, and fluid grids.",
+            category: "Development",
+            body: `
+                <h2>Why Responsive Design Matters</h2>
+                <p>Players will access your game from <span class="highlight">phones, tablets, laptops, and desktops</span>. A responsive design ensures everyone has a great experience, regardless of their device.</p>
+
+                <h2>Fluid Layouts</h2>
+                <p>Use <span class="highlight">relative units</span> like percentages, vw, vh, and em instead of fixed pixels:</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">#gameContainer {
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 400 / 600;
+        }
+
+        .heading {
+            font-size: clamp(24px, 5vw, 44px);
+        }</pre>
+
+                <h2>Media Queries</h2>
+                <p>Use media queries to <span class="highlight">adjust layouts at different breakpoints</span>:</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">/* For mobile devices */
+        @media (max-width: 450px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .blog-grid { grid-template-columns: 1fr; }
+        }</pre>
+
+                <div class="tip-box">
+                    <strong>🎯 Best Practice:</strong> <span class="highlight">Mobile-first design</span> — start with the mobile layout and add complexity for larger screens.
+                </div>
+
+                <h2>Testing Responsive Design</h2>
+                <p>Use browser dev tools (F12) to test your design across different devices. The <span class="highlight">device emulation</span> feature lets you preview how your site looks on various phones and tablets.</p>
+            `
+        }, {
+            id: 12,
+            title: "Monetizing Your HTML5 Game with AdSense",
+            date: "May 22, 2026",
+            readTime: "6 min read",
+            excerpt: "A practical guide to integrating Google AdSense into your game website while maintaining a good user experience.",
+            category: "Business",
+            body: `
+                <h2>The AdSense Approval Process</h2>
+                <p>Getting approved for AdSense requires:</p>
+                <ul>
+                    <li><span class="highlight">Original content:</span> Your site must have substantial, unique content.</li>
+                    <li><span class="highlight">Good user experience:</span> No intrusive ads, clear navigation.</li>
+                    <li><span class="highlight">Essential pages:</span> Privacy Policy, Terms of Service, About, Contact.</li>
+                    <li><span class="highlight">No ad placement on interactive elements:</span> Keep ads away from game mechanics.</li>
+                </ul>
+
+                <h2>Safe Ad Placement</h2>
+                <p>Place ads <span class="highlight">on content pages, not on the game itself</span>. Good placements include:</p>
+                <ul>
+                    <li>Between blog articles or sections</li>
+                    <li>In sidebars</li>
+                    <li>Below content (before the footer)</li>
+                    <li>On the homepage (content section)</li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>⚠️ Important:</strong> <span class="highlight">Never place ads directly on or around your game</span>. This can lead to accidental clicks and AdSense policy violations.
+                </div>
+
+                <h2>Ad Formats to Consider</h2>
+                <ul>
+                    <li><strong>Display ads:</strong> 728x90 (header), 300x250 (sidebar)</li>
+                    <li><strong>In-article ads:</strong> Between content sections</li>
+                    <li><strong>Auto ads:</strong> Let Google place ads automatically (but monitor placement)</li>
+                </ul>
+
+                <h2>Earnings Expectations</h2>
+                <p>AdSense earnings depend on <span class="highlight">traffic, ad placements, and niche</span>. Gaming sites typically have lower RPM (revenue per thousand impressions) but can still be profitable with high traffic.</p>
+            `
+        }, {
+            id: 13,
+            title: "Game Physics: Simulating Gravity in JavaScript",
+            date: "May 20, 2026",
+            readTime: "5 min read",
+            excerpt: "Understand the math behind gravity, velocity, and collision detection in 2D games.",
+            category: "Development",
+            body: `
+                <h2>The Physics of Falling</h2>
+                <p>Gravity is one of the most important concepts in game physics. In Flappy Bird, gravity pulls the bird down, while flapping pushes it up.</p>
+
+                <h2>Implementing Gravity</h2>
+                <p>Here's the basic gravity code used in Flappy Bird:</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">const GRAVITY = 0.45;
+        const FLAP_VELOCITY = -8;
+        const MAX_FALL_SPEED = 10;
+
+        let birdVy = 0;
+
+        function update() {
+            // Apply gravity
+            birdVy += GRAVITY;
+            // Limit fall speed
+            if (birdVy > MAX_FALL_SPEED) birdVy = MAX_FALL_SPEED;
+            // Move bird
+            bird.y += birdVy;
+        }
+
+        function flap() {
+            birdVy = FLAP_VELOCITY;
+        }</pre>
+
+                <div class="tip-box">
+                    <strong>💡 Physics Concept:</strong> <span class="highlight">Acceleration due to gravity</span> is constant (9.8 m/s² in real life). In games, we use a simplified version for gameplay purposes.
+                </div>
+
+                <h2>Velocity and Position</h2>
+                <p>In game physics:</p>
+                <ul>
+                    <li><span class="highlight">Position</span> is where the object is (x, y coordinates)</li>
+                    <li><span class="highlight">Velocity</span> is the rate of change of position</li>
+                    <li><span class="highlight">Acceleration</span> is the rate of change of velocity</li>
+                </ul>
+
+                <h2>Collision Detection</h2>
+                <p>AABB (Axis-Aligned Bounding Box) is the simplest collision detection method:</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">function rectsOverlap(ax, ay, aw, ah, bx, by, bw, bh) {
+            return ax < bx + bw && ax + aw > bx &&
+                   ay < by + bh && ay + ah > by;
+        }</pre>
+            `
+        }, {
+            id: 14,
+            title: "10 Common Mistakes in Game Development",
+            date: "May 18, 2026",
+            readTime: "6 min read",
+            excerpt: "Learn from the most frequent pitfalls faced by indie game developers — and how to avoid them.",
+            category: "Development",
+            body: `
+                <h2>1. Overcomplicating the Game</h2>
+                <p>Starting with a simple concept and <span class="highlight">over-engineering it</span> is a classic mistake. Flappy Bird succeeded because of its simplicity.</p>
+
+                <h2>2. Ignoring Mobile Support</h2>
+                <p>Most players will access your game on a phone. <span class="highlight">Test on mobile early</span> in development.</p>
+
+                <h2>3. Poor Performance</h2>
+                <p>Unoptimized code leads to lag and frustrated players. Use <span class="highlight">requestAnimationFrame</span> and minimize DOM manipulation.</p>
+
+                <div class="tip-box">
+                    <strong>💡 Fix:</strong> Profile your game's performance using browser dev tools. Look for <span class="highlight">long frames, memory leaks, and expensive operations</span>.
+                </div>
+
+                <h2>4. Not Handling Edge Cases</h2>
+                <p>What happens when the bird goes too high or too low? <span class="highlight">Test all boundary conditions</span>.</p>
+
+                <h2>5. Forgetting About UX</h2>
+                <p>User experience matters. <span class="highlight">Clear instructions, responsive controls, and visual feedback</span> are essential.</p>
+
+                <h2>6. Skipping the Tutorial</h2>
+                <p>Players need to understand the controls. <span class="highlight">Include a brief tutorial or tooltip</span>.</p>
+
+                <h2>7. Not Testing on Multiple Browsers</h2>
+                <p>Your game might work in Chrome but fail in Safari. <span class="highlight">Test across browsers</span>.</p>
+
+                <h2>8. Poor Audio Design</h2>
+                <p>Sound effects can make or break a game. <span class="highlight">Use subtle, satisfying audio cues</span>.</p>
+
+                <h2>9. Ignoring Feedback</h2>
+                <p>Listen to player feedback. <span class="highlight">Iterate based on real user experiences</span>.</p>
+
+                <h2>10. Giving Up Too Soon</h2>
+                <p>Game development is a marathon, not a sprint. <span class="highlight">Persevere through challenges</span>.</p>
+            `
+        }, {
+            id: 15,
+            title: "Flappy Bird Community: Best Fan Games",
+            date: "May 15, 2026",
+            readTime: "4 min read",
+            excerpt: "Explore the most creative and fun Flappy Bird fan games made by players around the world.",
+            category: "Community",
+            body: `
+                <h2>The Power of Fan-Made Games</h2>
+                <p>Since the original Flappy Bird was removed, the community has created <span class="highlight">hundreds of tributes, clones, and creative remakes</span>. Here are some of the best:</p>
+
+                <h2>Flappy Dunk</h2>
+                <p>A basketball-themed version where you <span class="highlight">guide a basketball through hoops</span> instead of pipes. The physics are spot-on and the dunk sound effect is incredibly satisfying.</p>
+
+                <h2>Flappy Fighter</h2>
+                <p>A fighting game where Flappy Bird's mechanics determine <span class="highlight">who wins in a boxing match</span>. It's a weird but brilliant crossover.</p>
+
+                <div class="tip-box">
+                    <strong>🎮 Community Spotlight:</strong> Check out <span class="highlight">"Flappy Golf"</span> — a mashup with golf mechanics where you navigate the bird through obstacles on a golf course.
+                </div>
+
+                <h2>Flappy 2048</h2>
+                <p>A mashup with the 2048 puzzle game. <span class="highlight">Merge birds instead of numbers</span> while avoiding obstacles. It's chaotic and addictive.</p>
+
+                <h2>Why Fan Games Matter</h2>
+                <p>Fan games keep the Flappy Bird <span class="highlight">spirit alive</span>. They showcase creativity, community engagement, and the enduring appeal of simple game mechanics.</p>
+            `
+        }, {
+            id: 16,
+            title: "How to Use GitHub Pages for Game Hosting",
+            date: "May 12, 2026",
+            readTime: "5 min read",
+            excerpt: "Deploy your HTML5 game for free with GitHub Pages — perfect for indie developers and hobbyists.",
+            category: "Development",
+            body: `
+                <h2>What is GitHub Pages?</h2>
+                <p>GitHub Pages is a <span class="highlight">free hosting service</span> that serves websites directly from your GitHub repository. It's ideal for HTML5 games.</p>
+
+                <h2>Step 1: Create a Repository</h2>
+                <p>On GitHub, create a new repository named <span class="highlight">username.github.io</span> (replace username with your GitHub username). This creates a site at that URL.</p>
+
+                <h2>Step 2: Upload Your Game Files</h2>
+                <p>Upload your HTML, CSS, and JavaScript files to the repository. <span class="highlight">Your main file should be index.html</span>.</p>
+
+                <h2>Step 3: Enable GitHub Pages</h2>
+                <p>Go to Settings → Pages, select the branch (usually <span class="highlight">main or gh-pages</span>), and save. Your site will be live at your GitHub Pages URL.</p>
+
+                <div class="tip-box">
+                    <strong>💡 Pro Tip:</strong> Use a <span class="highlight">custom domain</span> by adding a CNAME file to your repository and configuring your domain provider.
+                </div>
+
+                <h2>Benefits of GitHub Pages</h2>
+                <ul>
+                    <li><span class="highlight">Free</span> — no hosting costs</li>
+                    <li><span class="highlight">Fast</span> — CDN-backed delivery</li>
+                    <li><span class="highlight">Versioned</span> — all changes are tracked</li>
+                    <li><span class="highlight">HTTPS</span> — secure by default</li>
+                </ul>
+            `
+        }, {
+            id: 17,
+            title: "Game Audio: Adding Sound Effects to HTML5 Games",
+            date: "May 10, 2026",
+            readTime: "4 min read",
+            excerpt: "Use the Web Audio API to add sound effects and background music to your browser games.",
+            category: "Development",
+            body: `
+                <h2>Why Audio Matters</h2>
+                <p>Sound effects <span class="highlight">enhance immersion and provide essential feedback</span> to players. A well-timed sound can make a game feel significantly more polished.</p>
+
+                <h2>Using the Web Audio API</h2>
+                <p>The Web Audio API is a powerful tool for <span class="highlight">generating and manipulating audio</span> in the browser:</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">function playSound(frequency, duration) {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = ctx.createOscillator();
+            const gainNode = ctx.createGain();
+
+            oscillator.type = 'sine';
+            oscillator.frequency.value = frequency;
+
+            gainNode.gain.setValueAtTime(0.3, ctx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + duration);
+
+            oscillator.connect(gainNode);
+            gainNode.connect(ctx.destination);
+
+            oscillator.start(ctx.currentTime);
+            oscillator.stop(ctx.currentTime + duration);
+        }</pre>
+
+                <div class="tip-box">
+                    <strong>🎯 Sound Design Tip:</strong> Use <span class="highlight">different frequencies for different game events</span>. A high-pitched sound for scoring, a low sound for game over.
+                </div>
+
+                <h2>Loading Audio Files</h2>
+                <p>For realistic sounds, load audio files instead of synthesizing:</p>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">const audio = new Audio('flap.mp3');
+        audio.play();</pre>
+
+                <h2>Best Practices</h2>
+                <ul>
+                    <li>Keep audio files small (< 100KB) for fast loading</li>
+                    <li>Use <span class="highlight">MP3 and OGG formats</span> for broad browser support</li>
+                    <li>Provide a <span class="highlight">mute button</span> for user control</li>
+                </ul>
+            `
+        }, {
+            id: 18,
+            title: "Designing a Custom Domain for Your Game",
+            date: "May 8, 2026",
+            readTime: "3 min read",
+            excerpt: "Why a custom domain matters — and how to set one up for your game website.",
+            category: "Business",
+            body: `
+                <h2>Why a Custom Domain?</h2>
+                <p>A custom domain like <span class="highlight">flappybirdguide.com</span> builds trust, makes your site memorable, and is <span class="highlight">required for AdSense approval</span>.</p>
+
+                <h2>Choosing a Domain Name</h2>
+                <p>Tips for selecting a good domain:</p>
+                <ul>
+                    <li>Keep it <span class="highlight">short and memorable</span></li>
+                    <li>Use <span class="highlight">.com, .io, or .game</span> extensions</li>
+                    <li>Include your <span class="highlight">game's name or theme</span></li>
+                    <li>Avoid numbers and hyphens</li>
+                </ul>
+
+                <h2>Registering Your Domain</h2>
+                <p>Purchase your domain from a registrar like <span class="highlight">Namecheap, GoDaddy, or Google Domains</span>. Prices typically range from $5-15 per year.</p>
+
+                <div class="tip-box">
+                    <strong>💡 Setup Process:</strong> 1. Buy domain → 2. Point DNS to your host → 3. Add CNAME/A records → 4. Configure your hosting → 5. Verify ownership → 6. Apply for AdSense
+                </div>
+
+                <h2>Connecting to GitHub Pages</h2>
+                <p>Add a <span class="highlight">CNAME file</span> to your repository with your custom domain, and configure your domain provider's DNS settings to point to GitHub's servers.</p>
+            `
+        }, {
+            id: 19,
+            title: "From Mobile to Browser: Porting Flappy Bird",
+            date: "May 5, 2026",
+            readTime: "6 min read",
+            excerpt: "How to adapt a mobile game for the browser — tackling touch events, screen sizes, and performance.",
+            category: "Development",
+            body: `
+                <h2>The Challenge of Porting</h2>
+                <p>Mobile games are designed for <span class="highlight">touch input and smaller screens</span>. Porting to the browser requires careful adaptation.</p>
+
+                <h2>Touch to Mouse/Keyboard</h2>
+                <p>In the mobile version, players tap the screen. In the browser, you need to support:</p>
+                <ul>
+                    <li><span class="highlight">Mouse clicks</span> (desktop)</li>
+                    <li><span class="highlight">Keyboard inputs</span> (Space, Up Arrow)</li>
+                    <li><span class="highlight">Touch events</span> (mobile browsers)</li>
+                </ul>
+                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">canvas.addEventListener('click', flap);
+        canvas.addEventListener('touchstart', flap);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === ' ') flap();
+        });</pre>
+
+                <div class="tip-box">
+                    <strong>📱 Key Insight:</strong> Browser games must <span class="highlight">support multiple input methods</span> to work across devices.
+                </div>
+
+                <h2>Screen Size Adaptation</h2>
+                <p>In the browser, screens vary from 320px to 4K+ monitors. Use:</p>
+                <ul>
+                    <li><span class="highlight">Responsive CSS</span> to scale the game</li>
+                    <li><span class="highlight">Aspect-ratio locking</span> to maintain proportions</li>
+                    <li><span class="highlight">Media queries</span> for device-specific layouts</li>
+                </ul>
+
+                <h2>Performance Considerations</h2>
+                <p>Browser games have different performance characteristics than mobile apps. Ensure smooth 60fps performance across devices.</p>
+            `
+        }, {
+            id: 20,
+            title: "Why Simplicity Wins in Game Design",
+            date: "May 2, 2026",
+            readTime: "4 min read",
+            excerpt: "A deep dive into why simple, polished games like Flappy Bird often outperform complex, bloated ones.",
+            category: "Game Design",
+            body: `
+                <h2>The Power of Simplicity</h2>
+                <p>Simple games like Flappy Bird succeed because <span class="highlight">they're accessible to everyone</span>. There's no learning curve, no complex controls, no barriers to entry.</p>
+
+                <h2>Less is More</h2>
+                <p>By focusing on one core mechanic, Flappy Bird achieves:</p>
+                <ul>
+                    <li><span class="highlight">Instant understanding</span> — players know what to do immediately</li>
+                    <li><span class="highlight">Easy iteration</span> — the game loop is tight and satisfying</li>
+                    <li><span class="highlight">Broad appeal</span> — anyone can pick it up and play</li>
+                </ul>
+
+                <div class="tip-box">
+                    <strong>🎯 Design Principle:</strong> <span class="highlight">"Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away."</span> — Antoine de Saint-Exupéry
+                </div>
+
+                <h2>The Polarization Effect</h2>
+                <p>Simple games often create <span class="highlight">strong emotional reactions</span>. Players either love them or hate them. This polarization drives word-of-mouth and viral growth.</p>
+
+                <h2>Applying This to Your Game</h2>
+                <p>When designing your own game:</p>
+                <ul>
+                    <li>Start with <span class="highlight">one core mechanic</span></li>
+                    <li><span class="highlight">Polish it</span> until it feels perfect</li>
+                    <li><span class="highlight">Remove complexity</span> whenever possible</li>
+                    <li><span class="highlight">Test with non-gamers</span> to ensure accessibility</li>
+                </ul>
+            `
+        }];
+
+        // =============================================
+        // 4. RENDER BLOG
+        // =============================================
+        const blogGrid = document.getElementById('blogGrid');
+
+        function renderBlog() {
+            if (!blogGrid) return;
+            blogGrid.innerHTML = articles.map(article => `
+                <div class="blog-card article-excerpt" data-article-id="${article.id}">
+                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px;">
+                        <span style="font-size:11px; color:#70c5ce; background:rgba(112,197,206,0.15); padding:2px 10px; border-radius:12px;">${article.category}</span>
+                    </div>
+                    <h3>${article.title}</h3>
+                    <div class="meta">
+                        <span>📅 ${article.date}</span>
+                        <span>⏱️ ${article.readTime}</span>
+                    </div>
+                    <p>${article.excerpt}</p>
+                    <a href="#" data-page="article" data-article="${article.id}" class="read-more">Read Full Article →</a>
+                </div>
+            `).join('');
+
+            // Click on blog card to open article
+            document.querySelectorAll('.article-excerpt').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    const id = this.dataset.articleId;
+                    if (id && !e.target.closest('a')) {
+                        loadArticle(parseInt(id));
+                        showPage('article');
+                    }
+                });
+            });
+        }
+
+        // =============================================
+        // 5. LOAD ARTICLE
+        // =============================================
+        function loadArticle(id) {
+            const article = articles.find(a => a.id === id);
+            if (!article) return;
+
+            const container = document.getElementById('articleContent');
+            container.innerHTML = `
+                <a href="#" data-page="blog" class="back-to-blog">← Back to Blog</a>
+                <h1>${article.title}</h1>
+                <div class="article-meta">
+                    <span>📅 ${article.date}</span>
+                    <span>⏱️ ${article.readTime}</span>
+                    <span>🏷️ ${article.category}</span>
+                </div>
+                <div class="article-body">
+                    ${article.body}
+                </div>
+                <a href="#" data-page="blog" class="back-to-blog">← Back to Blog</a>
+            `;
+
+            // Re-bind navigation for back links
+            container.querySelectorAll('[data-page]').forEach(el => {
+                el.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const page = this.dataset.page;
+                    if (pages[page]) showPage(page);
+                });
+            });
+        }
+
+        // =============================================
+        // 6. GAME CODE
+        // =============================================
         (function() {
             const canvas = document.getElementById('gameCanvas');
             const ctx = canvas.getContext('2d');
@@ -1786,6 +2807,24 @@
             loop();
             renderAuthChoice();
         })();
+
+        // =============================================
+        // 7. INIT
+        // =============================================
+        renderBlog();
+
+        // Handle "Read More" clicks from blog grid
+        document.addEventListener('click', function(e) {
+            const link = e.target.closest('[data-article]');
+            if (link) {
+                e.preventDefault();
+                const id = parseInt(link.dataset.article);
+                if (!isNaN(id)) {
+                    loadArticle(id);
+                    showPage('article');
+                }
+            }
+        });
     </script>
 
 </body>
