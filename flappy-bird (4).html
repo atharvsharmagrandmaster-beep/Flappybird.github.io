@@ -453,7 +453,7 @@
         <h1 style="font-size:26px; margin-bottom:14px;">FLAPPY BIRD</h1>
         <button id="goLogin">Log in</button>
         <button id="goSignup" style="background:#9fd6ff;">Sign up</button>
-        <p style="margin-top:14px; font-size:11px; opacity:0.7;">Account progress is saved on this device/chat only.</p>
+        <p style="margin-top:14px; font-size:11px; opacity:0.7;">Your account works on any device with internet access.</p>
       </div>
     `;
     document.getElementById('goLogin').onclick = (e) => { e.stopPropagation(); renderLogin(); };
@@ -570,7 +570,7 @@
     overlay.innerHTML = `
       <h1>FLAPPY BIRD</h1>
       <p>Click, tap, or press SPACE to flap</p>
-      <p>Score 50 to unlock a new bird, every 50 up to 1000!</p>
+      <p>Score 10 to unlock a new bird, every 10 up to 1000!</p>
       <div class="score-line">Best: ${profile.bestScore}</div>
       <div style="display:flex; gap:10px; margin-top:14px;">
         <button class="smallBtn" id="startBtn">Play</button>
