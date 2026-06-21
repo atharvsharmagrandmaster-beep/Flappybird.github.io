@@ -1349,82 +1349,108 @@
             id: 3,
             title: "Why Flappy Bird Still Captivates Players in 2026",
             date: "June 15, 2026",
-            readTime: "4 min read",
+            readTime: "7 min read",
             excerpt: "Discover the psychology, game design, and cultural impact behind one of the most addictive mobile games ever.",
             category: "Analysis",
             body: `
                 <h2>The Simplicity Paradox</h2>
-                <p>Flappy Bird is deceptively simple: one button, one bird, one endless challenge. Yet <span class="highlight">it's this simplicity that makes it so addictive</span>. The game strips away all complexity, leaving only pure, immediate feedback.</p>
+                <p>Flappy Bird is deceptively simple: one button, one bird, one endless challenge. Yet <span class="highlight">it's this simplicity that makes it so addictive</span>. The game strips away all complexity, leaving only pure, immediate feedback. There's no tutorial to sit through, no menu to navigate, no currency to manage — you tap, the bird flaps, and the game begins instantly.</p>
+
+                <p>This stands in sharp contrast to most modern games, which often bury the core gameplay loop under layers of progression systems, daily quests, and onboarding flows. Flappy Bird's refusal to do any of that is precisely why it has remained relevant more than a decade after its original release.</p>
 
                 <h2>Why We Can't Stop Playing</h2>
-                <p>The game leverages several psychological principles:</p>
+                <p>The game leverages several psychological principles that researchers in behavioral science have studied extensively:</p>
                 <ul>
-                    <li><strong>Near-Miss Effect:</strong> When you barely miss a pipe, your brain releases dopamine, encouraging you to try again.</li>
-                    <li><strong>Challenge Curve:</strong> The difficulty is perfectly balanced — easy to learn, impossible to master.</li>
-                    <li><strong>Immediate Feedback:</strong> Every action has an instant consequence, keeping you engaged.</li>
+                    <li><strong>Near-Miss Effect:</strong> When you barely miss a pipe, your brain releases dopamine, encouraging you to try again. Studies on slot machines show the same mechanism — a near-win feels almost as rewarding as an actual win, which keeps players engaged even after failure.</li>
+                    <li><strong>Challenge Curve:</strong> The difficulty is perfectly balanced — easy to learn, impossible to master. Anyone can flap a bird through the first pipe, but consistently reaching 50, 100, or 1000 points requires real skill development.</li>
+                    <li><strong>Immediate Feedback:</strong> Every action has an instant consequence, keeping you engaged. There's no delay between your tap and the bird's movement, which creates a tight, responsive feel that's satisfying on a moment-to-moment basis.</li>
+                    <li><strong>Loss Aversion:</strong> Each failed run resets your progress to zero, which paradoxically makes players want to immediately try again rather than walk away. The desire to "make up for" a bad run is a powerful motivator.</li>
                 </ul>
 
                 <div class="tip-box">
-                    <strong>🎯 Key Insight:</strong> Flappy Bird taps into the same psychological rewards as gambling — <span class="highlight">intermittent reinforcement</span> keeps players coming back.
+                    <strong>🎯 Key Insight:</strong> Flappy Bird taps into the same psychological rewards as gambling — <span class="highlight">intermittent reinforcement</span> keeps players coming back. Unlike a slot machine, though, the outcome is determined by skill, not chance, which makes the loop feel fair even when it's frustrating.
                 </div>
 
                 <h2>The Cultural Phenomenon</h2>
-                <p>When Flappy Bird was removed from app stores in 2014, it became a <span class="highlight">cultural legend</span>. The game's creator, Dong Nguyen, became an overnight sensation and then promptly disappeared from the spotlight. This mystery only added to the game's allure.</p>
+                <p>When Flappy Bird was removed from app stores in 2014, it became a <span class="highlight">cultural legend</span>. The game's creator, Dong Nguyen, became an overnight sensation and then promptly disappeared from the spotlight. This mystery only added to the game's allure. Media outlets ran countless stories speculating about why he removed it, and the scarcity created by its disappearance made it even more desirable — phones that still had it installed became valuable, and clones flooded app stores within days.</p>
 
-                <h2>Why It Endures</h2>
+                <h2>The Science of "One More Try"</h2>
+                <p>Game designers often talk about the "one more try" feeling — that nagging sense that your next attempt will be better. Flappy Bird amplifies this because each run is so short. A typical attempt lasts anywhere from a few seconds to a couple of minutes, meaning the cost of failure is low and the opportunity to immediately retry is always available. This rapid retry loop is part of why so-called "hyper-casual" games modeled on Flappy Bird's structure became a dominant mobile gaming category in the years that followed.</p>
+
+                <h2>Why It Endures in 2026</h2>
                 <p>In 2026, Flappy Bird remains relevant because:</p>
                 <ul>
-                    <li><span class="highlight">Nostalgia:</span> Players who grew up with the original game now share it with their children.</li>
-                    <li><span class="highlight">Accessibility:</span> It's free, easy to play, and available everywhere.</li>
-                    <li><span class="highlight">Community:</span> Fan-made versions, challenges, and competitions keep the spirit alive.</li>
+                    <li><span class="highlight">Nostalgia:</span> Players who grew up with the original game now share it with their children, introducing a new generation to the same addictive loop.</li>
+                    <li><span class="highlight">Accessibility:</span> It's free, easy to play, and available everywhere — no downloads, no installs, just open a browser tab.</li>
+                    <li><span class="highlight">Community:</span> Fan-made versions, challenges, and competitions keep the spirit alive, from speedrun leaderboards to creative remixes that swap the bird for other characters or change the physics entirely.</li>
+                    <li><span class="highlight">Low barrier to entry:</span> Anyone with a browser and a spacebar can play within seconds, which makes it a frequent pick for quick breaks, waiting rooms, or casual competitions among friends.</li>
                 </ul>
+
+                <h2>What Modern Games Can Learn</h2>
+                <p>Flappy Bird's enduring popularity offers a lesson to today's game designers: complexity isn't the same as depth. A game can have enormous depth of skill — as anyone who has tried to consistently clear 100+ pipes can attest — without needing complicated systems, currencies, or onboarding. Sometimes the most memorable games are the ones that do one thing extremely well.</p>
             `
         }, {
             id: 4,
             title: "Game Design 101: What Makes a Game Addictive?",
             date: "June 12, 2026",
-            readTime: "6 min read",
+            readTime: "7 min read",
             excerpt: "Explore the core principles of addictive game design — from feedback loops to challenge curves.",
             category: "Game Design",
             body: `
                 <h2>The Core Loop</h2>
-                <p>Every addictive game has a <span class="highlight">core loop</span> — the repeated sequence of actions that keeps players engaged. In Flappy Bird, the core loop is: tap → move bird → avoid pipe → score → repeat.</p>
+                <p>Every addictive game has a <span class="highlight">core loop</span> — the repeated sequence of actions that keeps players engaged. In Flappy Bird, the core loop is: tap → move bird → avoid pipe → score → repeat. This loop takes less than a second to execute and can be repeated hundreds of times in a single sitting, which is part of what makes it so compelling to study from a design perspective.</p>
+
+                <p>Good core loops share a few traits: they're fast to understand, immediately actionable, and produce a clear result. If a player has to think for more than a second about what to do next, the loop starts to feel sluggish. Flappy Bird's loop never asks the player to think — it asks them to react.</p>
 
                 <h2>Feedback Loops</h2>
-                <p>Effective feedback loops are essential. They can be:</p>
+                <p>Effective feedback loops are essential to keeping players engaged over time. They generally fall into two categories:</p>
                 <ul>
-                    <li><strong>Positive:</strong> Score increases, new birds unlock, visual/audio rewards.</li>
-                    <li><strong>Negative:</strong> Game over, reset, loss of progress (which paradoxically makes you want to try again).</li>
+                    <li><strong>Positive feedback:</strong> Score increases, new birds unlock, visual and audio rewards reinforce good play. These create a sense of forward progress even within a single short session.</li>
+                    <li><strong>Negative feedback:</strong> Game over, reset, loss of progress — which paradoxically makes you want to try again rather than quit. This is sometimes called the "frustration-to-motivation" pipeline in game design literature.</li>
                 </ul>
 
                 <div class="tip-box">
-                    <strong>💡 Design Principle:</strong> The best games balance <span class="highlight">challenge and skill</span>. When the challenge matches your skill level, you enter a state of "flow."
+                    <strong>💡 Design Principle:</strong> The best games balance <span class="highlight">challenge and skill</span>. When the challenge matches your skill level, you enter a state of "flow" — a term coined by psychologist Mihaly Csikszentmihalyi to describe complete absorption in an activity.
                 </div>
 
                 <h2>Progression Systems</h2>
-                <p>Unlockable content — like the birds in our game — gives players <span class="highlight">short-term goals</span> that keep them playing. Each small achievement releases dopamine, reinforcing the behavior.</p>
+                <p>Unlockable content — like the birds in our game — gives players <span class="highlight">short-term goals</span> that keep them playing. Each small achievement releases dopamine, reinforcing the behavior. This is why milestone-based unlocks (every 10 points, for example) tend to work better than a single distant goal: they break a long-term challenge into a series of achievable short-term wins.</p>
+
+                <p>This is also why many games use tiered rewards instead of a single big prize at the end. A player who unlocks something new every few minutes stays motivated in a way that a player chasing one distant, large reward often doesn't.</p>
 
                 <h2>The Role of Frustration</h2>
-                <p>Surprisingly, a moderate amount of frustration can make a game more appealing. <span class="highlight">Overcoming obstacles</span> creates a sense of accomplishment that is deeply satisfying.</p>
+                <p>Surprisingly, a moderate amount of frustration can make a game more appealing. <span class="highlight">Overcoming obstacles</span> creates a sense of accomplishment that is deeply satisfying. Game designers sometimes call this "productive frustration" — difficulty that feels fair and conquerable, as opposed to difficulty that feels arbitrary or unfair.</p>
+
+                <p>Flappy Bird walks this line carefully. The pipes are randomly generated but always follow consistent rules, so a skilled player can reliably improve with practice. If the game felt unfair or random in a way that ignored player skill, the frustration would likely drive players away instead of pulling them back in.</p>
+
+                <h2>Variable Difficulty and Pacing</h2>
+                <p>Many addictive games subtly vary their pacing to keep players engaged. While Flappy Bird's core mechanics stay consistent, the unpredictability of pipe placement means no two runs feel identical, even though the underlying rules never change. This variability is enough to keep the experience feeling fresh, run after run, without requiring new content.</p>
+
+                <h2>Applying These Principles</h2>
+                <p>If you're designing your own game, the lessons from Flappy Bird's design are clear: keep your core loop fast and understandable, give players frequent small wins alongside long-term goals, and make sure your difficulty feels fair even when it's challenging. These principles apply far beyond simple arcade games — they're the same fundamentals behind many of the most successful games across genres.</p>
             `
         }, {
             id: 5,
             title: "JavaScript Canvas: A Beginner's Guide",
             date: "June 10, 2026",
-            readTime: "7 min read",
+            readTime: "9 min read",
             excerpt: "Learn the fundamentals of the HTML5 Canvas API — the foundation of browser-based games like Flappy Bird.",
             category: "Development",
             body: `
                 <h2>What is the Canvas API?</h2>
-                <p>The HTML5 Canvas is a <span class="highlight">drawing surface</span> that allows you to create graphics, animations, and games entirely in JavaScript. It's supported by all modern browsers.</p>
+                <p>The HTML5 Canvas is a <span class="highlight">drawing surface</span> that allows you to create graphics, animations, and games entirely in JavaScript. It's supported by all modern browsers and requires no plugins or external libraries to get started, which makes it one of the most accessible ways to build a browser game from scratch.</p>
+
+                <p>Unlike SVG, which keeps individual shapes as separate elements you can style and target with CSS, Canvas is a single bitmap surface. Once you draw something, the canvas doesn't remember it as a distinct object — it's just pixels. This makes Canvas faster for games with many moving objects, since you're not asking the browser to track hundreds of individual DOM elements.</p>
 
                 <h2>Getting Started</h2>
                 <p>To use Canvas, you need an HTML element and a JavaScript context:</p>
                 <pre>const canvas = document.getElementById('myCanvas');
-        const ctx = canvas.getContext('2d');
-        // Now you can draw!
-        ctx.fillStyle = '#ffcc00';
-        ctx.fillRect(10, 10, 100, 50);</pre>
+const ctx = canvas.getContext('2d');
+// Now you can draw!
+ctx.fillStyle = '#ffcc00';
+ctx.fillRect(10, 10, 100, 50);</pre>
+
+                <p>The <code>getContext('2d')</code> call returns the drawing context, which exposes all the methods you'll use to draw shapes, text, and images. There's also a <code>'webgl'</code> context for 3D graphics, but for a 2D game like Flappy Bird, the standard 2D context is all you need.</p>
 
                 <h2>Drawing Shapes</h2>
                 <p>The Canvas API supports rectangles, circles, lines, and complex paths:</p>
@@ -1433,274 +1459,344 @@
                     <li><span class="highlight">strokeRect()</span> — draws a rectangle outline</li>
                     <li><span class="highlight">arc()</span> — draws circles and arcs</li>
                     <li><span class="highlight">beginPath()</span> and <span class="highlight">closePath()</span> — for custom shapes</li>
+                    <li><span class="highlight">ellipse()</span> — draws ovals, useful for organic shapes like a bird's body</li>
                 </ul>
 
                 <div class="tip-box">
-                    <strong>🎯 Key Concept:</strong> Canvas uses a <span class="highlight">state machine</span> — settings like fillStyle, strokeStyle, and lineWidth affect all subsequent drawing until changed.
+                    <strong>🎯 Key Concept:</strong> Canvas uses a <span class="highlight">state machine</span> — settings like fillStyle, strokeStyle, and lineWidth affect all subsequent drawing until changed. This means drawing order matters a lot, and forgetting to reset a style can cause unexpected results in later draw calls.
                 </div>
 
+                <h2>Saving and Restoring State</h2>
+                <p>One of the most useful but underused Canvas features is <code>ctx.save()</code> and <code>ctx.restore()</code>. These let you temporarily change transformations (like translation and rotation) without affecting anything drawn afterward:</p>
+                <pre>ctx.save();
+ctx.translate(100, 100);
+ctx.rotate(Math.PI / 4);
+ctx.fillRect(-25, -25, 50, 50); // draws a rotated square
+ctx.restore(); // undoes the translate and rotate</pre>
+                <p>This pattern is exactly how Flappy Bird's bird sprite is rotated to face up or down based on its velocity, without affecting the position or rotation of anything else on screen.</p>
+
                 <h2>Animating with requestAnimationFrame</h2>
-                <p>The <span class="highlight">requestAnimationFrame</span> method creates smooth, efficient animations that sync with the screen refresh rate.</p>
+                <p>The <span class="highlight">requestAnimationFrame</span> method creates smooth, efficient animations that sync with the screen refresh rate, typically 60 times per second on most displays.</p>
                 <pre>function gameLoop() {
-            update();
-            draw();
-            requestAnimationFrame(gameLoop);
-        }
-        gameLoop();</pre>
+    update();
+    draw();
+    requestAnimationFrame(gameLoop);
+}
+gameLoop();</pre>
+                <p>Unlike older techniques like <code>setInterval</code>, <code>requestAnimationFrame</code> automatically pauses when the browser tab isn't visible, which saves battery and CPU on devices where the game isn't actively being watched.</p>
 
                 <h2>Handling User Input</h2>
                 <p>Capture mouse clicks, keyboard presses, and touch events to make your game interactive:</p>
                 <pre>canvas.addEventListener('click', function(e) {
-            // Handle click
-        });
+    // Handle click
+});
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === ' ') {
-                // Handle spacebar
-            }
-        });</pre>
+document.addEventListener('keydown', function(e) {
+    if (e.key === ' ') {
+        // Handle spacebar
+    }
+});</pre>
+
+                <h2>Performance Tips</h2>
+                <p>Canvas performance can degrade if you're not careful. A few habits worth building early: avoid recreating gradients or images inside your draw loop when you can cache them, minimize the number of <code>save()</code>/<code>restore()</code> pairs per frame, and batch similar drawing operations together (draw all pipes, then all clouds, rather than interleaving them) to reduce state-switching overhead.</p>
             `
         }, {
             id: 6,
             title: "CSS Animations for Game UI",
             date: "June 8, 2026",
-            readTime: "5 min read",
+            readTime: "8 min read",
             excerpt: "Enhance your game's interface with smooth CSS animations — from hover effects to score popups.",
             category: "Development",
             body: `
                 <h2>Why CSS Animations?</h2>
-                <p>CSS animations are <span class="highlight">lightweight and performant</span>, making them perfect for UI elements like buttons, menus, and score displays. They offload animation work from JavaScript to the browser's rendering engine.</p>
+                <p>CSS animations are <span class="highlight">lightweight and performant</span>, making them perfect for UI elements like buttons, menus, and score displays. They offload animation work from JavaScript to the browser's rendering engine, which often handles them more efficiently than equivalent JavaScript-driven animations, especially on lower-powered devices.</p>
+
+                <p>This matters more than it might seem. A game's canvas already has plenty of work to do — physics calculations, collision detection, drawing dozens of objects every frame. Anything you can hand off to CSS instead of JavaScript frees up processing budget for the parts of your game that actually need it.</p>
 
                 <h2>Keyframe Animations</h2>
                 <p>Use <span class="highlight">@keyframes</span> to define complex animations:</p>
                 <pre>@keyframes pulse {
-            0% { transform: scale(1); opacity: 0.7; }
-            50% { transform: scale(1.1); opacity: 1; }
-            100% { transform: scale(1); opacity: 0.7; }
-        }
+    0% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.7; }
+}
 
-        .score-popup {
-            animation: pulse 0.5s ease-in-out;
-        }</pre>
+.score-popup {
+    animation: pulse 0.5s ease-in-out;
+}</pre>
+                <p>Keyframes let you define multiple points along an animation's timeline, with the browser smoothly interpolating between them. This is ideal for anything cyclical, like a pulsing glow effect or a gently bobbing icon.</p>
 
                 <h2>Transition Effects</h2>
-                <p>Transitions are perfect for <span class="highlight">hover states and interactive elements</span>:</p>
+                <p>Transitions are perfect for <span class="highlight">hover states and interactive elements</span> — anything that responds to a single state change rather than looping continuously:</p>
                 <pre>.button {
-            transition: all 0.3s ease;
-        }
-        .button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(255, 204, 0, 0.3);
-        }</pre>
+    transition: all 0.3s ease;
+}
+.button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(255, 204, 0, 0.3);
+}</pre>
 
                 <div class="tip-box">
-                    <strong>💡 Best Practice:</strong> Use <span class="highlight">transform</span> and <span class="highlight">opacity</span> for animations — they're GPU-accelerated and won't cause layout recalculations.
+                    <strong>💡 Best Practice:</strong> Use <span class="highlight">transform</span> and <span class="highlight">opacity</span> for animations — they're GPU-accelerated and won't cause layout recalculations. Animating properties like <code>width</code>, <code>height</code>, or <code>top</code>/<code>left</code> directly can trigger expensive browser reflows.
                 </div>
 
+                <h2>Easing Functions</h2>
+                <p>The "feel" of an animation comes largely from its easing function — how its speed changes over time. <code>ease-in-out</code> starts and ends slowly with speed in the middle, which feels natural for most UI movement. <code>linear</code> moves at a constant speed and can feel mechanical, which is sometimes exactly what you want for something like a loading bar. Experimenting with custom cubic-bezier curves can give your UI a distinct personality beyond the built-in presets.</p>
+
                 <h2>Animating Game Elements</h2>
-                <p>CSS animations can enhance many game UI components:</p>
+                <p>CSS animations can enhance many game UI components beyond just buttons:</p>
                 <ul>
-                    <li><strong>Score display:</strong> Pop-up animations when scoring</li>
-                    <li><strong>Buttons:</strong> Hover and click feedback</li>
-                    <li><strong>Bird gallery:</strong> Smooth transitions between selections</li>
-                    <li><strong>Notifications:</strong> Slide-in messages for unlocks</li>
+                    <li><strong>Score display:</strong> Pop-up animations when scoring give immediate visual feedback without needing canvas redraws.</li>
+                    <li><strong>Buttons:</strong> Hover and click feedback make menus feel more responsive and polished.</li>
+                    <li><strong>Bird gallery:</strong> Smooth transitions between selections, like a subtle scale-up on the currently selected bird, help communicate state changes clearly.</li>
+                    <li><strong>Notifications:</strong> Slide-in messages for unlocks draw attention to new content without interrupting gameplay.</li>
                 </ul>
+
+                <h2>Combining CSS and Canvas</h2>
+                <p>It's worth remembering that your game's canvas and your surrounding HTML/CSS UI are two separate rendering systems. Overlay elements — login forms, score badges, popup menus — are great candidates for CSS-based animation, while the actual gameplay (bird, pipes, background) typically stays inside the canvas where JavaScript has full control frame by frame. Splitting responsibilities this way keeps your code organized and your animations smooth.</p>
             `
         }, {
             id: 7,
             title: "Optimizing HTML5 Games for Mobile",
             date: "June 5, 2026",
-            readTime: "6 min read",
+            readTime: "8 min read",
             excerpt: "Learn how to make your browser games run smoothly on phones and tablets with responsive design and performance tips.",
             category: "Development",
             body: `
                 <h2>Why Mobile Optimization Matters</h2>
-                <p>Over <span class="highlight">50% of web traffic</span> comes from mobile devices. If your game doesn't work well on phones and tablets, you're alienating a huge portion of your audience.</p>
+                <p>Over <span class="highlight">50% of web traffic</span> comes from mobile devices. If your game doesn't work well on phones and tablets, you're alienating a huge portion of your audience. For a game like Flappy Bird, which originated as a mobile title, this is especially important — many players will instinctively expect touch controls to feel native and responsive.</p>
 
                 <h2>Responsive Design</h2>
                 <p>Use <span class="highlight">viewport units, flexbox, and media queries</span> to adapt your game's layout to any screen size:</p>
                 <pre>#gameContainer {
-            width: 100%;
-            max-width: 500px;
-            aspect-ratio: 400 / 600;
-        }
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 400 / 600;
+}
 
-        @media (max-width: 450px) {
-            #gameContainer { max-width: 100%; }
-            .button { font-size: 14px; padding: 6px 12px; }
-        }</pre>
+@media (max-width: 450px) {
+    #gameContainer { max-width: 100%; }
+    .button { font-size: 14px; padding: 6px 12px; }
+}</pre>
+                <p>Locking the aspect ratio of your game container, rather than letting it stretch freely, keeps your internal canvas coordinates consistent regardless of screen size. This means your collision detection and physics math don't need separate logic for different devices — the canvas content just scales visually while staying logically identical underneath.</p>
 
                 <h2>Touch Events</h2>
                 <p>Support touch interactions alongside mouse and keyboard:</p>
                 <pre>canvas.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            // Handle tap
-        }, { passive: false });</pre>
+    e.preventDefault();
+    // Handle tap
+}, { passive: false });</pre>
+                <p>The <code>{ passive: false }</code> option is important here — without it, calling <code>preventDefault()</code> inside a touch handler can be silently ignored by some browsers, which means the page might scroll or zoom unexpectedly when the player taps to flap.</p>
 
                 <div class="tip-box">
-                    <strong>🎯 Performance Tip:</strong> Use <span class="highlight">image-rendering: pixelated</span> on your canvas to prevent blurring and improve performance on mobile devices.
+                    <strong>🎯 Performance Tip:</strong> Use <span class="highlight">image-rendering: pixelated</span> on your canvas to prevent blurring and improve perceived sharpness on mobile devices, especially when the canvas is scaled up from its native resolution.
                 </div>
 
                 <h2>Performance Optimization</h2>
                 <ul>
-                    <li><strong>Avoid repaints:</strong> Minimize DOM manipulation during gameplay.</li>
-                    <li><strong>Use requestAnimationFrame:</strong> It's designed for smooth animations.</li>
-                    <li><strong>Limit particle effects:</strong> While pretty, they can be resource-intensive on mobile.</li>
-                    <li><strong>Test on real devices:</strong> Use browser dev tools' device emulation and test on actual phones.</li>
+                    <li><strong>Avoid repaints:</strong> Minimize DOM manipulation during gameplay. Updating text content or styles every frame is far more expensive than drawing to canvas.</li>
+                    <li><strong>Use requestAnimationFrame:</strong> It's designed for smooth animations and automatically throttles when the tab isn't active, saving battery.</li>
+                    <li><strong>Limit particle effects:</strong> While pretty, they can be resource-intensive on mobile, especially on older or budget devices with weaker GPUs.</li>
+                    <li><strong>Test on real devices:</strong> Use browser dev tools' device emulation as a starting point, but always test on actual phones before launch — emulation can't fully replicate real touch latency or hardware constraints.</li>
                 </ul>
+
+                <h2>Handling Different Screen Densities</h2>
+                <p>Mobile screens vary enormously in pixel density. A canvas drawn at a fixed resolution can look crisp on one device and blurry on another. One common approach is to scale your canvas's internal resolution by <code>window.devicePixelRatio</code>, then scale the drawing context back down, so your visuals stay sharp on high-density displays without needing separate art assets for each density tier.</p>
+
+                <h2>Battery and Thermal Considerations</h2>
+                <p>Mobile devices throttle performance when they overheat, which can happen during extended gameplay sessions with heavy rendering. Keeping your draw calls efficient — batching similar operations, avoiding unnecessary canvas state changes, and capping unnecessary background processing — helps your game stay smooth even during long play sessions, and is kinder to the player's battery life.</p>
             `
         }, {
             id: 8,
             title: "The History of Flappy Bird: Rise and Fall",
             date: "June 2, 2026",
-            readTime: "4 min read",
+            readTime: "7 min read",
             excerpt: "The story of how a simple indie game became a global phenomenon — and why its creator pulled it from app stores.",
             category: "History",
             body: `
                 <h2>The Birth of a Legend</h2>
-                <p>In 2013, Vietnamese developer <span class="highlight">Dong Nguyen</span> released Flappy Bird on the App Store. It was a simple, unpolished game that barely anyone noticed — at first.</p>
+                <p>In 2013, Vietnamese developer <span class="highlight">Dong Nguyen</span> released Flappy Bird on the App Store. It was a simple, unpolished game that barely anyone noticed — at first. Nguyen worked as an independent developer under the studio name .Gears, and Flappy Bird was just one of several small games he had released without much fanfare.</p>
+
+                <p>The game sat quietly for months after launch, generating little attention and minimal downloads. There was no marketing campaign, no influencer push, no paid promotion. It simply existed on the App Store like thousands of other indie games.</p>
 
                 <h2>The Viral Explosion</h2>
-                <p>By early 2014, Flappy Bird had become <span class="highlight">the most downloaded free game</span> on both iOS and Android. It was everywhere: on social media, in the news, and on millions of phones worldwide.</p>
+                <p>By early 2014, something shifted. Flappy Bird had become <span class="highlight">the most downloaded free game</span> on both iOS and Android. It was everywhere: on social media, in the news, and on millions of phones worldwide. The exact trigger for the viral spike is debated — some attribute it to a handful of influential YouTubers and streamers who began playing it on camera, capturing their frustrated reactions to its brutal difficulty, while others point to organic word-of-mouth spreading through its sheer simplicity.</p>
+
+                <p>Whatever the cause, the growth was explosive. Reports at the time estimated Nguyen was earning tens of thousands of dollars per day from in-app advertising at the height of the game's popularity — a staggering sum for what had been, just weeks earlier, a forgotten side project.</p>
 
                 <h2>The Controversy</h2>
                 <p>But fame came with a price. Nguyen faced:</p>
                 <ul>
-                    <li><strong>Death threats:</strong> From frustrated players</li>
-                    <li><strong>Media scrutiny:</strong> Constant interviews and attention</li>
-                    <li><strong>Guilt:</strong> Feeling responsible for people's addiction to his game</li>
+                    <li><strong>Death threats:</strong> From frustrated players who blamed him for the game's notorious difficulty and its addictive grip on their time.</li>
+                    <li><strong>Media scrutiny:</strong> Constant interviews and attention from journalists trying to understand the phenomenon and the person behind it.</li>
+                    <li><strong>Guilt:</strong> Feeling responsible for people's addiction to his game, which he later described as affecting his ability to enjoy his own creation.</li>
                 </ul>
 
                 <div class="tip-box">
                     <strong>📱 The Removal:</strong> On February 10, 2014, <span class="highlight">Dong Nguyen removed Flappy Bird</span> from all app stores. He said: <em>"I can call Flappy Bird a success of mine. But it also ruins my simple life. So now I hate it."</em>
                 </div>
 
+                <h2>The Aftermath</h2>
+                <p>The removal didn't end the phenomenon — it amplified it. Phones with the game still installed suddenly became valuable, with some listings on resale marketplaces reportedly asking for hundreds or even thousands of dollars for a device simply because Flappy Bird was still on it. The scarcity created by Nguyen's decision turned a free mobile game into a genuine collector's item, however briefly.</p>
+
+                <p>Within days, the App Store and Google Play were flooded with near-identical clones attempting to capture the same audience. Many of these clones were rejected or removed for blatantly copying the original's branding, but the underlying "tap to flap through gaps" mechanic proved impossible to fully suppress, and variations of it persist to this day across countless indie titles.</p>
+
                 <h2>The Legacy</h2>
-                <p>Despite its removal, Flappy Bird's legacy continues. It <span class="highlight">inspired thousands of clones</span>, launched the hyper-casual game genre, and proved that a simple game could become a global phenomenon.</p>
+                <p>Despite its removal, Flappy Bird's legacy continues. It <span class="highlight">inspired thousands of clones</span>, launched the hyper-casual game genre, and proved that a simple game could become a global phenomenon without any marketing budget. Game studios took note: simplicity, low cost of failure, and immediate feedback loops became blueprint elements for an entire wave of mobile games that followed in the mid-2010s and beyond.</p>
+
+                <h2>Dong Nguyen Since</h2>
+                <p>Nguyen has remained largely private since the game's removal, occasionally surfacing with small new projects but never returning to anything resembling Flappy Bird's scale of attention. His decision to walk away from a wildly profitable game, purely for personal wellbeing, remains a frequently cited example in discussions about the pressures of sudden internet fame.</p>
             `
         }, {
             id: 9,
             title: "From Zero to Hero: My Flappy Bird Journey",
             date: "May 30, 2026",
-            readTime: "3 min read",
+            readTime: "6 min read",
             excerpt: "One player's story of going from a score of 0 to 200+ — with the lessons learned along the way.",
             category: "Personal",
             body: `
                 <h2>Day 1: Complete Failure</h2>
-                <p>When I first picked up Flappy Bird, I couldn't score more than <span class="highlight">3 points</span>. Every attempt ended with a frustrating crash into the first or second pipe. I almost gave up.</p>
+                <p>When I first picked up Flappy Bird, I couldn't score more than <span class="highlight">3 points</span>. Every attempt ended with a frustrating crash into the first or second pipe. I almost gave up. My biggest mistake, looking back, was overcorrecting every time — tapping too hard out of panic the moment I saw a pipe approaching, which sent the bird rocketing upward into the very obstacle I was trying to avoid.</p>
 
                 <h2>Week 1: Finding the Rhythm</h2>
-                <p>Then I discovered <span class="highlight">the rhythm</span>. Instead of tapping frantically, I started counting: "One... two... tap." Suddenly, I could reach 10 points. Then 20. The game started to make sense.</p>
+                <p>Then I discovered <span class="highlight">the rhythm</span>. Instead of tapping frantically, I started counting: "One... two... tap." Suddenly, I could reach 10 points. Then 20. The game started to make sense. I realized that Flappy Bird isn't really about reacting to individual pipes — it's about maintaining a consistent vertical oscillation and letting the pipes come to you.</p>
 
                 <div class="tip-box">
-                    <strong>🎯 Breakthrough:</strong> The key was <span class="highlight">focusing on the gap</span> and ignoring the bird. Once I stopped watching my bird, my scores doubled.
+                    <strong>🎯 Breakthrough:</strong> The key was <span class="highlight">focusing on the gap</span> and ignoring the bird. Once I stopped watching my bird, my scores doubled. This sounds counterintuitive, but your peripheral vision tracks the bird's vertical position just fine — your conscious focus is better spent anticipating what's coming next.
                 </div>
 
+                <h2>Week 2-3: The Plateau</h2>
+                <p>After that initial breakthrough, progress slowed dramatically. I'd hover around 15-25 points for nearly two weeks, hitting what felt like an invisible ceiling. This plateau was frustrating, but in hindsight it was necessary — my hands were building the muscle memory needed for consistent timing, even though my conscious brain couldn't feel the improvement happening.</p>
+
                 <h2>Month 1: Consistent Progress</h2>
-                <p>By the end of the month, I was consistently scoring <span class="highlight">50+ points</span>. I had unlocked several birds and was addicted to the feeling of progress.</p>
+                <p>By the end of the month, I was consistently scoring <span class="highlight">50+ points</span>. I had unlocked several birds and was addicted to the feeling of progress. Something clicked during this phase: I stopped thinking about individual taps entirely and started thinking in terms of "sections" — groups of two or three pipes that I'd plan my path through as a unit, rather than reacting to each pipe in isolation.</p>
 
                 <h2>Today: 200+ Points</h2>
-                <p>Now I can reach 200 points on a good run. The game is still challenging, but <span class="highlight">I've learned to enjoy the process</span>, not just the result. Every attempt is a chance to improve.</p>
+                <p>Now I can reach 200 points on a good run. The game is still challenging, but <span class="highlight">I've learned to enjoy the process</span>, not just the result. Every attempt is a chance to improve, and even my "bad" runs now reliably clear 50-80 points, which would have seemed impossible in my first week.</p>
+
+                <h2>What Changed Between Beginner and Intermediate Play</h2>
+                <p>Looking back at the difference between my early attempts and my current play, a few specific things changed:</p>
+                <ul>
+                    <li><strong>Tap timing became proactive, not reactive.</strong> I now tap based on anticipated position, not current position.</li>
+                    <li><strong>My eyes stopped darting between the bird and the pipes.</strong> I settled into a fixed focal point slightly ahead of the bird's position.</li>
+                    <li><strong>I stopped holding tension in my hand.</strong> Early on, I gripped my phone or hovered over the spacebar with visible tension. Relaxing physically seemed to translate into more consistent timing.</li>
+                </ul>
 
                 <h2>Lessons Learned</h2>
                 <ul>
-                    <li><span class="highlight">Consistency beats intensity:</span> Short daily practice is more effective than long sessions.</li>
-                    <li><span class="highlight">Patience is key:</span> Getting frustrated only makes you worse.</li>
-                    <li><span class="highlight">Celebrate small wins:</span> Every personal best is a victory.</li>
+                    <li><span class="highlight">Consistency beats intensity:</span> Short daily practice is more effective than long sessions. Fifteen focused minutes most days beat two exhausting hours once a week.</li>
+                    <li><span class="highlight">Patience is key:</span> Getting frustrated only makes you worse. The plateau weeks were the hardest, but pushing through them mattered more than any single breakthrough session.</li>
+                    <li><span class="highlight">Celebrate small wins:</span> Every personal best is a victory, even if it's only one point higher than your previous record.</li>
                 </ul>
             `
         }, {
             id: 10,
             title: "Building a High Score System with JSONBin",
             date: "May 28, 2026",
-            readTime: "7 min read",
+            readTime: "9 min read",
             excerpt: "Learn how to build a cloud-based leaderboard for your HTML5 games using the JSONBin API.",
             category: "Development",
             body: `
                 <h2>What is JSONBin?</h2>
-                <p>JSONBin is a <span class="highlight">simple JSON storage service</span> that lets you store and retrieve data via a REST API. It's perfect for game leaderboards, player profiles, and game state.</p>
+                <p>JSONBin is a <span class="highlight">simple JSON storage service</span> that lets you store and retrieve data via a REST API. It's perfect for game leaderboards, player profiles, and game state, especially for small or hobby projects that don't need a full backend server. You send it JSON data over HTTP, and it stores that data in a "bin" that you can read or overwrite later.</p>
 
                 <h2>Setting Up a JSONBin Account</h2>
-                <p>Create a free account at <a href="https://jsonbin.io" target="_blank">jsonbin.io</a>. You'll need your <span class="highlight">Master Key</span> to authenticate requests.</p>
+                <p>Create a free account at <a href="https://jsonbin.io" target="_blank">jsonbin.io</a>. You'll need your <span class="highlight">Master Key</span> to authenticate requests. After signing up, navigate to the API Keys section of your dashboard to find this key, and create a bin to act as your storage container — most people start it off with an empty JSON object like <code>{}</code>.</p>
 
                 <h2>Storing Player Data</h2>
                 <p>Here's how to store a player's high score:</p>
                 <pre>async function saveScore(username, score) {
-            const binId = 'your-bin-id';
-            const masterKey = 'your-master-key';
-            const url = https://api.jsonbin.io/v3/b/ + binId;
+    const binId = 'your-bin-id';
+    const masterKey = 'your-master-key';
+    const url = 'https://api.jsonbin.io/v3/b/' + binId;
 
-            const response = await fetch(url, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-Master-Key': masterKey
-                },
-                body: JSON.stringify({ scores: { [username]: score } })
-            });
-            return response.ok;
-        }</pre>
+    const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Master-Key': masterKey
+        },
+        body: JSON.stringify({ scores: { [username]: score } })
+    });
+    return response.ok;
+}</pre>
+                <p>Note that a <code>PUT</code> request to JSONBin's API replaces the entire bin contents — it doesn't merge new data with old data automatically. If you want to add one player's score without erasing everyone else's, you need to first fetch the current contents, modify the relevant field in JavaScript, and then write the whole updated object back.</p>
 
                 <div class="tip-box">
-                    <strong>💡 Security Note:</strong> Never expose your Master Key in client-side code. Use it only in server-side or cloud functions. For this demo, we're using it in the client for simplicity.
+                    <strong>💡 Security Note:</strong> Never expose your Master Key in client-side code for a production application handling sensitive data. Use it only in server-side or cloud functions where users can't view it. For small hobby and demo projects, using it client-side is sometimes accepted as a tradeoff, but it should be a conscious decision, not an oversight.
                 </div>
 
                 <h2>Retrieving the Leaderboard</h2>
                 <p>Fetch and display the top scores:</p>
                 <pre>async function getScores() {
-            const response = await fetch(url + '/latest', {
-                headers: { 'X-Master-Key': masterKey }
-            });
-            const data = await response.json();
-            return data.record.scores;
-        }</pre>
+    const response = await fetch(url + '/latest', {
+        headers: { 'X-Master-Key': masterKey }
+    });
+    const data = await response.json();
+    return data.record.scores;
+}</pre>
+                <p>Once you have the scores object, sorting it into a leaderboard is straightforward — convert it into an array of <code>[username, score]</code> pairs, sort descending by score, and render the top N entries.</p>
+
+                <h2>Handling Concurrent Writes</h2>
+                <p>One subtlety worth understanding: if two players save their scores at almost the same moment, there's a race condition risk. Player A fetches the data, then Player B fetches and writes their update, then Player A writes their update — silently overwriting Player B's change. For small hobby projects this risk is usually acceptable, but it's worth knowing about before relying on this pattern for anything where data loss would matter.</p>
 
                 <h2>Limitations and Alternatives</h2>
-                <p>JSONBin has rate limits on free accounts. For production games, consider:</p>
+                <p>JSONBin has rate limits on free accounts, and a single bin has a maximum size, which can become a real constraint if your player base grows large. For production games with many concurrent users, consider:</p>
                 <ul>
-                    <li>Firebase Realtime Database</li>
-                    <li>Supabase</li>
-                    <li>A custom backend with Node.js</li>
+                    <li><strong>Firebase Realtime Database</strong> — handles concurrent writes more gracefully and scales further on its free tier</li>
+                    <li><strong>Supabase</strong> — an open-source alternative with a proper relational database underneath</li>
+                    <li><strong>A custom backend with Node.js</strong> — full control, but requires hosting and maintenance</li>
                 </ul>
+                <p>For a small personal project or prototype, though, JSONBin's simplicity is hard to beat — there's no server to set up, no database schema to design, and you can be storing real data within minutes of signing up.</p>
             `
         }, {
             id: 11,
             title: "Responsive Design for Game Websites",
             date: "May 25, 2026",
-            readTime: "5 min read",
+            readTime: "8 min read",
             excerpt: "Ensure your game looks great on every device with flexible layouts, media queries, and fluid grids.",
             category: "Development",
             body: `
                 <h2>Why Responsive Design Matters</h2>
-                <p>Players will access your game from <span class="highlight">phones, tablets, laptops, and desktops</span>. A responsive design ensures everyone has a great experience, regardless of their device.</p>
+                <p>Players will access your game from <span class="highlight">phones, tablets, laptops, and desktops</span>. A responsive design ensures everyone has a great experience, regardless of their device. For a game website specifically, this isn't just about the surrounding page — the game itself needs to remain playable and visually correct at every screen size, which is a more demanding requirement than simply reflowing some text.</p>
 
                 <h2>Fluid Layouts</h2>
                 <p>Use <span class="highlight">relative units</span> like percentages, vw, vh, and em instead of fixed pixels:</p>
                 <pre>#gameContainer {
-            width: 100%;
-            max-width: 500px;
-            aspect-ratio: 400 / 600;
-        }
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 400 / 600;
+}
 
-        .heading {
-            font-size: clamp(24px, 5vw, 44px);
-        }</pre>
+.heading {
+    font-size: clamp(24px, 5vw, 44px);
+}</pre>
+                <p>The <code>clamp()</code> function deserves special attention here — it takes a minimum size, a preferred size (often expressed in viewport units), and a maximum size, letting text scale fluidly between breakpoints rather than jumping abruptly at fixed media query thresholds. This produces noticeably smoother scaling across the full range of device widths.</p>
 
                 <h2>Media Queries</h2>
-                <p>Use media queries to <span class="highlight">adjust layouts at different breakpoints</span>:</p>
+                <p>Use media queries to <span class="highlight">adjust layouts at different breakpoints</span> where fluid scaling alone isn't enough — typically when you need to change layout structure rather than just sizing:</p>
                 <pre>/* For mobile devices */
-        @media (max-width: 450px) {
-            .nav-links { display: none; }
-            .hamburger { display: flex; }
-            .blog-grid { grid-template-columns: 1fr; }
-        }</pre>
+@media (max-width: 450px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .blog-grid { grid-template-columns: 1fr; }
+}</pre>
 
                 <div class="tip-box">
-                    <strong>🎯 Best Practice:</strong> <span class="highlight">Mobile-first design</span> — start with the mobile layout and add complexity for larger screens.
+                    <strong>🎯 Best Practice:</strong> <span class="highlight">Mobile-first design</span> — start with the mobile layout and add complexity for larger screens, rather than designing for desktop first and trying to squeeze everything down afterward. Mobile-first tends to produce cleaner, more intentional layouts because it forces you to prioritize what actually matters on a constrained screen.
                 </div>
 
+                <h2>Designing the Game Container Specifically</h2>
+                <p>For a canvas-based game, the container holding your canvas deserves special care. Using <code>aspect-ratio</code> on the container, combined with a canvas that fills it at <code>width: 100%; height: 100%</code>, lets the visual size scale freely while your internal drawing coordinates (the actual <code>width</code> and <code>height</code> attributes on the canvas element) stay fixed. This separation between "logical" game coordinates and "visual" display size is the cleanest way to make a canvas game responsive without rewriting your physics or collision code for every screen size.</p>
+
+                <h2>Typography That Scales Gracefully</h2>
+                <p>Beyond headings, body text, buttons, and form inputs all benefit from fluid sizing. A common mistake is using a single fixed font size everywhere and relying entirely on media queries to override it at specific breakpoints — this tends to produce visible "jumps" in text size as the viewport crosses each threshold. Blending <code>clamp()</code> for continuous scaling with targeted media queries for structural changes (like hiding a sidebar) tends to produce the smoothest overall experience.</p>
+
                 <h2>Testing Responsive Design</h2>
-                <p>Use browser dev tools (F12) to test your design across different devices. The <span class="highlight">device emulation</span> feature lets you preview how your site looks on various phones and tablets.</p>
+                <p>Use browser dev tools (F12) to test your design across different devices. The <span class="highlight">device emulation</span> feature lets you preview how your site looks on various phones and tablets without needing physical access to each one. That said, emulation has limits — touch responsiveness, real network latency, and actual rendering performance can only be verified by testing on physical devices before launch.</p>
+
+                <h2>Common Pitfalls</h2>
+                <p>A few mistakes show up repeatedly in responsive game sites: forgetting to test landscape orientation on mobile (many players will rotate their phone for a wider game view), using fixed pixel widths for buttons that then overflow on very narrow screens, and neglecting touch target size — interactive elements should generally be at least 44x44 pixels to remain comfortably tappable on a touchscreen.</p>
             `
         }, {
             id: 12,
@@ -2812,18 +2908,6 @@
         // 7. INIT
         // =============================================
         renderBlog();
-
-        document.addEventListener('click', function(e) {
-            const link = e.target.closest('[data-article]');
-            if (link) {
-                e.preventDefault();
-                const id = parseInt(link.dataset.article);
-                if (!isNaN(id)) {
-                    loadArticle(id);
-                    showPage('article');
-                }
-            }
-        });
     </script>
 
 </body>
