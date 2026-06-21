@@ -295,7 +295,7 @@
             text-decoration: none;
         }
 
-        /* --- GAME SECTION - CLEAN, NO ADS --- */
+        /* --- GAME SECTION --- */
         #gameSection {
             display: flex;
             flex-direction: column;
@@ -590,12 +590,6 @@
             text-align: center;
         }
 
-        .ad-in-article ins.adsbygoogle {
-            display: block;
-            width: 728px;
-            height: 90px;
-        }
-
         .ad-sidebar {
             width: 100%;
             max-width: 300px;
@@ -611,12 +605,6 @@
             color: #555;
             overflow: hidden;
             padding: 10px;
-        }
-
-        .ad-sidebar ins.adsbygoogle {
-            display: block;
-            width: 300px;
-            height: 250px;
         }
 
         .blog-layout {
@@ -666,14 +654,6 @@
             .ad-sidebar {
                 max-width: 100%;
             }
-            .ad-sidebar ins.adsbygoogle {
-                width: 320px;
-                height: 100px;
-            }
-            .ad-in-article ins.adsbygoogle {
-                width: 320px;
-                height: 50px;
-            }
         }
 
         @media (max-width: 450px) {
@@ -702,10 +682,6 @@
             }
             .hamburger {
                 display: flex;
-            }
-            .ad-in-article ins.adsbygoogle {
-                width: 300px;
-                height: 50px;
             }
             #cookieConsent {
                 padding: 12px 4%;
@@ -767,6 +743,32 @@
         .article-excerpt {
             display: block;
             cursor: pointer;
+        }
+
+        pre {
+            background: #1a1a2e;
+            padding: 12px;
+            border-radius: 6px;
+            overflow-x: auto;
+            color: #7ec850;
+            font-size: clamp(12px, 0.9vw, 14px);
+            margin: 12px 0;
+            border: 1px solid #2a2a4a;
+        }
+        code {
+            color: #7ec850;
+            background: rgba(126, 200, 80, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+        kbd {
+            background: #2a2a4a;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #555;
+            color: #eee;
+            font-size: 0.9em;
         }
     </style>
 </head>
@@ -941,7 +943,7 @@
         </div>
     </section>
 
-    <!-- BLOG - ARTICLE VIEW (hidden by default) -->
+    <!-- BLOG - ARTICLE VIEW -->
     <section class="page" id="page-article">
         <div class="article-full" id="articleContent">
             <!-- Rendered by JavaScript -->
@@ -1134,7 +1136,6 @@
         }
 
         function showCookieSettings() {
-            // Simple settings: show a prompt to accept or decline
             if (confirm('Manage cookie preferences:\n\nClick OK to accept all cookies.\nCancel to decline all non-essential cookies.')) {
                 acceptCookies();
             } else {
@@ -1182,7 +1183,6 @@
                 e.preventDefault();
                 const page = link.dataset.page;
                 if (pages[page]) showPage(page);
-                // If clicking an article from blog, load it
                 const articleId = link.dataset.article;
                 if (articleId && page === 'article') {
                     loadArticle(parseInt(articleId));
@@ -1249,7 +1249,7 @@
             body: `
                 <h2>Step 1: Set Up the HTML Structure</h2>
                 <p>Start with a basic HTML file. You'll need a <span class="highlight">canvas element</span> for rendering the game, and a container for the game interface.</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">&lt;!DOCTYPE html&gt;
+                <pre>&lt;!DOCTYPE html&gt;
         &lt;html&gt;
         &lt;head&gt;
             &lt;title&gt;Flappy Bird Clone&lt;/title&gt;
@@ -1263,7 +1263,7 @@
 
                 <h2>Step 2: Draw the Background and Ground</h2>
                 <p>Create the sky gradient and the ground using Canvas API. This sets up the visual foundation of your game.</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">const canvas = document.getElementById('game');
+                <pre>const canvas = document.getElementById('game');
         const ctx = canvas.getContext('2d');
         const W = 400, H = 600;
 
@@ -1277,7 +1277,7 @@
 
                 <h2>Step 3: Add the Bird</h2>
                 <p>Draw a simple bird shape using ellipses and arcs. Add wings that flap using a sine wave animation.</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">function drawBird(x, y, frame) {
+                <pre>function drawBird(x, y, frame) {
             ctx.save();
             ctx.translate(x, y);
             // Body
@@ -1300,7 +1300,7 @@
 
                 <h2>Step 4: Implement Gravity and Flapping</h2>
                 <p>Add gravity to make the bird fall, and flapping to make it rise. This creates the core physics of the game.</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">let birdY = 300, birdVy = 0;
+                <pre>let birdY = 300, birdVy = 0;
         const GRAVITY = 0.5, FLAP = -8;
 
         function flap() { birdVy = FLAP; }
@@ -1312,7 +1312,7 @@
 
                 <h2>Step 5: Generate Pipes</h2>
                 <p>Create pipes with random gap positions. Move them across the screen and detect collisions with the bird.</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">let pipes = [];
+                <pre>let pipes = [];
         const PIPE_WIDTH = 60, PIPE_GAP = 150, PIPE_SPEED = 2.6;
 
         function addPipe() {
@@ -1322,7 +1322,7 @@
 
                 <h2>Step 6: Collision Detection</h2>
                 <p>Use AABB (Axis-Aligned Bounding Box) collision detection to check if the bird hits any pipes or the ground.</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">function checkCollision(bird, pipe) {
+                <pre>function checkCollision(bird, pipe) {
             return bird.x < pipe.x + PIPE_WIDTH &&
                 bird.x + bird.w > pipe.x &&
                 (bird.y < pipe.topHeight || bird.y + bird.h > pipe.bottomY);
@@ -1330,7 +1330,7 @@
 
                 <h2>Step 7: Add Scoring and Game Over</h2>
                 <p>Track when the bird passes a pipe, increment the score, and handle game over conditions.</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">let score = 0;
+                <pre>let score = 0;
 
         function update() {
             for (const pipe of pipes) {
@@ -1420,7 +1420,7 @@
 
                 <h2>Getting Started</h2>
                 <p>To use Canvas, you need an HTML element and a JavaScript context:</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">const canvas = document.getElementById('myCanvas');
+                <pre>const canvas = document.getElementById('myCanvas');
         const ctx = canvas.getContext('2d');
         // Now you can draw!
         ctx.fillStyle = '#ffcc00';
@@ -1441,7 +1441,7 @@
 
                 <h2>Animating with requestAnimationFrame</h2>
                 <p>The <span class="highlight">requestAnimationFrame</span> method creates smooth, efficient animations that sync with the screen refresh rate.</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">function gameLoop() {
+                <pre>function gameLoop() {
             update();
             draw();
             requestAnimationFrame(gameLoop);
@@ -1450,7 +1450,7 @@
 
                 <h2>Handling User Input</h2>
                 <p>Capture mouse clicks, keyboard presses, and touch events to make your game interactive:</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">canvas.addEventListener('click', function(e) {
+                <pre>canvas.addEventListener('click', function(e) {
             // Handle click
         });
 
@@ -1473,7 +1473,7 @@
 
                 <h2>Keyframe Animations</h2>
                 <p>Use <span class="highlight">@keyframes</span> to define complex animations:</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">@keyframes pulse {
+                <pre>@keyframes pulse {
             0% { transform: scale(1); opacity: 0.7; }
             50% { transform: scale(1.1); opacity: 1; }
             100% { transform: scale(1); opacity: 0.7; }
@@ -1485,7 +1485,7 @@
 
                 <h2>Transition Effects</h2>
                 <p>Transitions are perfect for <span class="highlight">hover states and interactive elements</span>:</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">.button {
+                <pre>.button {
             transition: all 0.3s ease;
         }
         .button:hover {
@@ -1519,7 +1519,7 @@
 
                 <h2>Responsive Design</h2>
                 <p>Use <span class="highlight">viewport units, flexbox, and media queries</span> to adapt your game's layout to any screen size:</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">#gameContainer {
+                <pre>#gameContainer {
             width: 100%;
             max-width: 500px;
             aspect-ratio: 400 / 600;
@@ -1532,7 +1532,7 @@
 
                 <h2>Touch Events</h2>
                 <p>Support touch interactions alongside mouse and keyboard:</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">canvas.addEventListener('touchstart', function(e) {
+                <pre>canvas.addEventListener('touchstart', function(e) {
             e.preventDefault();
             // Handle tap
         }, { passive: false });</pre>
@@ -1625,10 +1625,10 @@
 
                 <h2>Storing Player Data</h2>
                 <p>Here's how to store a player's high score:</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">async function saveScore(username, score) {
+                <pre>async function saveScore(username, score) {
             const binId = 'your-bin-id';
             const masterKey = 'your-master-key';
-            const url = https://api.jsonbin.io/v3/b/${binId};
+            const url = https://api.jsonbin.io/v3/b/ + binId;
 
             const response = await fetch(url, {
                 method: 'PUT',
@@ -1647,7 +1647,7 @@
 
                 <h2>Retrieving the Leaderboard</h2>
                 <p>Fetch and display the top scores:</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">async function getScores() {
+                <pre>async function getScores() {
             const response = await fetch(url + '/latest', {
                 headers: { 'X-Master-Key': masterKey }
             });
@@ -1676,7 +1676,7 @@
 
                 <h2>Fluid Layouts</h2>
                 <p>Use <span class="highlight">relative units</span> like percentages, vw, vh, and em instead of fixed pixels:</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">#gameContainer {
+                <pre>#gameContainer {
             width: 100%;
             max-width: 500px;
             aspect-ratio: 400 / 600;
@@ -1688,7 +1688,7 @@
 
                 <h2>Media Queries</h2>
                 <p>Use media queries to <span class="highlight">adjust layouts at different breakpoints</span>:</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">/* For mobile devices */
+                <pre>/* For mobile devices */
         @media (max-width: 450px) {
             .nav-links { display: none; }
             .hamburger { display: flex; }
@@ -1755,7 +1755,7 @@
 
                 <h2>Implementing Gravity</h2>
                 <p>Here's the basic gravity code used in Flappy Bird:</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">const GRAVITY = 0.45;
+                <pre>const GRAVITY = 0.45;
         const FLAP_VELOCITY = -8;
         const MAX_FALL_SPEED = 10;
 
@@ -1788,7 +1788,7 @@
 
                 <h2>Collision Detection</h2>
                 <p>AABB (Axis-Aligned Bounding Box) is the simplest collision detection method:</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">function rectsOverlap(ax, ay, aw, ah, bx, by, bw, bh) {
+                <pre>function rectsOverlap(ax, ay, aw, ah, bx, by, bw, bh) {
             return ax < bx + bw && ax + aw > bx &&
                    ay < by + bh && ay + ah > by;
         }</pre>
@@ -1907,7 +1907,7 @@
 
                 <h2>Using the Web Audio API</h2>
                 <p>The Web Audio API is a powerful tool for <span class="highlight">generating and manipulating audio</span> in the browser:</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">function playSound(frequency, duration) {
+                <pre>function playSound(frequency, duration) {
             const ctx = new (window.AudioContext || window.webkitAudioContext)();
             const oscillator = ctx.createOscillator();
             const gainNode = ctx.createGain();
@@ -1931,7 +1931,7 @@
 
                 <h2>Loading Audio Files</h2>
                 <p>For realistic sounds, load audio files instead of synthesizing:</p>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">const audio = new Audio('flap.mp3');
+                <pre>const audio = new Audio('flap.mp3');
         audio.play();</pre>
 
                 <h2>Best Practices</h2>
@@ -1989,7 +1989,7 @@
                     <li><span class="highlight">Keyboard inputs</span> (Space, Up Arrow)</li>
                     <li><span class="highlight">Touch events</span> (mobile browsers)</li>
                 </ul>
-                <pre style="background:#1a1a2e; padding:12px; border-radius:6px; overflow-x:auto; color:#7ec850;">canvas.addEventListener('click', flap);
+                <pre>canvas.addEventListener('click', flap);
         canvas.addEventListener('touchstart', flap);
         document.addEventListener('keydown', (e) => {
             if (e.key === ' ') flap();
@@ -2069,7 +2069,6 @@
                 </div>
             `).join('');
 
-            // Click on blog card to open article
             document.querySelectorAll('.article-excerpt').forEach(card => {
                 card.addEventListener('click', function(e) {
                     const id = this.dataset.articleId;
@@ -2103,7 +2102,6 @@
                 <a href="#" data-page="blog" class="back-to-blog">← Back to Blog</a>
             `;
 
-            // Re-bind navigation for back links
             container.querySelectorAll('[data-page]').forEach(el => {
                 el.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -2114,10 +2112,12 @@
         }
 
         // =============================================
-        // 6. GAME CODE
+        // 6. GAME CODE (FIXED - runs after DOM ready)
         // =============================================
-        (function() {
+        document.addEventListener('DOMContentLoaded', function() {
             const canvas = document.getElementById('gameCanvas');
+            if (!canvas) return;
+
             const ctx = canvas.getContext('2d');
             const overlay = document.getElementById('overlay');
             const hud = document.getElementById('hud');
@@ -2202,7 +2202,7 @@
 
             async function fetchAllAccounts() {
                 const res = await fetch(JSONBIN_BASE + '/latest', { method: 'GET', headers: { 'X-Master-Key': JSONBIN_MASTER_KEY } });
-                if (!res.ok) throw new Error('Failed to reach account server (status ' + res.status + ')');
+                if (!res.ok) throw new Error('Failed to reach account server');
                 const data = await res.json();
                 return (data.record && data.record.accounts) ? data.record.accounts : {};
             }
@@ -2213,7 +2213,7 @@
                     headers: { 'Content-Type': 'application/json', 'X-Master-Key': JSONBIN_MASTER_KEY },
                     body: JSON.stringify({ accounts: accountsObj })
                 });
-                if (!res.ok) throw new Error('Failed to save to account server (status ' + res.status + ')');
+                if (!res.ok) throw new Error('Failed to save');
             }
 
             async function loadAccount(username) {
@@ -2806,14 +2806,13 @@
             draw();
             loop();
             renderAuthChoice();
-        })();
+        });
 
         // =============================================
         // 7. INIT
         // =============================================
         renderBlog();
 
-        // Handle "Read More" clicks from blog grid
         document.addEventListener('click', function(e) {
             const link = e.target.closest('[data-article]');
             if (link) {
