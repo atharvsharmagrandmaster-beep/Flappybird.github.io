@@ -344,25 +344,47 @@
   let currentUser = null;
   let profile = { bestScore: 0, unlockedLevel: 0, selectedBird: 0 };
 
-  function userKey(username) {
-    return 'flappybird_account_' + username.toLowerCase();
+  const JSONBIN_BIN_ID = '6a377049f5f4af5e29170eac';
+  const JSONBIN_MASTER_KEY = '$2a$10$ExoGhr0vFRHf0BoHC/sy8OL4hPtoU/iEqwU7gchDeeNAgBS.CBUcy';
+  const JSONBIN_BASE = 'https://api.jsonbin.io/v3/b/' + JSONBIN_BIN_ID;
+
+  async function fetchAllAccounts() {
+    const res = await fetch(JSONBIN_BASE + '/latest', {
+      method: 'GET',
+      headers: { 'X-Master-Key': JSONBIN_MASTER_KEY }
+    });
+    if (!res.ok) throw new Error('Failed to reach account server (status ' + res.status + ')');
+    const data = await res.json();
+    return (data.record && data.record.accounts) ? data.record.accounts : {};
+  }
+
+  async function writeAllAccounts(accountsObj) {
+    const res = await fetch(JSONBIN_BASE, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Master-Key': JSONBIN_MASTER_KEY
+      },
+      body: JSON.stringify({ accounts: accountsObj })
+    });
+    if (!res.ok) throw new Error('Failed to save to account server (status ' + res.status + ')');
   }
 
   async function loadAccount(username) {
     try {
-      const raw = localStorage.getItem(userKey(username));
-      return raw ? JSON.parse(raw) : null;
+      const accounts = await fetchAllAccounts();
+      const key = username.toLowerCase();
+      return accounts[key] || null;
     } catch (e) {
-      return null;
+      console.error('loadAccount failed', e);
+      throw e;
     }
   }
 
   async function saveAccount(username, data) {
-    try {
-      localStorage.setItem(userKey(username), JSON.stringify(data));
-    } catch (e) {
-      console.error('save failed', e);
-    }
+    const accounts = await fetchAllAccounts();
+    accounts[username.toLowerCase()] = data;
+    await writeAllAccounts(accounts);
   }
 
   function simpleHash(str) {
@@ -431,7 +453,7 @@
         <h1 style="font-size:26px; margin-bottom:14px;">FLAPPY BIRD</h1>
         <button id="goLogin">Log in</button>
         <button id="goSignup" style="background:#9fd6ff;">Sign up</button>
-        <p style="margin-top:14px; font-size:11px; opacity:0.7;">Account progress is saved on this device/browser only.</p>
+        <p style="margin-top:14px; font-size:11px; opacity:0.7;">Your account works on any device with internet access.</p>
       </div>
     `;
     document.getElementById('goLogin').onclick = (e) => { e.stopPropagation(); renderLogin(); };
@@ -456,13 +478,22 @@
       const username = document.getElementById('loginUser').value.trim();
       const pass = document.getElementById('loginPass').value;
       const errEl = document.getElementById('loginErr');
+      const btn = document.getElementById('loginBtn');
       if (!username || !pass) { errEl.textContent = 'Enter username and password.'; return; }
-      const acc = await loadAccount(username);
-      if (!acc) { errEl.textContent = 'No account found with that username.'; return; }
-      if (acc.passHash !== simpleHash(pass)) { errEl.textContent = 'Incorrect password.'; return; }
-      currentUser = { username };
-      profile = acc.profile || { bestScore: 0, unlockedLevel: 0, selectedBird: 0 };
-      enterGameAsLoggedIn();
+      errEl.style.color = '#ff8585';
+      errEl.textContent = 'Connecting...';
+      btn.disabled = true;
+      try {
+        const acc = await loadAccount(username);
+        if (!acc) { errEl.textContent = 'No account found with that username.'; btn.disabled = false; return; }
+        if (acc.passHash !== simpleHash(pass)) { errEl.textContent = 'Incorrect password.'; btn.disabled = false; return; }
+        currentUser = { username };
+        profile = acc.profile || { bestScore: 0, unlockedLevel: 0, selectedBird: 0 };
+        enterGameAsLoggedIn();
+      } catch (err) {
+        errEl.textContent = 'Could not reach account server. Check your internet connection and try again.';
+        btn.disabled = false;
+      }
     };
     [document.getElementById('loginUser'), document.getElementById('loginPass')].forEach(el => {
       el.onkeydown = (ev) => { if (ev.key === 'Enter') document.getElementById('loginBtn').click(); };
@@ -490,15 +521,23 @@
       const pass = document.getElementById('suPass').value;
       const pass2 = document.getElementById('suPass2').value;
       const errEl = document.getElementById('suErr');
+      const btn = document.getElementById('suBtn');
       if (!username || !pass) { errEl.textContent = 'Fill in all fields.'; return; }
       if (username.length < 3) { errEl.textContent = 'Username must be at least 3 characters.'; return; }
       if (pass !== pass2) { errEl.textContent = 'Passwords do not match.'; return; }
-      const existing = await loadAccount(username);
-      if (existing) { errEl.textContent = 'Username already taken.'; return; }
-      profile = { bestScore: 0, unlockedLevel: 0, selectedBird: 0 };
-      currentUser = { username };
-      await saveAccount(username, { passHash: simpleHash(pass), profile });
-      enterGameAsLoggedIn();
+      errEl.textContent = 'Connecting...';
+      btn.disabled = true;
+      try {
+        const existing = await loadAccount(username);
+        if (existing) { errEl.textContent = 'Username already taken.'; btn.disabled = false; return; }
+        profile = { bestScore: 0, unlockedLevel: 0, selectedBird: 0 };
+        currentUser = { username };
+        await saveAccount(username, { passHash: simpleHash(pass), profile });
+        enterGameAsLoggedIn();
+      } catch (err) {
+        errEl.textContent = 'Could not reach account server. Check your internet connection and try again.';
+        btn.disabled = false;
+      }
     };
     [document.getElementById('suUser'), document.getElementById('suPass'), document.getElementById('suPass2')].forEach(el => {
       el.onkeydown = (ev) => { if (ev.key === 'Enter') document.getElementById('suBtn').click(); };
@@ -591,12 +630,17 @@
 
   async function persistProfile() {
     if (!currentUser) return;
-    const acc = await loadAccount(currentUser.username);
-    if (acc) {
-      acc.profile = profile;
-      await saveAccount(currentUser.username, acc);
+    try {
+      const acc = await loadAccount(currentUser.username);
+      if (acc) {
+        acc.profile = profile;
+        await saveAccount(currentUser.username, acc);
+      }
+      userBadge.textContent = currentUser.username + ' - best: ' + profile.bestScore;
+    } catch (e) {
+      console.error('persistProfile failed', e);
+      userBadge.textContent = currentUser.username + ' - best: ' + profile.bestScore + ' (save failed - check internet)';
     }
-    userBadge.textContent = currentUser.username + ' - best: ' + profile.bestScore;
   }
 
   function beginPlaying() {
