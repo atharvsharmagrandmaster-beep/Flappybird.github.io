@@ -3,52 +3,196 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flappy Bird - Play Free Online</title>
-    <meta name="description" content="Play Flappy Bird online for free. Compete for high scores, unlock new birds, and challenge your friends. The classic arcade game is back!" />
-    <meta name="keywords" content="flappy bird, online game, arcade, free game, html5 game" />
-    <link rel="canonical" href="https://atharvsharmagrandmaster-beep.github.io/Flappybird.github.io/" />
+    <title>FlappyBird.io - Play Free Online Flappy Bird Game</title>
+    <meta name="description" content="Play Flappy Bird online for free! Compete for high scores, unlock new birds, and read gaming tips, strategies, and tutorials." />
+    <meta name="keywords" content="flappy bird, online game, arcade, free game, html5 game, gaming tips, web development" />
+    <link rel="canonical" href="https://flappybird.io/" />
 
-    <!-- Google AdSense Auto Ads -->
+    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx"
     crossorigin="anonymous"></script>
 
     <style>
-        /* --- Reset and base --- */
+        /* --- RESET & BASE --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html, body {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background: #1a1a2e;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f0f1a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            color: #9fd6ff;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #ffcc00;
+            text-decoration: underline;
+        }
+
+        /* --- HEADER / NAVIGATION --- */
+        header {
+            background: rgba(20, 20, 40, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 12px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            border-bottom: 2px solid #2a2a4a;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: #ffcc00;
+            text-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
+            letter-spacing: -0.5px;
+        }
+        .logo span {
+            color: #70c5ce;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 12px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ccc;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ffcc00;
+            background: rgba(255, 204, 0, 0.1);
+            text-decoration: none;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 3px;
+            background: #ccc;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* --- PAGE CONTAINER --- */
+        .page {
+            display: none;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 5% 60px;
+            width: 100%;
+            flex: 1;
+        }
+        .page.active {
+            display: block;
+        }
+
+        .page h1 {
+            font-size: clamp(28px, 5vw, 44px);
+            color: #ffcc00;
+            margin-bottom: 16px;
+            border-bottom: 2px solid #2a2a4a;
+            padding-bottom: 12px;
+        }
+
+        .page h2 {
+            font-size: clamp(22px, 3vw, 30px);
+            color: #70c5ce;
+            margin: 24px 0 12px;
+        }
+
+        .page h3 {
+            font-size: clamp(18px, 2vw, 22px);
+            color: #9fd6ff;
+            margin: 18px 0 10px;
+        }
+
+        .page p {
+            font-size: clamp(15px, 1.2vw, 18px);
+            line-height: 1.8;
+            margin-bottom: 14px;
+            color: #d0d0e0;
+        }
+
+        .page ul,
+        .page ol {
+            padding-left: 24px;
+            margin-bottom: 16px;
+        }
+        .page li {
+            font-size: clamp(14px, 1.1vw, 17px);
+            line-height: 1.7;
+            margin-bottom: 6px;
+            color: #d0d0e0;
+        }
+
+        .page img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 12px 0;
+        }
+
+        /* --- GAME SECTION --- */
+        #gameSection {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            font-family: 'Trebuchet MS', Arial, sans-serif;
-            padding: 10px;
         }
 
-        /* --- Main wrapper: game + side ads --- */
-        #mainWrapper {
+        #gameWrapper {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
             width: 100%;
             max-width: 1100px;
-            height: auto;
-            max-height: 90vh;
+            margin: 10px 0;
+            flex-wrap: wrap;
         }
 
-        /* --- Side ad containers --- */
         .side-ad {
             flex: 0 0 auto;
             width: 160px;
@@ -59,13 +203,12 @@
             justify-content: center;
             background: rgba(255, 255, 255, 0.04);
             border-radius: 8px;
-            border: 1px dashed rgba(255, 255, 255, 0.15);
+            border: 1px dashed rgba(255, 255, 255, 0.12);
             color: #666;
             font-size: 12px;
             overflow: hidden;
             position: relative;
         }
-
         .side-ad .ad-label {
             position: absolute;
             top: 4px;
@@ -76,7 +219,6 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
         .side-ad .ad-content {
             display: flex;
             flex-direction: column;
@@ -85,39 +227,24 @@
             gap: 8px;
             padding: 20px 8px;
         }
-
         .side-ad .ad-content .ad-placeholder {
             font-size: 28px;
             opacity: 0.3;
         }
 
-        .side-ad .ad-content span {
-            font-size: 11px;
-            color: #666;
-            text-align: center;
-        }
-
-        /* --- AdSense units inside side ads --- */
-        .side-ad ins.adsbygoogle {
-            display: block;
-            width: 160px;
-            height: 600px;
-        }
-
-        /* --- Game container - scales to fit viewport --- */
         #gameContainer {
             position: relative;
             flex: 0 0 auto;
             width: 400px;
             height: 600px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-            border-radius: 4px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
             overflow: hidden;
             background: #70c5ce;
             aspect-ratio: 400 / 600;
+            max-width: 100%;
         }
 
-        /* Canvas fills container exactly */
         #gameCanvas {
             display: block;
             width: 100%;
@@ -126,7 +253,7 @@
             image-rendering: pixelated;
         }
 
-        /* --- Overlay and HUD --- */
+        /* --- OVERLAY (same as before, slightly adjusted) --- */
         #overlay {
             position: absolute;
             top: 0;
@@ -137,7 +264,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.55);
+            background: rgba(0, 0, 0, 0.6);
             color: #fff;
             text-align: center;
             cursor: pointer;
@@ -145,40 +272,23 @@
             z-index: 10;
             padding: 5%;
         }
-
         #overlay h1 {
             font-size: clamp(24px, 6vw, 42px);
             color: #ffcc00;
             text-shadow: 3px 3px 0 #000;
             margin-bottom: 8px;
-            letter-spacing: 1px;
         }
-
         #overlay p {
             font-size: clamp(12px, 2.5vw, 16px);
             margin: 4px 0;
             text-shadow: 1px 1px 0 #000;
         }
-
         #overlay .score-line {
             font-size: clamp(16px, 3.5vw, 22px);
             color: #fff;
             margin-top: 8px;
             text-shadow: 2px 2px 0 #000;
         }
-
-        #overlay .hint {
-            margin-top: 12px;
-            font-size: clamp(11px, 2vw, 14px);
-            opacity: 0.85;
-            animation: pulse 1.4s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
-        }
-
         #hud {
             position: absolute;
             top: 3%;
@@ -188,33 +298,31 @@
             font-size: clamp(28px, 6vw, 42px);
             font-weight: bold;
             color: #fff;
-            text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+            text-shadow: 2px 2px 0 #000, -1px -1px 0 #000;
             pointer-events: none;
             z-index: 5;
             display: none;
         }
-
         #userBadge {
             position: absolute;
             top: 2%;
             left: 3%;
             font-size: clamp(9px, 1.5vw, 12px);
             color: #fff;
-            background: rgba(0, 0, 0, 0.45);
+            background: rgba(0, 0, 0, 0.5);
             padding: 2px 8px;
             border-radius: 12px;
             z-index: 6;
             display: none;
             white-space: nowrap;
         }
-
         #logoutBtn {
             position: absolute;
             top: 2%;
             right: 3%;
             font-size: clamp(9px, 1.5vw, 12px);
             color: #fff;
-            background: rgba(0, 0, 0, 0.45);
+            background: rgba(0, 0, 0, 0.5);
             padding: 2px 8px;
             border-radius: 12px;
             z-index: 6;
@@ -223,45 +331,15 @@
             border: none;
         }
 
-        /* --- Top ad --- */
-        #ad-top {
-            width: 100%;
-            max-width: 728px;
-            height: auto;
-            min-height: 50px;
-            max-height: 90px;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 4px;
-            border: 1px dashed rgba(255, 255, 255, 0.1);
-            font-size: 12px;
-            color: #666;
-            overflow: hidden;
-        }
-
-        #ad-top ins.adsbygoogle {
-            display: block;
-            width: 728px;
-            height: 90px;
-        }
-
-        /* --- Auth box --- */
+        /* --- AUTH BOX --- */
         .authBox {
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 10px;
             padding: 5% 6%;
             width: 85%;
             max-width: 280px;
         }
-
-        .authBox h1 {
-            font-size: clamp(20px, 4.5vw, 28px) !important;
-        }
-
         .authBox input {
             width: 100%;
             padding: 8px 10px;
@@ -273,7 +351,6 @@
             background: #fff;
             color: #222;
         }
-
         .authBox button {
             width: 100%;
             padding: 8px 10px;
@@ -286,11 +363,9 @@
             font-size: clamp(12px, 2vw, 14px);
             cursor: pointer;
         }
-
         .authBox button:hover {
             background: #ffd83d;
         }
-
         .authBox .switchLink {
             margin-top: 10px;
             font-size: clamp(10px, 1.8vw, 12px);
@@ -299,7 +374,6 @@
             text-decoration: underline;
             display: inline-block;
         }
-
         .authError {
             color: #ff8585;
             font-size: clamp(10px, 1.8vw, 12px);
@@ -307,7 +381,7 @@
             min-height: 14px;
         }
 
-        /* --- Bird gallery --- */
+        /* --- BIRD GALLERY --- */
         .unlockPopup {
             display: flex;
             flex-direction: column;
@@ -315,7 +389,6 @@
             width: 100%;
             max-width: 320px;
         }
-
         .birdGallery {
             display: flex;
             flex-wrap: wrap;
@@ -327,12 +400,11 @@
             padding: 4px;
             width: 100%;
         }
-
         .birdSlot {
             width: 12%;
             min-width: 36px;
             max-width: 48px;
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 1/1;
             border-radius: 8px;
             background: rgba(255, 255, 255, 0.12);
             display: flex;
@@ -342,21 +414,17 @@
             border: 2px solid transparent;
             position: relative;
         }
-
         .birdSlot.locked {
             opacity: 0.25;
             cursor: not-allowed;
         }
-
         .birdSlot.selected {
             border-color: #ffcc00;
         }
-
         .birdSlot canvas {
             width: 70%;
             height: auto;
         }
-
         .birdSlot .lvl {
             position: absolute;
             bottom: -2px;
@@ -368,7 +436,6 @@
             padding: 1px 4px;
             line-height: 1;
         }
-
         .smallBtn {
             padding: 5px 14px;
             border-radius: 6px;
@@ -381,97 +448,122 @@
             margin-top: 4px;
         }
 
-        /* --- Footer --- */
-        #footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            color: #aaa;
-            text-align: center;
-            padding: 4px 0;
-            font-size: clamp(9px, 1.5vw, 12px);
-            z-index: 20;
-            backdrop-filter: blur(4px);
+        /* --- BLOG CARDS --- */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
         }
 
-        #footer a {
-            color: #9fd6ff;
-            text-decoration: none;
-            margin: 0 8px;
-            transition: color 0.2s;
-        }
-
-        #footer a:hover {
-            color: #ffcc00;
-            text-decoration: underline;
-        }
-
-        /* --- Modal styles --- */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 100;
-            overflow-y: auto;
-            padding: 20px;
-        }
-
-        .modal-content {
-            max-width: 700px;
-            margin: 20px auto;
-            background: #1a1a2e;
-            color: #eee;
-            padding: 24px;
+        .blog-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #2a2a4a;
             border-radius: 10px;
-            border: 1px solid #444;
-            position: relative;
+            padding: 18px;
+            transition: all 0.3s;
+        }
+        .blog-card:hover {
+            transform: translateY(-4px);
+            border-color: #ffcc00;
+            box-shadow: 0 8px 30px rgba(255, 204, 0, 0.1);
+        }
+        .blog-card h3 {
+            color: #ffcc00;
+            margin: 0 0 8px;
+            font-size: clamp(16px, 1.4vw, 20px);
+        }
+        .blog-card .meta {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+        .blog-card p {
+            font-size: 14px;
+            color: #bbb;
+            line-height: 1.6;
+        }
+        .blog-card .read-more {
+            display: inline-block;
+            margin-top: 10px;
+            color: #9fd6ff;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        .blog-card .read-more:hover {
+            color: #ffcc00;
         }
 
-        .modal-content h1 { color: #ffcc00; margin-bottom: 16px; font-size: clamp(22px, 4.5vw, 32px); }
-        .modal-content h3 { color: #9fd6ff; margin-top: 16px; font-size: clamp(16px, 2.8vw, 20px); }
-        .modal-content p, .modal-content li { font-size: clamp(13px, 2.2vw, 16px); line-height: 1.6; }
-        .modal-content ul { padding-left: 20px; margin: 8px 0; }
-
-        .close-btn {
-            position: absolute;
-            top: 8px;
-            right: 12px;
-            background: transparent;
-            border: none;
-            color: #fff;
-            font-size: 28px;
-            cursor: pointer;
-        }
-
-        .modal-btn {
-            margin-top: 16px;
-            padding: 8px 20px;
-            background: #ffcc00;
-            border: none;
+        /* --- TOP AD --- */
+        #ad-top {
+            width: 100%;
+            max-width: 728px;
+            height: auto;
+            min-height: 50px;
+            max-height: 90px;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
+            border: 1px dashed rgba(255, 255, 255, 0.08);
+            font-size: 12px;
+            color: #555;
+            overflow: hidden;
         }
 
-        /* --- Responsive --- */
+        /* --- FOOTER --- */
+        footer {
+            background: rgba(10, 10, 25, 0.95);
+            border-top: 2px solid #2a2a4a;
+            padding: 20px 5%;
+            text-align: center;
+            font-size: 13px;
+            color: #888;
+            margin-top: auto;
+        }
+        footer a {
+            color: #9fd6ff;
+            margin: 0 10px;
+        }
+        footer a:hover {
+            color: #ffcc00;
+        }
+        footer .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px 16px;
+            margin: 10px 0;
+        }
+
+        /* --- RESPONSIVE --- */
         @media (max-width: 850px) {
             .side-ad {
                 display: none !important;
             }
-            #mainWrapper {
+            #gameWrapper {
                 gap: 0;
             }
             #gameContainer {
                 width: 100%;
-                max-width: 500px;
+                max-width: 480px;
                 height: auto;
-                aspect-ratio: 400 / 600;
+                aspect-ratio: 400/600;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                padding: 12px 0 4px;
+                gap: 4px;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+            .hamburger {
+                display: flex;
             }
         }
 
@@ -480,181 +572,529 @@
                 min-height: 40px;
                 max-height: 60px;
             }
-            #ad-top ins.adsbygoogle {
-                width: 320px;
-                height: 50px;
+            header {
+                padding: 8px 4%;
             }
-            .modal-content { padding: 16px; margin: 10px; }
-            body { padding: 4px; }
+            .logo {
+                font-size: 18px;
+            }
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            .page {
+                padding: 0 4% 40px;
+                margin: 10px auto;
+            }
+        }
+
+        /* --- MODAL (for legal pages overlay) --- */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 100;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .modal-content {
+            max-width: 760px;
+            margin: 20px auto;
+            background: #1a1a2e;
+            color: #eee;
+            padding: 28px;
+            border-radius: 12px;
+            border: 1px solid #444;
+            position: relative;
+        }
+        .modal-content h1 {
+            color: #ffcc00;
+            margin-bottom: 16px;
+            font-size: clamp(24px, 4vw, 34px);
+        }
+        .modal-content h2 {
+            color: #70c5ce;
+            font-size: clamp(18px, 2.5vw, 24px);
+            margin: 20px 0 10px;
+        }
+        .modal-content p,
+        .modal-content li {
+            font-size: clamp(14px, 1.2vw, 17px);
+            line-height: 1.7;
+        }
+        .modal-content ul {
+            padding-left: 20px;
+            margin: 8px 0;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 32px;
+            cursor: pointer;
+        }
+        .modal-btn {
+            margin-top: 16px;
+            padding: 8px 24px;
+            background: #ffcc00;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 15px;
+        }
+        .modal-btn:hover {
+            background: #ffd83d;
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Ad Slot -->
+    <!-- ========== HEADER ========== -->
+    <header>
+        <nav>
+            <div class="logo">Flappy<span>Bird</span>.io</div>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="active" data-page="home">Home</a></li>
+                <li><a href="#" data-page="play">Play Flappy Bird</a></li>
+                <li><a href="#" data-page="howto">How to Play</a></li>
+                <li><a href="#" data-page="blog">Blog</a></li>
+                <li><a href="#" data-page="about">About</a></li>
+                <li><a href="#" data-page="contact">Contact</a></li>
+                <li><a href="#" data-page="privacy">Privacy Policy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ========== TOP AD ========== -->
     <div id="ad-top">
         <span>Advertisement</span>
-        <!-- Uncomment below and add your ad unit ID:
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:728px;height:90px"
-             data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
-             data-ad-slot="xxxxxxxxxx"></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        -->
+        <!-- <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-xxxxxxxxxxxxxxxx" data-ad-slot="xxxxxxxxxx"></ins> -->
     </div>
 
-    <!-- Main Wrapper: Left Ad + Game + Right Ad -->
-    <div id="mainWrapper">
+    <!-- ========== PAGES ========== -->
 
-        <!-- LEFT SIDE AD -->
-        <div class="side-ad" id="leftAd">
-            <div class="ad-label">Advertisement</div>
-            <div class="ad-content">
-                <div class="ad-placeholder">📢</div>
-                <span>160x600</span>
-                <span style="font-size:9px;color:#555;">Ad space</span>
+    <!-- HOME -->
+    <section class="page active" id="page-home">
+        <h1>Welcome to FlappyBird.io</h1>
+        <p>The classic arcade game is back — better than ever! Flap your way through pipes, unlock new birds, and compete for the highest score. Whether you're a casual gamer or a hardcore competitor, there's something for everyone.</p>
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin:16px 0;">
+            <a href="#" data-page="play" class="smallBtn" style="padding:10px 24px; font-size:16px;">▶ Play Now</a>
+            <a href="#" data-page="howto" class="smallBtn" style="padding:10px 24px; font-size:16px; background:#9fd6ff;">📖 How to Play</a>
+            <a href="#" data-page="blog" class="smallBtn" style="padding:10px 24px; font-size:16px; background:#70c5ce;">📝 Blog</a>
+        </div>
+
+        <h2>🔥 Latest from the Blog</h2>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <h3>10 Flappy Bird Tips to Skyrocket Your Score</h3>
+                <div class="meta">June 20, 2026 • 5 min read</div>
+                <p>Master the game with these pro strategies — from timing your flaps to staying calm under pressure.</p>
+                <a href="#" data-page="blog" class="read-more">Read More →</a>
             </div>
-            <!-- Uncomment below for real AdSense unit:
-            <ins class="adsbygoogle"
-                 style="display:block;width:160px;height:600px"
-                 data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
-                 data-ad-slot="xxxxxxxxxx"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            -->
-        </div>
-
-        <!-- GAME CONTAINER -->
-        <div id="gameContainer">
-            <canvas id="gameCanvas" width="400" height="600"></canvas>
-            <div id="hud">0</div>
-            <div id="userBadge"></div>
-            <button id="logoutBtn">Log out</button>
-            <div id="overlay"></div>
-        </div>
-
-        <!-- RIGHT SIDE AD -->
-        <div class="side-ad" id="rightAd">
-            <div class="ad-label">Advertisement</div>
-            <div class="ad-content">
-                <div class="ad-placeholder">📢</div>
-                <span>160x600</span>
-                <span style="font-size:9px;color:#555;">Ad space</span>
+            <div class="blog-card">
+                <h3>How to Build a Flappy Bird Clone in HTML5</h3>
+                <div class="meta">June 18, 2026 • 8 min read</div>
+                <p>Learn step-by-step how to create your own Flappy Bird game using Canvas, JavaScript, and CSS.</p>
+                <a href="#" data-page="blog" class="read-more">Read More →</a>
             </div>
-            <!-- Uncomment below for real AdSense unit:
-            <ins class="adsbygoogle"
-                 style="display:block;width:160px;height:600px"
-                 data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
-                 data-ad-slot="xxxxxxxxxx"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            -->
+            <div class="blog-card">
+                <h3>Why Flappy Bird Still Captivates Players in 2026</h3>
+                <div class="meta">June 15, 2026 • 4 min read</div>
+                <p>Explore the psychology and game design that made Flappy Bird an enduring viral sensation.</p>
+                <a href="#" data-page="blog" class="read-more">Read More →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLAY -->
+    <section class="page" id="page-play">
+        <h1>Play Flappy Bird</h1>
+        <p>Click, tap, or press <kbd>Space</kbd> to flap. Score 10 to unlock new birds!</p>
+
+        <div id="gameWrapper">
+            <!-- LEFT AD -->
+            <div class="side-ad" id="leftAd">
+                <div class="ad-label">Advertisement</div>
+                <div class="ad-content">
+                    <div class="ad-placeholder">📢</div>
+                    <span>160×600</span>
+                </div>
+            </div>
+
+            <!-- GAME -->
+            <div id="gameContainer">
+                <canvas id="gameCanvas" width="400" height="600"></canvas>
+                <div id="hud">0</div>
+                <div id="userBadge"></div>
+                <button id="logoutBtn">Log out</button>
+                <div id="overlay"></div>
+            </div>
+
+            <!-- RIGHT AD -->
+            <div class="side-ad" id="rightAd">
+                <div class="ad-label">Advertisement</div>
+                <div class="ad-content">
+                    <div class="ad-placeholder">📢</div>
+                    <span>160×600</span>
+                </div>
+            </div>
         </div>
 
-    </div>
+        <p style="margin-top:12px; text-align:center; color:#888; font-size:14px;">
+            💡 <strong>Pro Tip:</strong> Focus on the gap, not the bird. Tap consistently, not frantically.
+        </p>
+    </section>
 
-    <!-- Footer -->
-    <div id="footer">
-        <a href="#privacy" onclick="showPrivacy()">Privacy Policy</a>
-        <a href="#terms" onclick="showTerms()">Terms of Service</a>
-        <a href="#contact" onclick="showContact()">Contact</a>
-        <span style="margin:0 8px;color:#555;">|</span>
-        <span>&copy; 2026 FlappyBird.io</span>
-    </div>
+    <!-- HOW TO PLAY -->
+    <section class="page" id="page-howto">
+        <h1>How to Play Flappy Bird</h1>
+        <p>Flappy Bird is a simple but challenging arcade game. Here's everything you need to know:</p>
 
-    <!-- Privacy Policy Modal -->
-    <div id="privacyModal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closeModal()">&times;</button>
-            <h1>Privacy Policy</h1>
-            <p><strong>Last updated:</strong> June 21, 2026</p>
-            <p>This Privacy Policy describes how FlappyBird.io ("we", "our", or "us") collects, uses, and shares your personal information when you use our game and website.</p>
-            <h3>1. Information We Collect</h3>
-            <p>We collect minimal information to provide and improve our service:</p>
-            <ul>
-                <li><strong>Account Data:</strong> Username and password hash (stored securely via JSONBin).</li>
-                <li><strong>Game Progress:</strong> Your high score and unlocked birds.</li>
-                <li><strong>Usage Data:</strong> Anonymous analytics via Google AdSense (cookies).</li>
-            </ul>
-            <h3>2. How We Use Your Data</h3>
-            <ul>
-                <li>To authenticate you and save your game progress.</li>
-                <li>To display personalized ads via Google AdSense.</li>
-                <li>To improve our game and user experience.</li>
-            </ul>
-            <h3>3. Cookies &amp; Third-Party Services</h3>
-            <p>We use Google AdSense, which may place cookies on your device to serve relevant ads. You can manage cookie preferences in your browser settings.</p>
-            <h3>4. Data Security</h3>
-            <p>Your password is hashed and never stored in plain text. However, no method of transmission over the internet is 100% secure. Use the service at your own risk.</p>
-            <h3>5. Your Rights</h3>
-            <p>You may request deletion of your account and associated data by contacting us via the <a href="#contact" onclick="closeModal();showContact();" style="color:#ffcc00;">Contact</a> page.</p>
-            <p style="margin-top:16px;">By using our site, you consent to this Privacy Policy.</p>
-            <button class="modal-btn" onclick="closeModal()">Close</button>
+        <h2>🎯 Objective</h2>
+        <p>Navigate the bird through a series of green pipes without hitting them. Each pipe you pass gives you <strong>1 point</strong>. The game ends when you hit a pipe or the ground.</p>
+
+        <h2>🕹️ Controls</h2>
+        <ul>
+            <li><strong>Click / Tap:</strong> Click or tap anywhere on the game screen to make the bird flap upward.</li>
+            <li><strong>Spacebar:</strong> Press the <kbd>Space</kbd> key on your keyboard.</li>
+            <li><strong>Up Arrow:</strong> Press the <kbd>↑</kbd> key as an alternative.</li>
+        </ul>
+
+        <h2>🐦 Unlockable Birds</h2>
+        <ul>
+            <li>Score <strong>10 points</strong> to unlock your first new bird.</li>
+            <li>Every <strong>10 points</strong> up to 1000 unlocks a new bird design.</li>
+            <li>Reach <strong>1000 points</strong> to unlock the legendary <strong>Boss Bird</strong>!</li>
+            <li>Visit the <strong>"My Birds"</strong> gallery to select your favorite.</li>
+        </ul>
+
+        <h2>💡 Pro Strategies</h2>
+        <ul>
+            <li><strong>Stay low:</strong> Flying too high makes it harder to react to pipes.</li>
+            <li><strong>Tap rhythmically:</strong> Find a steady rhythm that matches the pipe gaps.</li>
+            <li><strong>Focus on the gap:</strong> Look at the space between pipes, not the bird itself.</li>
+            <li><strong>Practice:</strong> The more you play, the better your muscle memory gets.</li>
+        </ul>
+    </section>
+
+    <!-- BLOG -->
+    <section class="page" id="page-blog">
+        <h1>Blog</h1>
+        <p>Gaming tips, development tutorials, and behind-the-scenes stories.</p>
+
+        <div class="blog-grid">
+            <!-- Article 1 -->
+            <div class="blog-card">
+                <h3>10 Flappy Bird Tips to Skyrocket Your Score</h3>
+                <div class="meta">June 20, 2026 • 5 min read</div>
+                <p>From timing your flaps to reading pipe patterns — these 10 pro tips will help you beat your high score every time.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+
+            <!-- Article 2 -->
+            <div class="blog-card">
+                <h3>How to Build a Flappy Bird Clone in HTML5</h3>
+                <div class="meta">June 18, 2026 • 8 min read</div>
+                <p>A complete step-by-step tutorial on building Flappy Bird with Canvas, JavaScript, and CSS. Perfect for beginners!</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+
+            <!-- Article 3 -->
+            <div class="blog-card">
+                <h3>Why Flappy Bird Still Captivates Players in 2026</h3>
+                <div class="meta">June 15, 2026 • 4 min read</div>
+                <p>Discover the psychology, game design, and cultural impact behind one of the most addictive mobile games ever.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+
+            <!-- Article 4 -->
+            <div class="blog-card">
+                <h3>Game Design 101: What Makes a Game Addictive?</h3>
+                <div class="meta">June 12, 2026 • 6 min read</div>
+                <p>Explore the core principles of addictive game design — from feedback loops to challenge curves.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+
+            <!-- Article 5 -->
+            <div class="blog-card">
+                <h3>JavaScript Canvas: A Beginner's Guide</h3>
+                <div class="meta">June 10, 2026 • 7 min read</div>
+                <p>Learn the fundamentals of the HTML5 Canvas API — the foundation of browser-based games like Flappy Bird.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+
+            <!-- Article 6 -->
+            <div class="blog-card">
+                <h3>CSS Animations for Game UI</h3>
+                <div class="meta">June 8, 2026 • 5 min read</div>
+                <p>Enhance your game's interface with smooth CSS animations — from hover effects to score popups.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+
+            <!-- Article 7 -->
+            <div class="blog-card">
+                <h3>Optimizing HTML5 Games for Mobile</h3>
+                <div class="meta">June 5, 2026 • 6 min read</div>
+                <p>Learn how to make your browser games run smoothly on phones and tablets with responsive design and performance tips.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+
+            <!-- Article 8 -->
+            <div class="blog-card">
+                <h3>The History of Flappy Bird: Rise and Fall</h3>
+                <div class="meta">June 2, 2026 • 4 min read</div>
+                <p>The story of how a simple indie game became a global phenomenon — and why its creator pulled it from app stores.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+
+            <!-- Article 9 -->
+            <div class="blog-card">
+                <h3>From Zero to Hero: My Flappy Bird Journey</h3>
+                <div class="meta">May 30, 2026 • 3 min read</div>
+                <p>One player's story of going from a score of 0 to 200+ — with the lessons learned along the way.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+
+            <!-- Article 10 -->
+            <div class="blog-card">
+                <h3>Building a High Score System with JSONBin</h3>
+                <div class="meta">May 28, 2026 • 7 min read</div>
+                <p>Learn how to build a cloud-based leaderboard for your HTML5 games using the JSONBin API.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+
+            <!-- Article 11 -->
+            <div class="blog-card">
+                <h3>Responsive Design for Game Websites</h3>
+                <div class="meta">May 25, 2026 • 5 min read</div>
+                <p>Ensure your game looks great on every device with flexible layouts, media queries, and fluid grids.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+
+            <!-- Article 12 -->
+            <div class="blog-card">
+                <h3>Monetizing Your HTML5 Game with AdSense</h3>
+                <div class="meta">May 22, 2026 • 6 min read</div>
+                <p>A practical guide to integrating Google AdSense into your game website while maintaining a good user experience.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+
+            <!-- Article 13 -->
+            <div class="blog-card">
+                <h3>Game Physics: Simulating Gravity in JavaScript</h3>
+                <div class="meta">May 20, 2026 • 5 min read</div>
+                <p>Understand the math behind gravity, velocity, and collision detection in 2D games.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+
+            <!-- Article 14 -->
+            <div class="blog-card">
+                <h3>10 Common Mistakes in Game Development</h3>
+                <div class="meta">May 18, 2026 • 6 min read</div>
+                <p>Learn from the most frequent pitfalls faced by indie game developers — and how to avoid them.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+
+            <!-- Article 15 -->
+            <div class="blog-card">
+                <h3>Flappy Bird Community: Best Fan Games</h3>
+                <div class="meta">May 15, 2026 • 4 min read</div>
+                <p>Explore the most creative and fun Flappy Bird fan games made by players around the world.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+
+            <!-- Article 16 -->
+            <div class="blog-card">
+                <h3>How to Use GitHub Pages for Game Hosting</h3>
+                <div class="meta">May 12, 2026 • 5 min read</div>
+                <p>Deploy your HTML5 game for free with GitHub Pages — perfect for indie developers and hobbyists.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+
+            <!-- Article 17 -->
+            <div class="blog-card">
+                <h3>Game Audio: Adding Sound Effects to HTML5 Games</h3>
+                <div class="meta">May 10, 2026 • 4 min read</div>
+                <p>Use the Web Audio API to add sound effects and background music to your browser games.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+
+            <!-- Article 18 -->
+            <div class="blog-card">
+                <h3>Designing a Custom Domain for Your Game</h3>
+                <div class="meta">May 8, 2026 • 3 min read</div>
+                <p>Why a custom domain matters — and how to set one up for your game website.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+
+            <!-- Article 19 -->
+            <div class="blog-card">
+                <h3>From Mobile to Browser: Porting Flappy Bird</h3>
+                <div class="meta">May 5, 2026 • 6 min read</div>
+                <p>How to adapt a mobile game for the browser — tackling touch events, screen sizes, and performance.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+
+            <!-- Article 20 -->
+            <div class="blog-card">
+                <h3>Why Simplicity Wins in Game Design</h3>
+                <div class="meta">May 2, 2026 • 4 min read</div>
+                <p>A deep dive into why simple, polished games like Flappy Bird often outperform complex, bloated ones.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Terms of Service Modal -->
-    <div id="termsModal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closeModal()">&times;</button>
-            <h1>Terms of Service</h1>
-            <p><strong>Last updated:</strong> June 21, 2026</p>
-            <p>Welcome to FlappyBird.io! By using our game and website, you agree to the following terms:</p>
-            <h3>1. Acceptance of Terms</h3>
-            <p>By creating an account or playing the game, you agree to these Terms of Service. If you do not agree, please do not use our service.</p>
-            <h3>2. User Accounts</h3>
-            <ul>
-                <li>You are responsible for maintaining the confidentiality of your password.</li>
-                <li>You agree to provide accurate information during sign-up.</li>
-                <li>We reserve the right to terminate accounts that violate these terms.</li>
-            </ul>
-            <h3>3. Acceptable Use</h3>
-            <p>You agree not to:</p>
-            <ul>
-                <li>Use the service for any illegal or unauthorized purpose.</li>
-                <li>Attempt to hack, disrupt, or exploit the game or its backend.</li>
-                <li>Share or impersonate another user's account.</li>
-            </ul>
-            <h3>4. Intellectual Property</h3>
-            <p>All game code, art, and design are the property of FlappyBird.io. You may not copy, modify, or distribute any part without permission.</p>
-            <h3>5. Disclaimer of Warranties</h3>
-            <p>The game is provided "as is" without warranties of any kind. We are not liable for any losses or damages arising from your use of the service.</p>
-            <button class="modal-btn" onclick="closeModal()">Close</button>
+    <!-- ABOUT -->
+    <section class="page" id="page-about">
+        <h1>About FlappyBird.io</h1>
+        <p>FlappyBird.io is a fan-made tribute to the classic Flappy Bird game that took the world by storm in 2013. We rebuilt it from scratch using modern web technologies — HTML5 Canvas, CSS3, and vanilla JavaScript — to bring the addictive experience back to browsers everywhere.</p>
+
+        <h2>🌟 Our Mission</h2>
+        <p>We believe that great games should be accessible to everyone, anywhere, on any device. That's why FlappyBird.io is:</p>
+        <ul>
+            <li><strong>100% Free:</strong> No paywalls, no in-app purchases.</li>
+            <li><strong>Cross-Platform:</strong> Play on desktop, tablet, or phone.</li>
+            <li><strong>Privacy-First:</strong> We collect minimal data — only what's needed to save your progress.</li>
+        </ul>
+
+        <h2>👨‍💻 About the Developer</h2>
+        <p>This project was created by <strong>Atharv Sharma</strong>, a passionate game developer and web enthusiast. With a love for retro arcade games and clean code, Atharv built this site to share the joy of Flappy Bird with a new generation of players.</p>
+
+        <h2>📬 Get in Touch</h2>
+        <p>Have questions, suggestions, or just want to say hi? Reach out via the <a href="#" data-page="contact">Contact</a> page — we'd love to hear from you!</p>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="page" id="page-contact">
+        <h1>Contact Us</h1>
+        <p>Have questions, feedback, or partnership ideas? We're all ears!</p>
+
+        <div style="max-width:500px; margin:20px 0;">
+            <p style="font-size:18px;">📧 <a href="mailto:atharvsharmagrandmaster@gmail.com">atharvsharmagrandmaster@gmail.com</a></p>
+            <p style="font-size:16px; color:#888; margin-top:8px;">We typically respond within 24–48 hours.</p>
         </div>
-    </div>
 
-    <!-- Contact Modal -->
-    <div id="contactModal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="close-btn" onclick="closeModal()">&times;</button>
-            <h1>Contact Us</h1>
-            <p>Have questions, feedback, or need help? Reach out to us:</p>
-            <p style="margin:16px 0;font-size:clamp(16px, 2.8vw, 20px);">📧 <a href="mailto:atharvsharmagrandmaster@gmail.com" style="color:#9fd6ff;">atharvsharmagrandmaster@gmail.com</a></p>
-            <p>We typically respond within 24-48 hours.</p>
-            <p style="margin-top:16px;">You can also reach us on social media (links coming soon).</p>
-            <button class="modal-btn" onclick="closeModal()">Close</button>
+        <h2>💬 Social Media</h2>
+        <p>Follow us for updates, tips, and community highlights:</p>
+        <ul>
+            <li>🐦 Twitter / X: <a href="#">@FlappyBirdIO</a></li>
+            <li>📸 Instagram: <a href="#">@FlappyBirdIO</a></li>
+            <li>▶️ YouTube: <a href="#">FlappyBird Gameplay</a></li>
+        </ul>
+
+        <h2>📩 Business Inquiries</h2>
+        <p>For sponsorship, advertising, or collaboration opportunities, email us directly at the address above with "Business Inquiry" in the subject line.</p>
+    </section>
+
+    <!-- PRIVACY POLICY -->
+    <section class="page" id="page-privacy">
+        <h1>Privacy Policy</h1>
+        <p><strong>Last updated:</strong> June 21, 2026</p>
+
+        <p>FlappyBird.io ("we", "our", or "us") respects your privacy. This policy explains how we collect, use, and protect your personal information.</p>
+
+        <h2>1. Information We Collect</h2>
+        <ul>
+            <li><strong>Account Data:</strong> Username and password hash (stored via JSONBin).</li>
+            <li><strong>Game Progress:</strong> Your high score and unlocked birds.</li>
+            <li><strong>Usage Data:</strong> Anonymous analytics via Google AdSense (cookies).</li>
+        </ul>
+
+        <h2>2. How We Use Your Data</h2>
+        <ul>
+            <li>To authenticate your account and save game progress.</li>
+            <li>To display relevant ads via Google AdSense.</li>
+            <li>To improve the game based on user behavior.</li>
+        </ul>
+
+        <h2>3. Cookies & Third-Party Services</h2>
+        <p>We use Google AdSense, which may set cookies on your browser to serve personalized ads. You can manage cookie preferences in your browser settings.</p>
+
+        <h2>4. Data Security</h2>
+        <p>Your password is hashed — never stored in plain text. However, no online service is 100% secure. Use at your own risk.</p>
+
+        <h2>5. Your Rights</h2>
+        <p>You may request account deletion or data removal by contacting us via the <a href="#" data-page="contact">Contact</a> page.</p>
+
+        <h2>6. Changes to This Policy</h2>
+        <p>We may update this policy occasionally. Check back for the latest version.</p>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="footer-links">
+            <a href="#" data-page="home">Home</a>
+            <a href="#" data-page="play">Play</a>
+            <a href="#" data-page="howto">How to Play</a>
+            <a href="#" data-page="blog">Blog</a>
+            <a href="#" data-page="about">About</a>
+            <a href="#" data-page="contact">Contact</a>
+            <a href="#" data-page="privacy">Privacy Policy</a>
         </div>
-    </div>
+        <p>&copy; 2026 FlappyBird.io — Made with ❤️ by Atharv Sharma</p>
+    </footer>
 
+    <!-- ========== SCRIPTS ========== -->
+
+    <!-- Navigation -->
     <script>
-        // --- Modal controls ---
-        function showPrivacy() { document.getElementById('privacyModal').style.display = 'block'; }
-        function showTerms() { document.getElementById('termsModal').style.display = 'block'; }
-        function showContact() { document.getElementById('contactModal').style.display = 'block'; }
-
-        function closeModal() {
-            document.getElementById('privacyModal').style.display = 'none';
-            document.getElementById('termsModal').style.display = 'none';
-            document.getElementById('contactModal').style.display = 'none';
-        }
-
-        window.onclick = function(e) {
-            const modals = ['privacyModal', 'termsModal', 'contactModal'];
-            modals.forEach(id => {
-                const el = document.getElementById(id);
-                if (e.target === el) el.style.display = 'none';
-            });
+        // --- PAGE NAVIGATION ---
+        const navLinks = document.querySelectorAll('.nav-links a, .footer-links a, [data-page]');
+        const pages = {
+            home: document.getElementById('page-home'),
+            play: document.getElementById('page-play'),
+            howto: document.getElementById('page-howto'),
+            blog: document.getElementById('page-blog'),
+            about: document.getElementById('page-about'),
+            contact: document.getElementById('page-contact'),
+            privacy: document.getElementById('page-privacy')
         };
 
-        // --- GAME CODE (unchanged, using internal 400x600 coords) ---
+        function showPage(pageId) {
+            // Hide all
+            Object.values(pages).forEach(p => p.classList.remove('active'));
+            // Show target
+            if (pages[pageId]) pages[pageId].classList.add('active');
+            // Update nav active state
+            document.querySelectorAll('.nav-links a').forEach(a => {
+                a.classList.toggle('active', a.dataset.page === pageId);
+            });
+            // Close mobile menu
+            document.getElementById('navLinks').classList.remove('open');
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Handle all navigation clicks
+        document.addEventListener('click', function(e) {
+            const link = e.target.closest('[data-page]');
+            if (link) {
+                e.preventDefault();
+                const page = link.dataset.page;
+                if (pages[page]) showPage(page);
+            }
+        });
+
+        // Hamburger
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+
+        // --- GAME CODE (same as before, with minor adjustments) ---
         (function() {
             const canvas = document.getElementById('gameCanvas');
             const ctx = canvas.getContext('2d');
@@ -663,10 +1103,11 @@
             const userBadge = document.getElementById('userBadge');
             const logoutBtn = document.getElementById('logoutBtn');
 
-            const W = 400;
-            const H = 600;
-            const GROUND_Y = H * 0.75;
+            const W = 400,
+                H = 600,
+                GROUND_Y = H * 0.75;
 
+            // --- BIRD DEFINITIONS ---
             const BASE_PALETTE = [
                 { body: '#ffd23f', wing: '#ffb700', name: 'Classic' },
                 { body: '#e24b4a', wing: '#a32d2d', name: 'Crimson' },
@@ -698,32 +1139,36 @@
                 { type: 'star', color: 'dark' }
             ];
 
+            function shadeColor(hex, percent) {
+                let r = parseInt(hex.substring(1, 3), 16),
+                    g = parseInt(hex.substring(3, 5), 16),
+                    b = parseInt(hex.substring(5, 7), 16);
+                r = Math.min(255, Math.max(0, r + percent));
+                g = Math.min(255, Math.max(0, g + percent));
+                b = Math.min(255, Math.max(0, b + percent));
+                return `rgb(${r},${g},${b})`;
+            }
+
+            function lightenForAccent(hex) { return shadeColor(hex, 90); }
+
+            function darkenForAccent(hex) { return shadeColor(hex, -60); }
+
             function buildBirdDefs() {
                 const defs = [{ level: 0, name: 'Classic', body: BASE_PALETTE[0].body, wing: BASE_PALETTE[0].wing,
                     accent: null }];
-                const tierCount = 99;
-                for (let i = 1; i <= tierCount; i++) {
+                for (let i = 1; i <= 99; i++) {
                     const level = i * 10;
                     const palette = BASE_PALETTE[i % BASE_PALETTE.length];
                     const accentDef = ACCENTS[i % ACCENTS.length];
                     const accentColor = accentDef.color === 'light' ? lightenForAccent(palette.body) :
                         darkenForAccent(palette.wing);
-                    defs.push({
-                        level,
-                        name: palette.name + ' ' + (Math.floor(i / BASE_PALETTE.length) + 1),
-                        body: palette.body,
-                        wing: palette.wing,
-                        accent: accentDef.type,
-                        accentColor
-                    });
+                    defs.push({ level, name: palette.name + ' ' + (Math.floor(i / BASE_PALETTE.length) + 1),
+                        body: palette.body, wing: palette.wing, accent: accentDef.type, accentColor });
                 }
                 defs.push({ level: 1000, name: 'Boss Bird', body: '#2C2C2A', wing: '#171716', accent: 'crown',
                     accentColor: '#FFD700' });
                 return defs;
             }
-
-            function lightenForAccent(hex) { return shadeColor(hex, 90); }
-            function darkenForAccent(hex) { return shadeColor(hex, -60); }
 
             const BIRD_DEFS = buildBirdDefs();
 
@@ -735,10 +1180,7 @@
             const JSONBIN_BASE = 'https://api.jsonbin.io/v3/b/' + JSONBIN_BIN_ID;
 
             async function fetchAllAccounts() {
-                const res = await fetch(JSONBIN_BASE + '/latest', {
-                    method: 'GET',
-                    headers: { 'X-Master-Key': JSONBIN_MASTER_KEY }
-                });
+                const res = await fetch(JSONBIN_BASE + '/latest', { method: 'GET', headers: { 'X-Master-Key': JSONBIN_MASTER_KEY } });
                 if (!res.ok) throw new Error('Failed to reach account server (status ' + res.status + ')');
                 const data = await res.json();
                 return (data.record && data.record.accounts) ? data.record.accounts : {};
@@ -747,10 +1189,7 @@
             async function writeAllAccounts(accountsObj) {
                 const res = await fetch(JSONBIN_BASE, {
                     method: 'PUT',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-Master-Key': JSONBIN_MASTER_KEY
-                    },
+                    headers: { 'Content-Type': 'application/json', 'X-Master-Key': JSONBIN_MASTER_KEY },
                     body: JSON.stringify({ accounts: accountsObj })
                 });
                 if (!res.ok) throw new Error('Failed to save to account server (status ' + res.status + ')');
@@ -759,12 +1198,9 @@
             async function loadAccount(username) {
                 try {
                     const accounts = await fetchAllAccounts();
-                    const key = username.toLowerCase();
-                    return accounts[key] || null;
-                } catch (e) {
-                    console.error('loadAccount failed', e);
-                    throw e;
-                }
+                    return accounts[username.toLowerCase()] || null;
+                } catch (e) { console.error('loadAccount failed', e);
+                    throw e; }
             }
 
             async function saveAccount(username, data) {
@@ -775,10 +1211,8 @@
 
             function simpleHash(str) {
                 let hash = 0;
-                for (let i = 0; i < str.length; i++) {
-                    hash = ((hash << 5) - hash) + str.charCodeAt(i);
-                    hash |= 0;
-                }
+                for (let i = 0; i < str.length; i++) { hash = ((hash << 5) - hash) + str.charCodeAt(i);
+                    hash |= 0; }
                 return String(hash);
             }
 
@@ -787,21 +1221,20 @@
             let state = STATE.AUTH_CHOICE;
 
             const bird = { x: 90, y: H / 2, w: 34, h: 26, vy: 0, rotation: 0 };
-            const GRAVITY = 0.45;
-            const FLAP_VELOCITY = -8;
-            const MAX_FALL_SPEED = 10;
-
-            const PIPE_WIDTH = 60;
-            const PIPE_GAP = 150;
-            const PIPE_SPEED = 2.6;
-            const PIPE_SPACING = 220;
-            let pipes = [];
-            let clouds = [];
-            let score = 0;
-            let frame = 0;
-            let groundOffset = 0;
-            let flashAlpha = 0;
-            let crownGlow = 0;
+            const GRAVITY = 0.45,
+                FLAP_VELOCITY = -8,
+                MAX_FALL_SPEED = 10;
+            const PIPE_WIDTH = 60,
+                PIPE_GAP = 150,
+                PIPE_SPEED = 2.6,
+                PIPE_SPACING = 220;
+            let pipes = [],
+                clouds = [],
+                score = 0,
+                frame = 0,
+                groundOffset = 0,
+                flashAlpha = 0,
+                crownGlow = 0;
 
             function initClouds() {
                 clouds = [];
@@ -816,8 +1249,8 @@
             }
 
             function addPipe(x) {
-                const minTop = 60;
-                const maxTop = GROUND_Y - PIPE_GAP - 60;
+                const minTop = 60,
+                    maxTop = GROUND_Y - PIPE_GAP - 60;
                 const topHeight = minTop + Math.random() * (maxTop - minTop);
                 pipes.push({ x, topHeight, bottomY: topHeight + PIPE_GAP, passed: false });
             }
@@ -838,10 +1271,10 @@
                 overlay.style.display = 'flex';
                 overlay.innerHTML = `
                     <div class="authBox">
-                        <h1>FLAPPY BIRD</h1>
+                        <h1 style="font-size:clamp(22px,5vw,32px);">FLAPPY BIRD</h1>
                         <button id="goLogin">Log in</button>
                         <button id="goSignup" style="background:#9fd6ff;">Sign up</button>
-                        <p style="margin-top:12px; font-size:clamp(10px,1.8vw,12px); opacity:0.7;">Your account works on any device with internet access.</p>
+                        <p style="margin-top:12px; font-size:clamp(10px,1.8vw,12px); opacity:0.7;">Your account works on any device.</p>
                     </div>
                 `;
                 document.getElementById('goLogin').onclick = (e) => { e.stopPropagation();
@@ -879,26 +1312,24 @@
                         return;
                     }
 
-                    errEl.style.color = '#ff8585';
                     errEl.textContent = 'Connecting...';
                     btn.disabled = true;
                     try {
                         const acc = await loadAccount(username);
-                        if (!acc) { errEl.textContent = 'No account found with that username.';
+                        if (!acc) { errEl.textContent = 'No account found.';
                             btn.disabled = false; return; }
-                        if (acc.passHash !== simpleHash(pass)) { errEl.textContent = 'Incorrect password.';
+                        if (acc.passHash !== simpleHash(pass)) { errEl.textContent = 'Wrong password.';
                             btn.disabled = false; return; }
                         currentUser = { username };
                         profile = acc.profile || { bestScore: 0, unlockedLevel: 0, selectedBird: 0 };
                         enterGameAsLoggedIn();
                     } catch (err) {
-                        errEl.textContent = 'Could not reach account server. Check your internet connection and try again.';
+                        errEl.textContent = 'Server error. Check internet.';
                         btn.disabled = false;
                     }
                 };
                 [document.getElementById('loginUser'), document.getElementById('loginPass')].forEach(el => {
-                    el.onkeydown = (ev) => { if (ev.key === 'Enter') document.getElementById('loginBtn')
-                        .click(); };
+                    el.onkeydown = (ev) => { if (ev.key === 'Enter') document.getElementById('loginBtn').click(); };
                     el.onclick = (ev) => ev.stopPropagation();
                 });
             }
@@ -908,8 +1339,8 @@
                 overlay.innerHTML = `
                     <div class="authBox">
                         <h1>Sign up</h1>
-                        <input type="text" id="suUser" placeholder="Choose a username" autocomplete="off" />
-                        <input type="password" id="suPass" placeholder="Choose a password" autocomplete="off" />
+                        <input type="text" id="suUser" placeholder="Username" autocomplete="off" />
+                        <input type="password" id="suPass" placeholder="Password" autocomplete="off" />
                         <input type="password" id="suPass2" placeholder="Confirm password" autocomplete="off" />
                         <button id="suBtn">Create account</button>
                         <div class="authError" id="suErr"></div>
@@ -925,28 +1356,27 @@
                     const pass2 = document.getElementById('suPass2').value;
                     const errEl = document.getElementById('suErr');
                     const btn = document.getElementById('suBtn');
-                    if (!username || !pass) { errEl.textContent = 'Fill in all fields.'; return; }
-                    if (username.length < 3) { errEl.textContent = 'Username must be at least 3 characters.'; return; }
+                    if (!username || !pass) { errEl.textContent = 'Fill all fields.'; return; }
+                    if (username.length < 3) { errEl.textContent = 'Username min 3 chars.'; return; }
                     if (pass !== pass2) { errEl.textContent = 'Passwords do not match.'; return; }
                     errEl.textContent = 'Connecting...';
                     btn.disabled = true;
                     try {
                         const existing = await loadAccount(username);
-                        if (existing) { errEl.textContent = 'Username already taken.';
+                        if (existing) { errEl.textContent = 'Username taken.';
                             btn.disabled = false; return; }
                         profile = { bestScore: 0, unlockedLevel: 0, selectedBird: 0 };
                         currentUser = { username };
                         await saveAccount(username, { passHash: simpleHash(pass), profile });
                         enterGameAsLoggedIn();
                     } catch (err) {
-                        errEl.textContent = 'Could not reach account server. Check your internet connection and try again.';
+                        errEl.textContent = 'Server error. Check internet.';
                         btn.disabled = false;
                     }
                 };
                 [document.getElementById('suUser'), document.getElementById('suPass'), document.getElementById('suPass2')]
                     .forEach(el => {
-                        el.onkeydown = (ev) => { if (ev.key === 'Enter') document.getElementById('suBtn')
-                            .click(); };
+                        el.onkeydown = (ev) => { if (ev.key === 'Enter') document.getElementById('suBtn').click(); };
                         el.onclick = (ev) => ev.stopPropagation();
                     });
             }
@@ -976,7 +1406,7 @@
                 overlay.innerHTML = `
                     <h1>FLAPPY BIRD</h1>
                     <p>Click, tap, or press SPACE to flap</p>
-                    <p>Score 10 to unlock a new bird, every 10 up to 1000!</p>
+                    <p>Score 10 to unlock a new bird!</p>
                     <div class="score-line">Best: ${profile.bestScore}</div>
                     <div style="display:flex; gap:8px; margin-top:10px; flex-wrap:wrap; justify-content:center;">
                         <button class="smallBtn" id="startBtn">Play</button>
@@ -1039,22 +1469,19 @@
             }
 
             async function persistProfile() {
-                if (!currentUser) return;
-                if (currentUser.username === 'DeveloperX') {
-                    userBadge.textContent = currentUser.username + ' - best: ' + profile.bestScore + ' (dev mode)';
+                if (!currentUser || currentUser.username === 'DeveloperX') {
+                    if (currentUser) userBadge.textContent = currentUser.username + ' - best: ' + profile.bestScore +
+                        ' (dev mode)';
                     return;
                 }
                 try {
                     const acc = await loadAccount(currentUser.username);
-                    if (acc) {
-                        acc.profile = profile;
-                        await saveAccount(currentUser.username, acc);
-                    }
+                    if (acc) { acc.profile = profile;
+                        await saveAccount(currentUser.username, acc); }
                     userBadge.textContent = currentUser.username + ' - best: ' + profile.bestScore;
                 } catch (e) {
-                    console.error('persistProfile failed', e);
                     userBadge.textContent = currentUser.username + ' - best: ' + profile.bestScore +
-                        ' (save failed - check internet)';
+                        ' (save failed)';
                 }
             }
 
@@ -1103,11 +1530,7 @@
                     showGallery(); };
             }
 
-            function flap() {
-                if (state === STATE.PLAYING) {
-                    bird.vy = FLAP_VELOCITY;
-                }
-            }
+            function flap() { if (state === STATE.PLAYING) bird.vy = FLAP_VELOCITY; }
 
             function rectsOverlap(ax, ay, aw, ah, bx, by, bw, bh) {
                 return ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by;
@@ -1116,7 +1539,6 @@
             function update() {
                 if (state !== STATE.PLAYING) return;
                 frame++;
-
                 bird.vy += GRAVITY;
                 if (bird.vy > MAX_FALL_SPEED) bird.vy = MAX_FALL_SPEED;
                 bird.y += bird.vy;
@@ -1124,12 +1546,9 @@
 
                 for (let i = 0; i < pipes.length; i++) {
                     pipes[i].x -= PIPE_SPEED;
-                    if (!pipes[i].passed && pipes[i].x + PIPE_WIDTH < bird.x) {
-                        pipes[i].passed = true;
-                        score++;
-                    }
+                    if (!pipes[i].passed && pipes[i].x + PIPE_WIDTH < bird.x) { pipes[i].passed = true;
+                        score++; }
                 }
-
                 if (pipes.length && pipes[0].x + PIPE_WIDTH < -10) pipes.shift();
                 const lastPipe = pipes[pipes.length - 1];
                 if (lastPipe && (W - lastPipe.x) >= PIPE_SPACING) addPipe(lastPipe.x + PIPE_SPACING);
@@ -1137,32 +1556,22 @@
                 groundOffset = (groundOffset + PIPE_SPEED) % 24;
                 crownGlow = (crownGlow + 0.08) % (Math.PI * 2);
 
-                for (const c of clouds) {
-                    c.x -= c.speed;
-                    if (c.x < -80) c.x = W + 80;
-                }
+                for (const c of clouds) { c.x -= c.speed; if (c.x < -80) c.x = W + 80; }
 
-                if (bird.y + bird.h / 2 >= GROUND_Y) {
-                    bird.y = GROUND_Y - bird.h / 2;
-                    endGame();
-                    return;
-                }
-                if (bird.y - bird.h / 2 <= 0) {
-                    bird.y = bird.h / 2;
-                    bird.vy = 0;
-                }
+                if (bird.y + bird.h / 2 >= GROUND_Y) { bird.y = GROUND_Y - bird.h / 2;
+                    endGame(); return; }
+                if (bird.y - bird.h / 2 <= 0) { bird.y = bird.h / 2;
+                    bird.vy = 0; }
 
-                const birdLeft = bird.x - bird.w / 2 + 4;
-                const birdTop = bird.y - bird.h / 2 + 4;
-                const birdW = bird.w - 8;
-                const birdH = bird.h - 8;
-
+                const birdLeft = bird.x - bird.w / 2 + 4,
+                    birdTop = bird.y - bird.h / 2 + 4;
+                const birdW = bird.w - 8,
+                    birdH = bird.h - 8;
                 for (const p of pipes) {
                     if (rectsOverlap(birdLeft, birdTop, birdW, birdH, p.x, 0, PIPE_WIDTH, p.topHeight)) { endGame(); return; }
                     if (rectsOverlap(birdLeft, birdTop, birdW, birdH, p.x, p.bottomY, PIPE_WIDTH, GROUND_Y - p.bottomY)) { endGame
                         (); return; }
                 }
-
                 if (flashAlpha > 0) flashAlpha -= 0.05;
             }
 
@@ -1208,8 +1617,8 @@
             }
 
             function drawPipe(p) {
-                const capHeight = 26;
-                const capOverhang = 6;
+                const capHeight = 26,
+                    capOverhang = 6;
                 ctx.fillStyle = '#73c44a';
                 ctx.strokeStyle = '#4f9c2e';
                 ctx.lineWidth = 3;
@@ -1228,9 +1637,8 @@
             }
 
             function drawBirdShape(targetCtx, def, wingPhase, scaleFactor) {
-                const w = 34 * scaleFactor;
-                const h = 26 * scaleFactor;
-
+                const w = 34 * scaleFactor,
+                    h = 26 * scaleFactor;
                 targetCtx.fillStyle = def.body;
                 targetCtx.strokeStyle = shadeColor(def.body, -20);
                 targetCtx.lineWidth = 2;
@@ -1272,7 +1680,6 @@
                 targetCtx.beginPath();
                 targetCtx.arc(9.5 * scaleFactor, -5 * scaleFactor, 2.4 * scaleFactor, 0, Math.PI * 2);
                 targetCtx.fill();
-
                 targetCtx.fillStyle = '#ff8c00';
                 targetCtx.beginPath();
                 targetCtx.moveTo(13 * scaleFactor, -1 * scaleFactor);
@@ -1306,12 +1713,10 @@
                 targetCtx.save();
                 targetCtx.translate(2 * scaleFactor, -13 * scaleFactor);
                 targetCtx.scale(scaleFactor, scaleFactor);
-
                 targetCtx.fillStyle = `rgba(255,215,0,${0.25 * glow})`;
                 targetCtx.beginPath();
                 targetCtx.arc(0, 0, 14, 0, Math.PI * 2);
                 targetCtx.fill();
-
                 targetCtx.fillStyle = '#FFD700';
                 targetCtx.strokeStyle = '#B8860B';
                 targetCtx.lineWidth = 1;
@@ -1326,25 +1731,13 @@
                 targetCtx.closePath();
                 targetCtx.fill();
                 targetCtx.stroke();
-
                 targetCtx.fillStyle = `rgba(255,255,255,${0.7 * glow})`;
                 targetCtx.beginPath();
                 targetCtx.arc(0, -6, 1.6, 0, Math.PI * 2);
                 targetCtx.arc(-8, -3, 1.2, 0, Math.PI * 2);
                 targetCtx.arc(8, -3, 1.2, 0, Math.PI * 2);
                 targetCtx.fill();
-
                 targetCtx.restore();
-            }
-
-            function shadeColor(hex, percent) {
-                let r = parseInt(hex.substring(1, 3), 16);
-                let g = parseInt(hex.substring(3, 5), 16);
-                let b = parseInt(hex.substring(5, 7), 16);
-                r = Math.min(255, Math.max(0, r + percent));
-                g = Math.min(255, Math.max(0, g + percent));
-                b = Math.min(255, Math.max(0, b + percent));
-                return `rgb(${r},${g},${b})`;
             }
 
             function drawBird() {
@@ -1368,24 +1761,16 @@
                 if (state === STATE.PLAYING) hud.textContent = score;
             }
 
-            function loop() {
-                update();
+            function loop() { update();
                 draw();
-                requestAnimationFrame(loop);
-            }
+                requestAnimationFrame(loop); }
 
-            function handleInput(e) {
-                if (state === STATE.PLAYING) {
-                    e.preventDefault();
-                    flap();
-                }
-            }
+            function handleInput(e) { if (state === STATE.PLAYING) { e.preventDefault();
+                    flap(); } }
 
             canvas.addEventListener('mousedown', handleInput);
             canvas.addEventListener('touchstart', handleInput, { passive: false });
-            overlay.addEventListener('mousedown', function(e) {
-                if (state === STATE.PLAYING) flap();
-            });
+            overlay.addEventListener('mousedown', function(e) { if (state === STATE.PLAYING) flap(); });
 
             document.addEventListener('keydown', function(e) {
                 if (e.code === 'Space' || e.key === ' ' || e.key === 'ArrowUp') {
